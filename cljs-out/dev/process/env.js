@@ -1,7 +1,6 @@
-// Compiled by ClojureScript 1.10.773 {:static-fns true, :optimize-constants true, :target :nodejs}
+// Compiled by ClojureScript 1.10.773 {:target :nodejs}
 goog.provide('process.env');
 goog.require('cljs.core');
-goog.require('cljs.core.constants');
 
 /**
  * @define {string}
