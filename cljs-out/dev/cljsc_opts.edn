@@ -1,0 +1,1 @@
+{:output-dir "resources/public/cljs-out/dev", :closure-defines #:cljs.core{*global* "window"}, :optimizations :advanced, :aot-cache false, :output-to "resources/public/cljs-out/dev/main.js", :asset-path "/cljs-out/dev", :target :bundle, :main guitar.core}

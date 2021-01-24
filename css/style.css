@@ -1,0 +1,84 @@
+:root {
+  --page-bg: #181818;
+  --font-color: #bbb;
+  --guitar-fret: #292929;
+}
+
+body {
+  color: var(--font-color);
+  background-color: var(--page-bg);
+}
+
+.center-text {
+  text-align: center;
+}
+
+.guess {
+  cursor: pointer;
+}
+
+.guitar {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 5px 10px #111;
+  background-color: rgba(255, 255, 255, 10%);
+}
+
+.guitar-string {
+  display: flex;
+  user-select: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.guitar-string:before {
+  content: ' ';
+  position: absolute;
+  top: calc(50% - 2px);
+  left: 0;
+  right: 0;
+  border-top: 2px solid rgba(255, 255, 255, 5%);
+}
+
+.guitar-string .guitar-nut {
+  border-right: 0.5rem solid;
+  border-color: #444;
+  background-color: #151515;
+  width: 30%;
+}
+
+.guitar-nut,
+.guitar-fret {
+  position: relative;
+  background-color: rgba(0, 0, 0, 10%);
+  display: block;
+  margin: 0 1px;
+  padding: 0.5rem 0.1rem;
+  width: 100%;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,
+.guitar-string:nth-child(2) .guitar-fret:nth-of-type(13):after,
+.guitar-string:nth-child(4) .guitar-fret:nth-of-type(13):after,
+.guitar-string:nth-child(2) .guitar-fret:nth-of-type(25):after,
+.guitar-string:nth-child(4) .guitar-fret:nth-of-type(25):after {
+  content: ' ';
+  background-color: rgba(0, 0, 0, 20%);
+  position: absolute;
+  right: calc(50% - 0.5rem);
+  bottom: -0.5rem;
+  border-radius: 20rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.guitar-string:nth-child(3) .guitar-fret:nth-of-type(12):after,
+.guitar-string:nth-child(3) .guitar-fret:nth-of-type(14):after,
+.guitar-string:nth-child(3) .guitar-fret:nth-of-type(24):after {
+  content: none;
+}
