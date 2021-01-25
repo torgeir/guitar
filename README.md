@@ -2,6 +2,8 @@
 
 A playground for guitarists looking to master the fretboard, scales, chords and the guitar in general.
 
+https://torgeir.github.io/guitar/
+
 ## Plans
 
 - [x] show the notes of a guitar neck
