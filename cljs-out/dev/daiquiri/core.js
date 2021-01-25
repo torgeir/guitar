@@ -1,6 +1,7 @@
-// Compiled by ClojureScript 1.10.773 {:target :nodejs}
+// Compiled by ClojureScript 1.10.773 {:static-fns true, :optimize-constants true}
 goog.provide('daiquiri.core');
 goog.require('cljs.core');
+goog.require('cljs.core.constants');
 goog.require('daiquiri.interpreter');
 /**
  * The React.js create element function.
