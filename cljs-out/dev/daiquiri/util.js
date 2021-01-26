@@ -11,12 +11,12 @@ daiquiri.util._camel_case = (function daiquiri$util$_camel_case(k){
 if(typeof k === 'string'){
 return k;
 } else {
-var vec__12974 = cljs.core.name(k).split("-");
-var seq__12975 = cljs.core.seq(vec__12974);
-var first__12976 = cljs.core.first(seq__12975);
-var seq__12975__$1 = cljs.core.next(seq__12975);
-var first_word = first__12976;
-var words = seq__12975__$1;
+var vec__12968 = cljs.core.name(k).split("-");
+var seq__12969 = cljs.core.seq(vec__12968);
+var first__12970 = cljs.core.first(seq__12969);
+var seq__12969__$1 = cljs.core.next(seq__12969);
+var first_word = first__12970;
+var words = seq__12969__$1;
 if(((cljs.core.empty_QMARK_(words)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("aria",first_word)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("data",first_word)))){
 return k;
 } else {
@@ -49,14 +49,14 @@ return k;
  */
 daiquiri.util.camel_case_keys = (function daiquiri$util$camel_case_keys(m){
 if(cljs.core.map_QMARK_(m)){
-var m__$1 = cljs.core.persistent_BANG_(cljs.core.reduce_kv((function (p1__12977_SHARP_,p2__12978_SHARP_,p3__12979_SHARP_){
-return cljs.core.assoc_BANG_.cljs$core$IFn$_invoke$arity$3(p1__12977_SHARP_,daiquiri.util.camel_case(p2__12978_SHARP_),p3__12979_SHARP_);
+var m__$1 = cljs.core.persistent_BANG_(cljs.core.reduce_kv((function (p1__12971_SHARP_,p2__12972_SHARP_,p3__12973_SHARP_){
+return cljs.core.assoc_BANG_.cljs$core$IFn$_invoke$arity$3(p1__12971_SHARP_,daiquiri.util.camel_case(p2__12972_SHARP_),p3__12973_SHARP_);
 }),cljs.core.transient$(cljs.core.PersistentArrayMap.EMPTY),m));
-var G__12980 = m__$1;
+var G__12974 = m__$1;
 if(cljs.core.map_QMARK_(cljs.core.cst$kw$style.cljs$core$IFn$_invoke$arity$1(m__$1))){
-return cljs.core.update.cljs$core$IFn$_invoke$arity$3(G__12980,cljs.core.cst$kw$style,daiquiri.util.camel_case_keys);
+return cljs.core.update.cljs$core$IFn$_invoke$arity$3(G__12974,cljs.core.cst$kw$style,daiquiri.util.camel_case_keys);
 } else {
-return G__12980;
+return G__12974;
 }
 } else {
 return m;

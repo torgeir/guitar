@@ -68,27 +68,27 @@ return newv;
 (rum.cursor.Cursor.prototype.cljs$core$ISwap$_swap_BANG_$arity$2 = (function (this$,f){
 var self__ = this;
 var this$__$1 = this;
-return this$__$1.cljs$core$IReset$_reset_BANG_$arity$2(null,(function (){var G__12873 = this$__$1.cljs$core$IDeref$_deref$arity$1(null);
-return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__12873) : f.call(null,G__12873));
+return this$__$1.cljs$core$IReset$_reset_BANG_$arity$2(null,(function (){var G__13010 = this$__$1.cljs$core$IDeref$_deref$arity$1(null);
+return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__13010) : f.call(null,G__13010));
 })());
 }));
 
 (rum.cursor.Cursor.prototype.cljs$core$ISwap$_swap_BANG_$arity$3 = (function (this$,f,a){
 var self__ = this;
 var this$__$1 = this;
-return this$__$1.cljs$core$IReset$_reset_BANG_$arity$2(null,(function (){var G__12874 = this$__$1.cljs$core$IDeref$_deref$arity$1(null);
-var G__12875 = a;
-return (f.cljs$core$IFn$_invoke$arity$2 ? f.cljs$core$IFn$_invoke$arity$2(G__12874,G__12875) : f.call(null,G__12874,G__12875));
+return this$__$1.cljs$core$IReset$_reset_BANG_$arity$2(null,(function (){var G__13011 = this$__$1.cljs$core$IDeref$_deref$arity$1(null);
+var G__13012 = a;
+return (f.cljs$core$IFn$_invoke$arity$2 ? f.cljs$core$IFn$_invoke$arity$2(G__13011,G__13012) : f.call(null,G__13011,G__13012));
 })());
 }));
 
 (rum.cursor.Cursor.prototype.cljs$core$ISwap$_swap_BANG_$arity$4 = (function (this$,f,a,b){
 var self__ = this;
 var this$__$1 = this;
-return this$__$1.cljs$core$IReset$_reset_BANG_$arity$2(null,(function (){var G__12876 = this$__$1.cljs$core$IDeref$_deref$arity$1(null);
-var G__12877 = a;
-var G__12878 = b;
-return (f.cljs$core$IFn$_invoke$arity$3 ? f.cljs$core$IFn$_invoke$arity$3(G__12876,G__12877,G__12878) : f.call(null,G__12876,G__12877,G__12878));
+return this$__$1.cljs$core$IReset$_reset_BANG_$arity$2(null,(function (){var G__13013 = this$__$1.cljs$core$IDeref$_deref$arity$1(null);
+var G__13014 = a;
+var G__13015 = b;
+return (f.cljs$core$IFn$_invoke$arity$3 ? f.cljs$core$IFn$_invoke$arity$3(G__13013,G__13014,G__13015) : f.call(null,G__13013,G__13014,G__13015));
 })());
 }));
 
