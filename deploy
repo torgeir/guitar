@@ -1,4 +1,0 @@
-rm -rf resources/public/cljs-out/
-clojure -A:fig:min
-# https://github.com/tschaub/gh-pages/issues/354#issuecomment-674552919 
-npx gh-pages@3.0.0 -d resources/public/
