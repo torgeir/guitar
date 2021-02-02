@@ -1,1 +1,1 @@
-((clojurescript-mode . ((cider-clojure-cli-aliases . "-A:fig"))))
+((clojurescript-mode . ((cider-clojure-cli-global-options . "-A:fig"))))
