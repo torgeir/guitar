@@ -28,11 +28,10 @@
 (rum/defc guitar-string [visible notes]
   [:div.guitar-string
    (guitar-nut (if visible (first notes) nbsp))
-   (->> notes
-        (drop 1)
-        (map (if visible identity (constantly nbsp)))
-        (map guitar-fret)
-        (map-indexed #(rum/with-key %2 %1)))])
+   (->> (rest notes)
+     (map (if visible identity (constantly nbsp)))
+     (map guitar-fret)
+     (map-indexed #(rum/with-key %2 %1)))])
 
 
 (rum/defc locate-note-text [{:keys [note string]}]
@@ -50,8 +49,8 @@
                     (reset-state)
                     (swap! state update :show-notes not))}
       (->> strings
-           (map (partial guitar-string notes-shown))
-           (map-indexed #(rum/with-key %2 %1)))]
+        (map (partial guitar-string notes-shown))
+        (map-indexed #(rum/with-key %2 %1)))]
      [:h3.center-text
       (locate-note-text (:locate @state))
       (if notes-shown
