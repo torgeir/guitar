@@ -1,4 +1,4 @@
-(ns guitar.neck)
+(ns guitar.setup)
 
 
 (def scale-length 24)

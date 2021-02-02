@@ -5,7 +5,7 @@
 
 
 (defn string-notes [notes scale-length start-note]
-  (let [from (drop-while (partial not= start-note) notes)]
+  (let [from (drop-while (partial not= start-note) (cycle notes))]
     (reduce #(conj %1 (nth from %2))
             []
             (range (inc scale-length)))))
@@ -20,7 +20,7 @@
        (.toUpperCase note)))
 
 
-(defn suffixed-number [n]
+(defn ordinal-suffixed-number [n]
   (str n (condp = (->> n (str) (last) (int))
            1 "st"
            2 "nd"
