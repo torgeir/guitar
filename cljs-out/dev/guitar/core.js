@@ -63,26 +63,16 @@ guitar.core.app = rum.core.lazy_build(rum.core.build_defc,(function (state){
 var mode = cljs.core.cst$kw$mode.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state));
 var mode_state = rum.core.cursor(state,mode);
 var strings = cljs.core.reverse(cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_of_string,cljs.core.cst$kw$tuning.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state))));
-var attrs14283 = (function (){var pred__14286 = cljs.core._EQ_;
-var expr__14287 = mode;
-if(cljs.core.truth_((function (){var G__14289 = cljs.core.cst$kw$guess;
-var G__14290 = expr__14287;
-return (pred__14286.cljs$core$IFn$_invoke$arity$2 ? pred__14286.cljs$core$IFn$_invoke$arity$2(G__14289,G__14290) : pred__14286.call(null,G__14289,G__14290));
+var pred__14273 = cljs.core._EQ_;
+var expr__14274 = mode;
+if(cljs.core.truth_((function (){var G__14276 = cljs.core.cst$kw$guess;
+var G__14277 = expr__14274;
+return (pred__14273.cljs$core$IFn$_invoke$arity$2 ? pred__14273.cljs$core$IFn$_invoke$arity$2(G__14276,G__14277) : pred__14273.call(null,G__14276,G__14277));
 })())){
 return (guitar.core.guess_fretboard_notes.cljs$core$IFn$_invoke$arity$2 ? guitar.core.guess_fretboard_notes.cljs$core$IFn$_invoke$arity$2(strings,mode_state) : guitar.core.guess_fretboard_notes.call(null,strings,mode_state));
 } else {
 return null;
 }
-})();
-return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs14283))?daiquiri.interpreter.attributes(attrs14283):null),((cljs.core.map_QMARK_(attrs14283))?[(function (){var attrs14284 = (function (){var repo_url = "https://github.com/torgeir/guitar/";
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$a,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$href,repo_url], null),repo_url], null);
-})();
-return daiquiri.core.create_element("p",((cljs.core.map_QMARK_(attrs14284))?daiquiri.interpreter.attributes(attrs14284):null),((cljs.core.map_QMARK_(attrs14284))?null:[daiquiri.interpreter.interpret(attrs14284)]));
-})()]:[daiquiri.interpreter.interpret(attrs14283),(function (){var attrs14285 = (function (){var repo_url = "https://github.com/torgeir/guitar/";
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$a,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$href,repo_url], null),repo_url], null);
-})();
-return daiquiri.core.create_element("p",((cljs.core.map_QMARK_(attrs14285))?daiquiri.interpreter.attributes(attrs14285):null),((cljs.core.map_QMARK_(attrs14285))?null:[daiquiri.interpreter.interpret(attrs14285)]));
-})()]));
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.core/app");
 guitar.core.mount = (function guitar$core$mount(){
 var temp__5720__auto__ = goog.dom.getElement("app");
