@@ -29,9 +29,9 @@ return (guitar.core.guitar_nut.cljs$core$IFn$_invoke$arity$1 ? guitar.core.guita
 })();
 return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs14260))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["guitar-string"], null)], null),attrs14260], 0))):{'className':"guitar-string"}),((cljs.core.map_QMARK_(attrs14260))?[daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__14257_SHARP_,p2__14256_SHARP_){
 return rum.core.with_key(p2__14256_SHARP_,p1__14257_SHARP_);
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.guitar_fret,cljs.core.map.cljs$core$IFn$_invoke$arity$2((cljs.core.truth_(visible)?cljs.core.identity:cljs.core.constantly(guitar.unicode.nbsp)),cljs.core.drop.cljs$core$IFn$_invoke$arity$2((1),notes)))))]:[daiquiri.interpreter.interpret(attrs14260),daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__14257_SHARP_,p2__14256_SHARP_){
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.guitar_fret,cljs.core.map.cljs$core$IFn$_invoke$arity$2((cljs.core.truth_(visible)?cljs.core.identity:cljs.core.constantly(guitar.unicode.nbsp)),cljs.core.rest(notes)))))]:[daiquiri.interpreter.interpret(attrs14260),daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__14257_SHARP_,p2__14256_SHARP_){
 return rum.core.with_key(p2__14256_SHARP_,p1__14257_SHARP_);
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.guitar_fret,cljs.core.map.cljs$core$IFn$_invoke$arity$2((cljs.core.truth_(visible)?cljs.core.identity:cljs.core.constantly(guitar.unicode.nbsp)),cljs.core.drop.cljs$core$IFn$_invoke$arity$2((1),notes)))))]));
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.guitar_fret,cljs.core.map.cljs$core$IFn$_invoke$arity$2((cljs.core.truth_(visible)?cljs.core.identity:cljs.core.constantly(guitar.unicode.nbsp)),cljs.core.rest(notes)))))]));
 }),null,"guitar.core/guitar-string");
 guitar.core.locate_note_text = rum.core.lazy_build(rum.core.build_defc,(function (p__14262){
 var map__14263 = p__14262;
