@@ -5,10 +5,10 @@
 
 
 (defn string-notes [notes scale-length start-note]
-  (let [from (drop-while (partial not= start-note) (cycle notes))]
-    (reduce #(conj %1 (nth from %2))
-            []
-            (range (inc scale-length)))))
+  (->> notes
+    (cycle)
+    (drop-while (partial not= start-note))
+    (take scale-length)))
 
 
 (def note-vowel? #{"e" "f" "f#" "a" "a#"})

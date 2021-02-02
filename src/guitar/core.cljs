@@ -7,7 +7,7 @@
    [guitar.unicode :refer [nbsp]]))
 
 
-(def notes-of-string (partial string-notes notes scale-length))
+(def notes-of-string (partial string-notes notes (inc scale-length)))
 
 
 (defn rand-note []
