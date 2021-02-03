@@ -2,7 +2,7 @@
   (:require
    [goog.dom :as gdom]
    [guitar.setup :refer [scale-length tuning]]
-   [guitar.notes :refer [string-notes notes prefixed-note ordinal-suffixed-number]]
+   [guitar.notes :refer [scales scale-notes string-notes notes prefixed-note ordinal-suffixed-number]]
    [rum.core :as rum]
    [guitar.unicode :refer [nbsp]]))
 
@@ -20,18 +20,21 @@
    {:tuning tuning
     :mode   :guess
     :guess  {:show-notes false
-             :locate     (rand-note)}}))
+             :locate     (rand-note)}
+    :scales {:root "c"
+             :scale :major}}))
 
 
 (rum/defc guitar-nut [note] [:div.guitar-nut note])
 (rum/defc guitar-fret [note] [:div.guitar-fret note])
-(rum/defc guitar-string [visible notes]
+(rum/defc guitar-string [show? notes]
   [:div.guitar-string
-   (guitar-nut (if visible (first notes) nbsp))
+   (guitar-nut (let [note (first notes)]
+                 (if (show? note) note nbsp)))
    (->> (rest notes)
-     (map (if visible identity (constantly nbsp)))
-     (map guitar-fret)
-     (map-indexed #(rum/with-key %2 %1)))])
+        (map #(if (show? %) % nbsp))
+        (map guitar-fret)
+        (map-indexed #(rum/with-key %2 %1)))])
 
 
 (rum/defc locate-note-text [{:keys [note string]}]
@@ -40,7 +43,7 @@
            " string.")])
 
 
-(rum/defc guess-fretboard-notes < rum/reactive [strings state]
+(rum/defc guess-fretboard-notes < rum/reactive [string-notes state]
   (let [notes-shown (:show-notes (rum/react state))
         reset-state #(reset! state {:show-notes false :locate (rand-note)})]
     [:div
@@ -48,9 +51,9 @@
       {:on-click #(if notes-shown
                     (reset-state)
                     (swap! state update :show-notes not))}
-      (->> strings
-        (map (partial guitar-string notes-shown))
-        (map-indexed #(rum/with-key %2 %1)))]
+      (->> string-notes
+           (map (partial guitar-string (constantly notes-shown)))
+           (map-indexed #(rum/with-key %2 %1)))]
      [:h3.center-text
       (locate-note-text (:locate @state))
       (if notes-shown
@@ -58,13 +61,32 @@
         "Make a guess and click the fretboard to reveal the notes.")]]))
 
 
+(rum/defc scale-visualizer < rum/reactive [string-notes state]
+  (let [{:keys [root scale]} (rum/react state)]
+    (rum/fragment
+     [:div.guitar
+      (->> string-notes
+           (map (partial guitar-string (set (scale-notes root scale))))
+           (map-indexed #(rum/with-key %2 %1)))]
+     [:select
+      {:on-change #(swap! state assoc :root (->> % .-currentTarget .-value))}
+      (->> notes (map #(vector :option {:key %} %)))]
+     [:select
+      {:on-change #(swap! state assoc :scale (->> % .-currentTarget .-value (keyword)))}
+      (->> scales (keys) (map name) (map #(vector :option {:key %} %)))])))
+
+
 (rum/defc app < rum/reactive [state]
-  (let [mode (:mode @state)
+  (let [mode (:mode (rum/react state))
         mode-state (rum/cursor state mode)
-        strings (->> @state :tuning (map notes-of-string) (reverse))]
-    (condp = mode
-      :guess (guess-fretboard-notes strings mode-state)
-      nil)))
+        strings-notes (->> @state :tuning (map notes-of-string) (reverse))]
+    [:div
+     [:button {:on-click #(swap! state assoc :mode :guess)} "Guess"]
+     [:button {:on-click #(swap! state assoc :mode :scales)} "Explore scales"]
+     ((condp = mode
+        :guess guess-fretboard-notes
+        :scales scale-visualizer)
+      strings-notes mode-state)]))
 
 
 (defn mount []

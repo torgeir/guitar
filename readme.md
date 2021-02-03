@@ -7,6 +7,7 @@ https://torgeir.github.io/guitar/
 ## Plans
 
 - [x] show the notes of a guitar neck
+- [x] visualize scales on the neck
 - [ ] visualize different positions of scales on the neck
 - [ ] support a variety of scales
 - [ ] show what notes selected scales have in common
