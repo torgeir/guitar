@@ -2,7 +2,14 @@
 goog.provide('guitar.notes');
 goog.require('cljs.core');
 goog.require('cljs.core.constants');
+guitar.notes.scales = cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$blues,cljs.core.cst$kw$melodic_DASH_minor,cljs.core.cst$kw$diminished_DASH_half_DASH_whole,cljs.core.cst$kw$harmonic_DASH_minor,cljs.core.cst$kw$major,cljs.core.cst$kw$minor_DASH_pentatonic,cljs.core.cst$kw$major_DASH_pentatonic,cljs.core.cst$kw$minor,cljs.core.cst$kw$diminished_DASH_whole_DASH_half],["321132","2122221","12121212","2122131","2212221","32232","22323","2122122","21212121"]);
 guitar.notes.notes = new cljs.core.PersistentVector(null, 12, 5, cljs.core.PersistentVector.EMPTY_NODE, ["c","c#","d","d#","e","f","f#","g","g#","a","a#","b"], null);
+/**
+ * Finds the notes for the type of scale, starting from the root.
+ */
+guitar.notes.scale_notes = (function guitar$notes$scale_notes(root,scale){
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.nth,cljs.core.cycle(guitar.notes.notes)),cljs.core.drop_last.cljs$core$IFn$_invoke$arity$1(cljs.core.reductions.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [guitar.notes.notes.indexOf(root)], null),cljs.core.map.cljs$core$IFn$_invoke$arity$2(parseInt,cljs.core.seq((scale.cljs$core$IFn$_invoke$arity$1 ? scale.cljs$core$IFn$_invoke$arity$1(guitar.notes.scales) : scale.call(null,guitar.notes.scales))))))));
+});
 guitar.notes.string_notes = (function guitar$notes$string_notes(notes,scale_length,start_note){
 return cljs.core.take.cljs$core$IFn$_invoke$arity$2(scale_length,cljs.core.drop_while.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.not_EQ_,start_note),cljs.core.cycle(notes)));
 });
