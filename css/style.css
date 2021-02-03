@@ -31,13 +31,13 @@ body {
   cursor: pointer;
 }
 
-.guitar-string:before {
-  content: ' ';
+.guitar-string:after {
+  content: " ";
   position: absolute;
   top: calc(50% - 2px);
   left: 0;
   right: 0;
-  border-top: 2px solid rgba(255, 255, 255, 5%);
+  border-top: 2px solid rgba(255, 255, 255, 15%);
 }
 
 .guitar-string .guitar-nut {
@@ -47,10 +47,13 @@ body {
   width: 30%;
 }
 
+.guitar-fret {
+  background-color: rgba(0, 0, 0, 8%);
+}
+
 .guitar-nut,
 .guitar-fret {
   position: relative;
-  background-color: rgba(0, 0, 0, 10%);
   display: block;
   margin: 0 1px;
   padding: 0.5rem 0.1rem;
@@ -67,7 +70,7 @@ body {
 .guitar-string:nth-child(4) .guitar-fret:nth-of-type(13):after,
 .guitar-string:nth-child(2) .guitar-fret:nth-of-type(25):after,
 .guitar-string:nth-child(4) .guitar-fret:nth-of-type(25):after {
-  content: ' ';
+  content: " ";
   background-color: rgba(0, 0, 0, 20%);
   position: absolute;
   right: calc(50% - 0.5rem);
