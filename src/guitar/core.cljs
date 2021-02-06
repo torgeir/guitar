@@ -76,7 +76,8 @@
       {:on-change #(swap! state assoc :root (->> % .-currentTarget .-value))}
       (->> notes (map #(vector :option {:key %} %)))]
      [:select
-      {:on-change #(swap! state assoc :scale (->> % .-currentTarget .-value (keyword)))}
+      {:value (name scale)
+       :on-change #(swap! state assoc :scale (->> % .-currentTarget .-value (keyword)))}
       (->> scales (keys) (map name) (map #(vector :option {:key %} %)))])))
 
 
