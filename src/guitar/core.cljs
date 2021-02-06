@@ -18,11 +18,11 @@
 (defonce state
   (atom
    {:tuning tuning
-    :mode   :guess
+    :mode   :explore
     :guess  {:show-notes false
              :locate     (rand-note)}
-    :scales {:root "c"
-             :scale :major}}))
+    :explore {:root "c"
+              :scale :major}}))
 
 
 (rum/defc guitar-nut [note] [:div.guitar-nut note])
@@ -43,17 +43,24 @@
            " string.")])
 
 
+(rum/defc guitar [props string-notes show-notes?]
+  [:div.guitar
+   props
+   (->> string-notes
+        (map (partial guitar-string show-notes?))
+        (map-indexed #(rum/with-key %2 %1)))])
+
+
 (rum/defc guess-fretboard-notes < rum/reactive [string-notes state]
   (let [notes-shown (:show-notes (rum/react state))
         reset-state #(reset! state {:show-notes false :locate (rand-note)})]
     [:div
-     [:div.guitar
+     (guitar
       {:on-click #(if notes-shown
                     (reset-state)
                     (swap! state update :show-notes not))}
-      (->> string-notes
-           (map (partial guitar-string (constantly notes-shown)))
-           (map-indexed #(rum/with-key %2 %1)))]
+      string-notes
+      (constantly notes-shown))
      [:h3.center-text
       (locate-note-text (:locate @state))
       (if notes-shown
@@ -64,10 +71,7 @@
 (rum/defc scale-visualizer < rum/reactive [string-notes state]
   (let [{:keys [root scale]} (rum/react state)]
     (rum/fragment
-     [:div.guitar
-      (->> string-notes
-           (map (partial guitar-string (set (scale-notes root scale))))
-           (map-indexed #(rum/with-key %2 %1)))]
+     [:div (guitar {} string-notes (set (scale-notes root scale)))]
      [:select
       {:on-change #(swap! state assoc :root (->> % .-currentTarget .-value))}
       (->> notes (map #(vector :option {:key %} %)))]
@@ -82,10 +86,10 @@
         strings-notes (->> @state :tuning (map notes-of-string) (reverse))]
     [:div
      [:button {:on-click #(swap! state assoc :mode :guess)} "Guess"]
-     [:button {:on-click #(swap! state assoc :mode :scales)} "Explore scales"]
+     [:button {:on-click #(swap! state assoc :mode :explore)} "Explore scales"]
      ((condp = mode
         :guess guess-fretboard-notes
-        :scales scale-visualizer)
+        :explore scale-visualizer)
       strings-notes mode-state)]))
 
 
