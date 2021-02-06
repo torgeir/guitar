@@ -27,12 +27,11 @@
 
 (rum/defc guitar-nut [note] [:div.guitar-nut note])
 (rum/defc guitar-fret [note] [:div.guitar-fret note])
-(rum/defc guitar-string [show? notes]
+(rum/defc guitar-string [format-note notes]
   [:div.guitar-string
-   (guitar-nut (let [note (first notes)]
-                 (if (show? note) note nbsp)))
+   (guitar-nut (format-note (first notes)))
    (->> (rest notes)
-        (map #(if (show? %) % nbsp))
+        (map format-note)
         (map guitar-fret)
         (map-indexed #(rum/with-key %2 %1)))])
 
@@ -43,11 +42,11 @@
            " string.")])
 
 
-(rum/defc guitar [props string-notes show-notes?]
+(rum/defc guitar [props string-notes show-note?]
   [:div.guitar
    props
    (->> string-notes
-        (map (partial guitar-string show-notes?))
+        (map (partial guitar-string show-note?))
         (map-indexed #(rum/with-key %2 %1)))])
 
 
@@ -60,7 +59,7 @@
                     (reset-state)
                     (swap! state update :show-notes not))}
       string-notes
-      (constantly notes-shown))
+      #(if notes-shown % nbsp))
      [:h3.center-text
       (locate-note-text (:locate @state))
       (if notes-shown
