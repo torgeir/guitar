@@ -1,6 +1,7 @@
 :root {
   --page-bg: #181818;
   --font-color: #bbb;
+  --font-color-faded: #444;
   --guitar-fret: #292929;
 }
 
@@ -24,6 +25,10 @@ body {
   background-color: rgba(255, 255, 255, 10%);
 }
 
+.guitar--faded {
+  color: var(--font-color-faded);
+}
+
 .guitar-string {
   display: flex;
   user-select: none;
@@ -45,6 +50,32 @@ body {
   border-color: #444;
   background-color: #151515;
   width: 30%;
+}
+
+.scale-note {
+  position: relative;
+}
+
+.scale-note--hl::before {
+  content: " ";
+  background-color: rgba(255, 0, 150, 100%);
+  position: absolute;
+  top: calc(50% - 0.7rem);
+  right: calc(50% - 0.7rem);
+  border-radius: 20rem;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.scale-note--hl::after {
+  content: attr(title);
+  color: white;
+  font-style: bold;
+  position: absolute;
+  right: calc(50% - 0.7rem);
+  border-radius: 20rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .guitar-fret {

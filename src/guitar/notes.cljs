@@ -6,7 +6,7 @@
    :minor "2122122"
    :minor-pentatonic "32232"
    :major-pentatonic "22323"
-   :blues "321132"
+   ;; :blues "321132"
    :harmonic-minor "2122131"
    :diminished-whole-half "21212121"
    :diminished-half-whole "12121212"})
