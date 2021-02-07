@@ -93,18 +93,18 @@
          (if (empty? note)
            acc
            (cond
-             (pos? skip)                    (recur (conj acc note) (dec skip) nps notes)
+             (pos? skip)                    (recur (conj acc (if (in-scale? (:note note)) note nil)) (dec skip) nps notes)
              (and (zero? nps)
-                  (in-scale? (:note note))) (recur (conj acc note)
+                  (in-scale? (:note note))) (recur (conj acc (if (in-scale? (:note note)) note nil))
                                                         ;; TODO support other tunings
-                                                        (- scale-length
-                                                           (if ((set (range (count acc)
-                                                                            (+ (count acc) scale-length))) 100)
-                                                             4 5)) ; on note 100 (4 x (inc scale-length)) the offset is 4, not 5
-                                                        notes-per-string
-                                                        notes)
+                                                   (- scale-length
+                                                      (if ((set (range (count acc)
+                                                                       (+ (count acc) scale-length))) 100)
+                                                        4 5)) ; on note 100 (4 x (inc scale-length)) the offset is 4, not 5
+                                                   notes-per-string
+                                                   notes)
              (in-scale? (:note note))       (recur (conj acc (format-scale-note note)) skip (dec nps) notes)
-             :else                          (recur (conj acc note) skip nps notes))))
+             :else                          (recur (conj acc nil) skip nps notes))))
        (partition (inc scale-length))
        (reverse)))
 
