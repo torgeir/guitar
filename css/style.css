@@ -58,23 +58,24 @@ body {
 
 .scale-note--hl::before {
   content: " ";
-  background-color: rgba(255, 50, 200, 100%);
+  background-color: rgba(255, 0, 150, 100%);
   position: absolute;
-  top: calc(50% - 0.5rem);
-  right: calc(50% - 0.5rem);
+  top: calc(50% - 0.7rem);
+  right: calc(50% - 0.7rem);
   border-radius: 20rem;
-  width: 1rem;
-  height: 1rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .scale-note--hl::after {
   content: attr(title);
-  color: black;
+  color: white;
+  font-style: bold;
   position: absolute;
-  right: calc(50% - 0.5rem);
+  right: calc(50% - 0.7rem);
   border-radius: 20rem;
-  width: 1rem;
-  height: 1rem;
+  width: 1.4rem;
+  height: 1.4rem;
 }
 
 .guitar-fret {
