@@ -109,34 +109,21 @@ while(true){
 var acc__$2 = acc__$1;
 var skip__$2 = skip__$1;
 var nps__$2 = nps__$1;
-var vec__14304 = G__14293__$1;
-var seq__14305 = cljs.core.seq(vec__14304);
-var first__14306 = cljs.core.first(seq__14305);
-var seq__14305__$1 = cljs.core.next(seq__14305);
-var note__$1 = first__14306;
-var notes__$1 = seq__14305__$1;
+var vec__14306 = G__14293__$1;
+var seq__14307 = cljs.core.seq(vec__14306);
+var first__14308 = cljs.core.first(seq__14307);
+var seq__14307__$1 = cljs.core.next(seq__14307);
+var note__$1 = first__14308;
+var notes__$1 = seq__14307__$1;
 if(cljs.core.empty_QMARK_(note__$1)){
 return acc__$2;
 } else {
 if((skip__$2 > (0))){
-var G__14311 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,note__$1);
-var G__14312 = (skip__$2 - (1));
-var G__14313 = nps__$2;
-var G__14314 = notes__$1;
-acc__$1 = G__14311;
-skip__$1 = G__14312;
-nps__$1 = G__14313;
-G__14293__$1 = G__14314;
-continue;
-} else {
-if(cljs.core.truth_((((nps__$2 === (0)))?(function (){var G__14308 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
-return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14308) : in_scale_QMARK_.call(null,G__14308));
-})():false))){
-var G__14315 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,note__$1);
-var G__14316 = (guitar.setup.scale_length - (cljs.core.truth_((function (){var fexpr__14309 = cljs.core.set(cljs.core.range.cljs$core$IFn$_invoke$arity$2(cljs.core.count(acc__$2),(cljs.core.count(acc__$2) + guitar.setup.scale_length)));
-return (fexpr__14309.cljs$core$IFn$_invoke$arity$1 ? fexpr__14309.cljs$core$IFn$_invoke$arity$1((100)) : fexpr__14309.call(null,(100)));
-})())?(4):(5)));
-var G__14317 = notes_per_string;
+var G__14315 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(cljs.core.truth_((function (){var G__14309 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14309) : in_scale_QMARK_.call(null,G__14309));
+})())?note__$1:null));
+var G__14316 = (skip__$2 - (1));
+var G__14317 = nps__$2;
 var G__14318 = notes__$1;
 acc__$1 = G__14315;
 skip__$1 = G__14316;
@@ -144,12 +131,16 @@ nps__$1 = G__14317;
 G__14293__$1 = G__14318;
 continue;
 } else {
-if(cljs.core.truth_((function (){var G__14310 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
-return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14310) : in_scale_QMARK_.call(null,G__14310));
-})())){
-var G__14319 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(format_scale_note.cljs$core$IFn$_invoke$arity$1 ? format_scale_note.cljs$core$IFn$_invoke$arity$1(note__$1) : format_scale_note.call(null,note__$1)));
-var G__14320 = skip__$2;
-var G__14321 = (nps__$2 - (1));
+if(cljs.core.truth_((((nps__$2 === (0)))?(function (){var G__14311 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14311) : in_scale_QMARK_.call(null,G__14311));
+})():false))){
+var G__14319 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(cljs.core.truth_((function (){var G__14312 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14312) : in_scale_QMARK_.call(null,G__14312));
+})())?note__$1:null));
+var G__14320 = (guitar.setup.scale_length - (cljs.core.truth_((function (){var fexpr__14313 = cljs.core.set(cljs.core.range.cljs$core$IFn$_invoke$arity$2(cljs.core.count(acc__$2),(cljs.core.count(acc__$2) + guitar.setup.scale_length)));
+return (fexpr__14313.cljs$core$IFn$_invoke$arity$1 ? fexpr__14313.cljs$core$IFn$_invoke$arity$1((100)) : fexpr__14313.call(null,(100)));
+})())?(4):(5)));
+var G__14321 = notes_per_string;
 var G__14322 = notes__$1;
 acc__$1 = G__14319;
 skip__$1 = G__14320;
@@ -157,14 +148,27 @@ nps__$1 = G__14321;
 G__14293__$1 = G__14322;
 continue;
 } else {
-var G__14323 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,note__$1);
+if(cljs.core.truth_((function (){var G__14314 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14314) : in_scale_QMARK_.call(null,G__14314));
+})())){
+var G__14323 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(format_scale_note.cljs$core$IFn$_invoke$arity$1 ? format_scale_note.cljs$core$IFn$_invoke$arity$1(note__$1) : format_scale_note.call(null,note__$1)));
 var G__14324 = skip__$2;
-var G__14325 = nps__$2;
+var G__14325 = (nps__$2 - (1));
 var G__14326 = notes__$1;
 acc__$1 = G__14323;
 skip__$1 = G__14324;
 nps__$1 = G__14325;
 G__14293__$1 = G__14326;
+continue;
+} else {
+var G__14327 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,null);
+var G__14328 = skip__$2;
+var G__14329 = nps__$2;
+var G__14330 = notes__$1;
+acc__$1 = G__14327;
+skip__$1 = G__14328;
+nps__$1 = G__14329;
+G__14293__$1 = G__14330;
 continue;
 
 }
@@ -176,8 +180,8 @@ break;
 })()));
 });
 guitar.core.scale_pattern = (function guitar$core$scale_pattern(scale){
-var or__4126__auto__ = (function (){var fexpr__14328 = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$major_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_per_string,(2)),cljs.core.cst$kw$minor_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_per_string,(2)),cljs.core.cst$kw$cljs$analyzer_SLASH_analyzed,true], null);
-return (fexpr__14328.cljs$core$IFn$_invoke$arity$1 ? fexpr__14328.cljs$core$IFn$_invoke$arity$1(scale) : fexpr__14328.call(null,scale));
+var or__4126__auto__ = (function (){var fexpr__14332 = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$major_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_per_string,(2)),cljs.core.cst$kw$minor_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_per_string,(2)),cljs.core.cst$kw$cljs$analyzer_SLASH_analyzed,true], null);
+return (fexpr__14332.cljs$core$IFn$_invoke$arity$1 ? fexpr__14332.cljs$core$IFn$_invoke$arity$1(scale) : fexpr__14332.call(null,scale));
 })();
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;
@@ -186,36 +190,36 @@ return cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_per_str
 }
 });
 guitar.core.scale_visualizer = rum.core.lazy_build(rum.core.build_defc,(function (strings_notes,state){
-var map__14335 = rum.core.react(state);
-var map__14335__$1 = (((((!((map__14335 == null))))?(((((map__14335.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14335.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14335):map__14335);
-var root = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14335__$1,cljs.core.cst$kw$root);
-var scale = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14335__$1,cljs.core.cst$kw$scale);
-var start_fret = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14335__$1,cljs.core.cst$kw$start_DASH_fret);
+var map__14339 = rum.core.react(state);
+var map__14339__$1 = (((((!((map__14339 == null))))?(((((map__14339.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14339.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14339):map__14339);
+var root = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14339__$1,cljs.core.cst$kw$root);
+var scale = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14339__$1,cljs.core.cst$kw$scale);
+var start_fret = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14339__$1,cljs.core.cst$kw$start_DASH_fret);
 var in_scale_QMARK_ = cljs.core.set(guitar.notes.scale_notes(root,scale));
-return React.createElement(React.Fragment,null,(function (){var attrs14378 = (function (){var G__14379 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,"guitar--faded"], null);
-var G__14380 = (function (p1__14329_SHARP_){
-return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$start_DASH_fret,p1__14329_SHARP_);
+return React.createElement(React.Fragment,null,(function (){var attrs14382 = (function (){var G__14383 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,"guitar--faded"], null);
+var G__14384 = (function (p1__14333_SHARP_){
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$start_DASH_fret,p1__14333_SHARP_);
 });
-var G__14381 = (function (){var G__14383 = strings_notes;
-var G__14384 = in_scale_QMARK_;
-var G__14385 = start_fret;
-var G__14386 = (function (p1__14330_SHARP_){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__14330_SHARP_,cljs.core.cst$kw$hl,"#f5a");
+var G__14385 = (function (){var G__14387 = strings_notes;
+var G__14388 = in_scale_QMARK_;
+var G__14389 = start_fret;
+var G__14390 = (function (p1__14334_SHARP_){
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__14334_SHARP_,cljs.core.cst$kw$hl,"#f5a");
 });
-var fexpr__14382 = guitar.core.scale_pattern(scale);
-return (fexpr__14382.cljs$core$IFn$_invoke$arity$4 ? fexpr__14382.cljs$core$IFn$_invoke$arity$4(G__14383,G__14384,G__14385,G__14386) : fexpr__14382.call(null,G__14383,G__14384,G__14385,G__14386));
+var fexpr__14386 = guitar.core.scale_pattern(scale);
+return (fexpr__14386.cljs$core$IFn$_invoke$arity$4 ? fexpr__14386.cljs$core$IFn$_invoke$arity$4(G__14387,G__14388,G__14389,G__14390) : fexpr__14386.call(null,G__14387,G__14388,G__14389,G__14390));
 })();
-return (guitar.core.guitar.cljs$core$IFn$_invoke$arity$3 ? guitar.core.guitar.cljs$core$IFn$_invoke$arity$3(G__14379,G__14380,G__14381) : guitar.core.guitar.call(null,G__14379,G__14380,G__14381));
+return (guitar.core.guitar.cljs$core$IFn$_invoke$arity$3 ? guitar.core.guitar.cljs$core$IFn$_invoke$arity$3(G__14383,G__14384,G__14385) : guitar.core.guitar.call(null,G__14383,G__14384,G__14385));
 })();
-return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs14378))?daiquiri.interpreter.attributes(attrs14378):null),((cljs.core.map_QMARK_(attrs14378))?null:[daiquiri.interpreter.interpret(attrs14378)]));
-})(),daiquiri.core.create_element("select",{'onChange':(function (p1__14331_SHARP_){
-return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$root,p1__14331_SHARP_.currentTarget.value);
-})},[daiquiri.interpreter.interpret(cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__14332_SHARP_){
-return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$option,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,p1__14332_SHARP_], null),p1__14332_SHARP_],null));
-}),guitar.notes.notes))]),daiquiri.core.create_element("select",{'value':cljs.core.name(scale),'onChange':(function (p1__14333_SHARP_){
-return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$scale,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(p1__14333_SHARP_.currentTarget.value));
-})},[daiquiri.interpreter.interpret(cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__14334_SHARP_){
-return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$option,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,p1__14334_SHARP_], null),p1__14334_SHARP_],null));
+return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs14382))?daiquiri.interpreter.attributes(attrs14382):null),((cljs.core.map_QMARK_(attrs14382))?null:[daiquiri.interpreter.interpret(attrs14382)]));
+})(),daiquiri.core.create_element("select",{'onChange':(function (p1__14335_SHARP_){
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$root,p1__14335_SHARP_.currentTarget.value);
+})},[daiquiri.interpreter.interpret(cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__14336_SHARP_){
+return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$option,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,p1__14336_SHARP_], null),p1__14336_SHARP_],null));
+}),guitar.notes.notes))]),daiquiri.core.create_element("select",{'value':cljs.core.name(scale),'onChange':(function (p1__14337_SHARP_){
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$scale,cljs.core.keyword.cljs$core$IFn$_invoke$arity$1(p1__14337_SHARP_.currentTarget.value));
+})},[daiquiri.interpreter.interpret(cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__14338_SHARP_){
+return (new cljs.core.PersistentVector(null,3,(5),cljs.core.PersistentVector.EMPTY_NODE,[cljs.core.cst$kw$option,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$key,p1__14338_SHARP_], null),p1__14338_SHARP_],null));
 }),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.name,cljs.core.keys(guitar.notes.scales))))]));
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.core/scale-visualizer");
 guitar.core.to_note = (function guitar$core$to_note(note){
@@ -229,25 +233,25 @@ return daiquiri.core.create_element("div",null,[daiquiri.core.create_element("bu
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$mode,cljs.core.cst$kw$guess);
 })},["Guess"]),daiquiri.core.create_element("button",{'onClick':(function (){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$mode,cljs.core.cst$kw$explore);
-})},["Explore scales"]),daiquiri.interpreter.interpret((function (){var fexpr__14409 = (function (){var pred__14410 = cljs.core._EQ_;
-var expr__14411 = mode;
-if(cljs.core.truth_((function (){var G__14413 = cljs.core.cst$kw$guess;
-var G__14414 = expr__14411;
-return (pred__14410.cljs$core$IFn$_invoke$arity$2 ? pred__14410.cljs$core$IFn$_invoke$arity$2(G__14413,G__14414) : pred__14410.call(null,G__14413,G__14414));
+})},["Explore scales"]),daiquiri.interpreter.interpret((function (){var fexpr__14413 = (function (){var pred__14414 = cljs.core._EQ_;
+var expr__14415 = mode;
+if(cljs.core.truth_((function (){var G__14417 = cljs.core.cst$kw$guess;
+var G__14418 = expr__14415;
+return (pred__14414.cljs$core$IFn$_invoke$arity$2 ? pred__14414.cljs$core$IFn$_invoke$arity$2(G__14417,G__14418) : pred__14414.call(null,G__14417,G__14418));
 })())){
 return guitar.core.guess_fretboard_notes;
 } else {
-if(cljs.core.truth_((function (){var G__14415 = cljs.core.cst$kw$explore;
-var G__14416 = expr__14411;
-return (pred__14410.cljs$core$IFn$_invoke$arity$2 ? pred__14410.cljs$core$IFn$_invoke$arity$2(G__14415,G__14416) : pred__14410.call(null,G__14415,G__14416));
+if(cljs.core.truth_((function (){var G__14419 = cljs.core.cst$kw$explore;
+var G__14420 = expr__14415;
+return (pred__14414.cljs$core$IFn$_invoke$arity$2 ? pred__14414.cljs$core$IFn$_invoke$arity$2(G__14419,G__14420) : pred__14414.call(null,G__14419,G__14420));
 })())){
 return guitar.core.scale_visualizer;
 } else {
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__14411)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__14415)].join('')));
 }
 }
 })();
-return (fexpr__14409.cljs$core$IFn$_invoke$arity$2 ? fexpr__14409.cljs$core$IFn$_invoke$arity$2(strings_notes,mode_state) : fexpr__14409.call(null,strings_notes,mode_state));
+return (fexpr__14413.cljs$core$IFn$_invoke$arity$2 ? fexpr__14413.cljs$core$IFn$_invoke$arity$2(strings_notes,mode_state) : fexpr__14413.call(null,strings_notes,mode_state));
 })())]);
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.core/app");
 guitar.core.mount = (function guitar$core$mount(){
