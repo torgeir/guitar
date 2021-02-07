@@ -2,7 +2,7 @@
 goog.provide('guitar.notes');
 goog.require('cljs.core');
 goog.require('cljs.core.constants');
-guitar.notes.scales = cljs.core.PersistentHashMap.fromArrays([cljs.core.cst$kw$blues,cljs.core.cst$kw$melodic_DASH_minor,cljs.core.cst$kw$diminished_DASH_half_DASH_whole,cljs.core.cst$kw$harmonic_DASH_minor,cljs.core.cst$kw$major,cljs.core.cst$kw$minor_DASH_pentatonic,cljs.core.cst$kw$major_DASH_pentatonic,cljs.core.cst$kw$minor,cljs.core.cst$kw$diminished_DASH_whole_DASH_half],["321132","2122221","12121212","2122131","2212221","32232","22323","2122122","21212121"]);
+guitar.notes.scales = new cljs.core.PersistentArrayMap(null, 8, [cljs.core.cst$kw$major,"2212221",cljs.core.cst$kw$melodic_DASH_minor,"2122221",cljs.core.cst$kw$minor,"2122122",cljs.core.cst$kw$minor_DASH_pentatonic,"32232",cljs.core.cst$kw$major_DASH_pentatonic,"22323",cljs.core.cst$kw$harmonic_DASH_minor,"2122131",cljs.core.cst$kw$diminished_DASH_whole_DASH_half,"21212121",cljs.core.cst$kw$diminished_DASH_half_DASH_whole,"12121212"], null);
 guitar.notes.notes = new cljs.core.PersistentVector(null, 12, 5, cljs.core.PersistentVector.EMPTY_NODE, ["c","c#","d","d#","e","f","f#","g","g#","a","a#","b"], null);
 /**
  * Finds the notes for the type of scale, starting from the root.
