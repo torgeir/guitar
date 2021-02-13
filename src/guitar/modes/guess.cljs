@@ -1,18 +1,22 @@
 (ns guitar.modes.guess
   (:require
    [guitar.guitar :refer [guitar]]
-   [guitar.notes :refer [notes ordinal-suffixed-number prefixed-note]]
-   [guitar.setup :refer [tuning]]
+   [guitar.notes :refer [notes ordinal-suffixed-number prefixed-note string-notes]]
+   [guitar.setup :refer [tuning scale-length]]
    [guitar.unicode :refer [nbsp]]
    [rum.core :as rum]))
-
 
 (defn rand-note
   "Returns a map with a random note on a random string."
   []
-  {:string (inc (rand-int (count tuning)))
-   :note   (rand-nth notes)})
+  (let [string (rand-int (count tuning))
+        notes-of-string (string-notes notes (inc scale-length) (nth (reverse tuning) string))
+        note (rand-nth notes)
+        frets (keep-indexed #(when (= note %2) %1) notes-of-string)]
+    {:string string :note note :frets (set frets)}))
 
+
+keep-indexed
 
 (def state
   {:show-notes false
@@ -24,25 +28,11 @@
   (assoc note :note nbsp))
 
 
-(defn highlight-correct [locate string _ note]
-  (if (and (= (inc string) (:string locate))
-           (= (:note note) (:note locate)))
-    (assoc note :hl 1)
-    note))
-
-
-(defn highlight-attempt [attempt string fret note]
-  (if (and (= string (:string attempt))
-           (= fret (:fret attempt)))
-    (assoc note :hl 0)
-    note))
-
-
 (rum/defc locate-note-text
   "Text displayed suggesting what note to locate."
   [{:keys [note string]}]
   [:p (str "Locate " (prefixed-note note)
-           " on the " (ordinal-suffixed-number string)
+           " on the " (ordinal-suffixed-number (inc string))
            " string.")])
 
 
@@ -62,9 +52,16 @@
            (map (partial map (if-not attempt conceal-note identity)))
            (map-indexed (fn [string string-notes]
                           (map-indexed
-                           #(->> %2
-                                 (highlight-attempt attempt string %1)
-                                 (highlight-correct locate string %1))
+                           (fn [fret note]
+                             (cond
+                               (and ((:frets locate) (:fret attempt))
+                                    (= (:note note) (:note locate))
+                                    (= string (:string attempt) (:string locate))) (assoc note :hl 5)
+                               (and (= string (:string locate))
+                                    (= (:note note) (:note locate))) (assoc note :hl 1)
+                               (and (= fret (:fret attempt))
+                                    (= string (:string attempt))) (assoc note :hl 0)
+                               :else note))
                            string-notes)))))
      [:h3.center-text
       (locate-note-text (:locate @state))

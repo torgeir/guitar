@@ -8,14 +8,6 @@
    [rum.core :as rum]))
 
 
-(defn debug [v]
-  (println v)
-  v)
-
-
-(defn to-note [note] {:note note})
-
-
 (def notes-of-string
   "Finds notes of a string, starting from the provided note."
   (partial string-notes notes (inc scale-length)))
@@ -38,7 +30,7 @@
         strings-notes (->> @state
                            :tuning
                            (map notes-of-string)
-                           (map (partial map to-note))
+                           (map (partial map #(conj {} [:note %])))
                            (reverse))]
     [:div
      [:button {:on-click #(swap! state assoc :mode :guess)} "Guess"]
@@ -60,5 +52,7 @@
 (mount)
 
 
-(defn ^:after-load on-reload []
+(defn ^:after-load on-reload
+  "Hook run after figwheel has reloaded."
+  []
   (mount))

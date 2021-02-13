@@ -7,8 +7,9 @@
   [{:keys [note hl]}]
   (when note
     [:div.scale-note
-     (when hl {:class (str "scale-note--hl scale-note--hl-" hl)
-               :title note})
+     {:title note
+      :class (when hl
+               (str "scale-note--hl scale-note--hl-" hl))}
      note]))
 
 
@@ -17,7 +18,9 @@
   [on-click string-index index note]
   [:div
    {:class (if (zero? index) "guitar-nut" "guitar-fret")
-    :on-click #(on-click {:string string-index :fret index :note note})}
+    :on-click #(on-click (assoc note
+                                :string string-index
+                                :fret index))}
    (scale-note note)])
 
 
