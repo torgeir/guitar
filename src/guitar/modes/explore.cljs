@@ -18,7 +18,7 @@
     (rum/fragment
      [:div (guitar {:class "guitar--faded"}
                    #(swap! state assoc :start-fret (:fret %))
-                   ((scale-pattern scale) strings-notes in-scale? start-fret #(assoc % :hl 1)))]
+                   ((scale-pattern scale) strings-notes in-scale? start-fret #(assoc % :hl 4)))]
      [:select
       {:on-change #(swap! state assoc :root (->> % .-currentTarget .-value))}
       (->> notes (map #(vector :option {:key %} %)))]
