@@ -43,6 +43,7 @@ body {
   left: 0;
   right: 0;
   border-top: 2px solid rgba(255, 255, 255, 15%);
+  pointer-events: none;
 }
 
 .guitar-string .guitar-nut {
@@ -52,16 +53,39 @@ body {
   width: 30%;
 }
 
+.guitar-fret {
+  background-color: rgba(0, 0, 0, 8%);
+}
+
+.guitar-nut,
+.guitar-fret {
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  margin: 0 1px;
+  height: 2rem;
+  width: 100%;
+  text-align: center;
+  font-family: Helvetica;
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 .scale-note {
   position: relative;
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 2rem;
+  pointer-events: none;
 }
 
 .scale-note--hl::before {
   content: " ";
-  background-color: rgba(255, 0, 150, 100%);
   position: absolute;
-  top: calc(50% - 0.7rem);
-  right: calc(50% - 0.7rem);
+  top: calc(50% - 0.8rem);
+  right: calc(50% - 0.8rem);
   border-radius: 20rem;
   width: 1.4rem;
   height: 1.4rem;
@@ -72,28 +96,17 @@ body {
   color: white;
   font-style: bold;
   position: absolute;
-  right: calc(50% - 0.7rem);
+  right: calc(50% - 0.8rem);
   border-radius: 20rem;
   width: 1.4rem;
   height: 1.4rem;
 }
 
-.guitar-fret {
-  background-color: rgba(0, 0, 0, 8%);
+.scale-note--hl-0::before {
+  background-color: rgba(100,100,100,1);
 }
-
-.guitar-nut,
-.guitar-fret {
-  position: relative;
-  display: block;
-  margin: 0 1px;
-  padding: 0.5rem 0.1rem;
-  width: 100%;
-  text-align: center;
-  font-family: Helvetica;
-  font-size: 0.7rem;
-  font-weight: bold;
-  text-transform: uppercase;
+.scale-note--hl-1::before {
+  background-color: rgba(255,0,200,1);
 }
 
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,

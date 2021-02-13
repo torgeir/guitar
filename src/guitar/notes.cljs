@@ -1,5 +1,6 @@
 (ns guitar.notes)
 
+
 (def scales
   "Supported scales represented as semitone increments."
   {:major "2212221"
@@ -7,10 +8,12 @@
    :minor "2122122"
    :minor-pentatonic "32232"
    :major-pentatonic "22323"
-   ;; :blues "321132"
    :harmonic-minor "2122131"
    :diminished-whole-half "21212121"
-   :diminished-half-whole "12121212"})
+   :diminished-half-whole "12121212"
+   ;; TODO this is funky with both 2 and 3 nps, leave it for now
+   ;; :blues "321132"
+   })
 
 
 (def notes
@@ -63,4 +66,3 @@
            2 "nd"
            3 "rd"
            "th")))
-
