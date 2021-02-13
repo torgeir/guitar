@@ -1,12 +1,29 @@
 :root {
-  --page-bg: #181818;
-  --font-color: #bbb;
-  --font-color-faded: #444;
-  --guitar-fret: #292929;
+  --page-bg: #010409;
+  --hover: rgba(100,100,100,70%);
+  --font: #999;
+  --font-hl: #fefefe;
+  --font-faded: #333;
+  --guitar-bg: rgba(255, 255, 255, 10%);
+  --guitar-nut: var(--hover);
+  --guitar-headstock: #151515;
+  --guitar-string: rgba(255, 255, 255, 15%);
+  --guitar-shadow: #000;
+  --guitar-fret: rgba(0, 0, 0, 9%);
+  --guitar-fretboard-dot: rgba(0, 0, 0, 20%);
+  --note-hl-0: #333;
+  --note-hl-1: #f05;
+  --note-hl-2: #e71;
+  --note-hl-3: #fa0;
+  --note-hl-4: #29a;;
+  --note-hl-5: #080;
+  --guitar-string-width-s: 1px;
+  --guitar-string-width-m: 2px;
+  --guitar-string-width-l: 3px;
 }
 
 body {
-  color: var(--font-color);
+  color: var(--font);
   background-color: var(--page-bg);
 }
 
@@ -21,12 +38,12 @@ body {
 .guitar {
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 5px 10px #111;
-  background-color: rgba(255, 255, 255, 10%);
+  box-shadow: 0px 5px 10px var(--guitar-shadow);
+  background-color: var(--guitar-bg);
 }
 
 .guitar--faded {
-  color: var(--font-color-faded);
+  color: var(--font-faded);
 }
 
 .guitar-string {
@@ -39,22 +56,32 @@ body {
 .guitar-string:after {
   content: " ";
   position: absolute;
-  top: calc(50% - 2px);
   left: 0;
   right: 0;
-  border-top: 2px solid rgba(255, 255, 255, 15%);
   pointer-events: none;
 }
-
-.guitar-string .guitar-nut {
-  border-right: 0.5rem solid;
-  border-color: #444;
-  background-color: #151515;
-  width: 30%;
+.guitar-string:nth-child(1):after,
+.guitar-string:nth-child(2):after {
+  top: calc(50% - var(--guitar-string-width-s));
+  border-top: var(--guitar-string-width-s) solid var(--guitar-string);
+}
+.guitar-string:nth-child(3):after,
+.guitar-string:nth-child(4):after {
+  top: calc(50% - var(--guitar-string-width-m));
+  border-top: var(--guitar-string-width-m) solid var(--guitar-string);
+}
+.guitar-string:nth-child(5):after,
+.guitar-string:nth-child(6):after {
+  top: calc(50% - var(--guitar-string-width-l));
+  border-top: var(--guitar-string-width-l) solid var(--guitar-string);
 }
 
-.guitar-fret {
-  background-color: rgba(0, 0, 0, 8%);
+
+.guitar-string .guitar-nut {
+  border-right: 0.3rem solid;
+  border-color: var(--guitar-nut);
+  background-color: var(--guitar-headstock);
+  width: 60%;
 }
 
 .guitar-nut,
@@ -72,6 +99,10 @@ body {
   text-transform: uppercase;
 }
 
+.guitar-fret {
+  background-color: var(--guitar-fret);
+}
+
 .scale-note {
   position: relative;
   display: block;
@@ -81,33 +112,44 @@ body {
   pointer-events: none;
 }
 
-.scale-note--hl::before {
+.guitar-fret:hover .scale-note:before {
+  box-shadow: 0px 0px 3px var(--hover);
+}
+.guitar-fret:hover .scale-note:not(.scale-note--hl):before {
+  background-color: var(--hover);
+}
+
+.scale-note--hl:before,
+.scale-note--hl:after,
+.guitar-fret:hover .scale-note:before,
+.guitar-fret:hover .scale-note:after {
   content: " ";
   position: absolute;
-  top: calc(50% - 0.8rem);
-  right: calc(50% - 0.8rem);
+  top: calc(50% - 0.78rem);
+  right: calc(50% - 0.7rem);
   border-radius: 20rem;
   width: 1.4rem;
   height: 1.4rem;
 }
 
-.scale-note--hl::after {
+.scale-note--hl:before {
+  /* background-color from script */
+}
+
+.guitar-fret:hover .scale-note:after,
+.scale-note--hl:after {
   content: attr(title);
-  color: white;
-  font-style: bold;
-  position: absolute;
-  right: calc(50% - 0.8rem);
-  border-radius: 20rem;
-  width: 1.4rem;
-  height: 1.4rem;
+  top: auto;
+  right: calc(50% - 0.7rem);
+  color: var(--font-hl);
 }
 
-.scale-note--hl-0::before {
-  background-color: rgba(100,100,100,1);
-}
-.scale-note--hl-1::before {
-  background-color: rgba(255,0,200,1);
-}
+.scale-note--hl-0:before { background-color: var(--note-hl-0); }
+.scale-note--hl-1:before { background-color: var(--note-hl-1); }
+.scale-note--hl-2:before { background-color: var(--note-hl-2); }
+.scale-note--hl-3:before { background-color: var(--note-hl-3); }
+.scale-note--hl-4:before { background-color: var(--note-hl-4); }
+.scale-note--hl-5:before { background-color: var(--note-hl-5); }
 
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,
 .guitar-string:nth-child(2) .guitar-fret:nth-of-type(13):after,
@@ -115,7 +157,7 @@ body {
 .guitar-string:nth-child(2) .guitar-fret:nth-of-type(25):after,
 .guitar-string:nth-child(4) .guitar-fret:nth-of-type(25):after {
   content: " ";
-  background-color: rgba(0, 0, 0, 20%);
+  background-color: var(--guitar-fretboard-dot);
   position: absolute;
   right: calc(50% - 0.5rem);
   bottom: -0.5rem;

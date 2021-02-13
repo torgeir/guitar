@@ -8,14 +8,6 @@ goog.require('guitar.modes.guess');
 goog.require('guitar.notes');
 goog.require('guitar.setup');
 goog.require('rum.core');
-guitar.core.debug = (function guitar$core$debug(v){
-cljs.core.println.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([v], 0));
-
-return v;
-});
-guitar.core.to_note = (function guitar$core$to_note(note){
-return new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$note,note], null);
-});
 /**
  * Finds notes of a string, starting from the provided note.
  */
@@ -30,30 +22,32 @@ guitar.core.state = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(new cljs.core.P
 guitar.core.app = rum.core.lazy_build(rum.core.build_defc,(function (state){
 var mode = cljs.core.cst$kw$mode.cljs$core$IFn$_invoke$arity$1(rum.core.react(state));
 var mode_state = rum.core.cursor(state,mode);
-var strings_notes = cljs.core.reverse(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.map,guitar.core.to_note),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_of_string,cljs.core.cst$kw$tuning.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)))));
+var strings_notes = cljs.core.reverse(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.map,(function (p1__14419_SHARP_){
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$note,p1__14419_SHARP_], null));
+})),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_of_string,cljs.core.cst$kw$tuning.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)))));
 return daiquiri.core.create_element("div",null,[daiquiri.core.create_element("button",{'onClick':(function (){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$mode,cljs.core.cst$kw$guess);
 })},["Guess"]),daiquiri.core.create_element("button",{'onClick':(function (){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$mode,cljs.core.cst$kw$explore);
-})},["Explore scales"]),daiquiri.interpreter.interpret((function (){var fexpr__14424 = (function (){var pred__14425 = cljs.core._EQ_;
-var expr__14426 = mode;
-if(cljs.core.truth_((function (){var G__14428 = cljs.core.cst$kw$guess;
-var G__14429 = expr__14426;
-return (pred__14425.cljs$core$IFn$_invoke$arity$2 ? pred__14425.cljs$core$IFn$_invoke$arity$2(G__14428,G__14429) : pred__14425.call(null,G__14428,G__14429));
+})},["Explore scales"]),daiquiri.interpreter.interpret((function (){var fexpr__14442 = (function (){var pred__14443 = cljs.core._EQ_;
+var expr__14444 = mode;
+if(cljs.core.truth_((function (){var G__14446 = cljs.core.cst$kw$guess;
+var G__14447 = expr__14444;
+return (pred__14443.cljs$core$IFn$_invoke$arity$2 ? pred__14443.cljs$core$IFn$_invoke$arity$2(G__14446,G__14447) : pred__14443.call(null,G__14446,G__14447));
 })())){
 return guitar.modes.guess.guess_fretboard_notes;
 } else {
-if(cljs.core.truth_((function (){var G__14430 = cljs.core.cst$kw$explore;
-var G__14431 = expr__14426;
-return (pred__14425.cljs$core$IFn$_invoke$arity$2 ? pred__14425.cljs$core$IFn$_invoke$arity$2(G__14430,G__14431) : pred__14425.call(null,G__14430,G__14431));
+if(cljs.core.truth_((function (){var G__14448 = cljs.core.cst$kw$explore;
+var G__14449 = expr__14444;
+return (pred__14443.cljs$core$IFn$_invoke$arity$2 ? pred__14443.cljs$core$IFn$_invoke$arity$2(G__14448,G__14449) : pred__14443.call(null,G__14448,G__14449));
 })())){
 return guitar.modes.explore.visualize_scale;
 } else {
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__14426)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__14444)].join('')));
 }
 }
 })();
-return (fexpr__14424.cljs$core$IFn$_invoke$arity$2 ? fexpr__14424.cljs$core$IFn$_invoke$arity$2(strings_notes,mode_state) : fexpr__14424.call(null,strings_notes,mode_state));
+return (fexpr__14442.cljs$core$IFn$_invoke$arity$2 ? fexpr__14442.cljs$core$IFn$_invoke$arity$2(strings_notes,mode_state) : fexpr__14442.call(null,strings_notes,mode_state));
 })())]);
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.core/app");
 /**
@@ -69,6 +63,9 @@ return null;
 }
 });
 guitar.core.mount();
+/**
+ * Hook run after figwheel has reloaded.
+ */
 guitar.core.on_reload = (function guitar$core$on_reload(){
 return guitar.core.mount();
 });
