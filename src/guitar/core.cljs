@@ -13,10 +13,14 @@
 
 
 
-(def notes-of-string (partial string-notes notes (inc scale-length)))
+(def notes-of-string
+  "Finds notes of a string, starting from the provided note."
+  (partial string-notes notes (inc scale-length)))
 
 
-(defn rand-note []
+(defn rand-note
+  "Returns a map with a random note on a random string."
+  []
   {:string (inc (rand-int (count tuning)))
    :note   (rand-nth notes)})
 
@@ -32,7 +36,9 @@
               :start-fret 8}}))
 
 
-(rum/defc scale-note [{:keys [note hl]}]
+(rum/defc scale-note
+  "A visible note on a fret."
+  [{:keys [note hl]}]
   (when note
     [:div.scale-note
      (when hl {:class "scale-note--hl"
@@ -40,35 +46,45 @@
      note]))
 
 
-(rum/defc guitar-fret [on-click index note]
+(rum/defc guitar-fret
+  "A clickable guitar nut or fret."
+  [on-click index note]
   [:div
    {:class (if (zero? index) "guitar-nut" "guitar-fret")
-    :on-mouse-over #(on-click index)}
+    :on-click #(on-click index)}
    (scale-note note)])
 
 
-(rum/defc guitar-string [on-fret-click notes]
+(rum/defc guitar-string
+  "A guitar string, with clickable frets."
+  [on-fret-click notes]
   [:div.guitar-string
    (->> notes
         (map-indexed (partial guitar-fret on-fret-click))
         (map-indexed #(rum/with-key %2 %1)))])
 
 
-(rum/defc locate-note-text [{:keys [note string]}]
+(rum/defc locate-note-text
+  "Text displayed suggesting what note to locate."
+  [{:keys [note string]}]
   [:p (str "Locate " (prefixed-note note)
            " on the " (ordinal-suffixed-number string)
            " string.")])
 
 
-(rum/defc guitar [props on-fret-click string-notes]
+(rum/defc guitar
+  "A guitar, with clickable frets for each of the strings-notes"
+  [props on-fret-click strings-notes]
   [:div.guitar
    props
-   (->> string-notes
+   (->> strings-notes
         (map (partial guitar-string on-fret-click))
         (map-indexed #(rum/with-key %2 %1)))])
 
 
-(rum/defc guess-fretboard-notes < rum/reactive [string-notes state]
+(rum/defc guess-fretboard-notes < rum/reactive
+  "A mode to guess where a note is located on a given string."
+  [string-notes state]
   (let [notes-shown (:show-notes (rum/react state))
         reset-state #(reset! state {:show-notes false :locate (rand-note)})]
     [:div
@@ -85,7 +101,11 @@
         "Make a guess and click the fretboard to reveal the notes.")]]))
 
 
-(defn notes-per-string [notes-per-string strings-notes in-scale? fret-position format-scale-note]
+(defn notes-per-string
+  "Locates clusters of notes-per-string from strings-notes that are in the
+  scale, starting fret-posision. These clusters represent well known finger
+  patterns when playing guitar scales."
+  [notes-per-string strings-notes in-scale? fret-position format-scale-note]
   (->> (loop [acc []
               skip fret-position
               nps notes-per-string
@@ -109,7 +129,10 @@
        (reverse)))
 
 
-(defn scale-pattern [scale]
+(defn scale-pattern
+  "Represents the type of scale pattern often used for this kind of scale, e.g.
+  two note per string or three note per string."
+  [scale]
   (or ({:major-pentatonic (partial notes-per-string 2)
         :minor-pentatonic (partial notes-per-string 2)} scale)
       (partial notes-per-string 3)))
@@ -134,7 +157,9 @@
 (defn to-note [note] {:note note})
 
 
-(rum/defc app < rum/reactive [state]
+(rum/defc app < rum/reactive
+  "Main component. Dispatches to other components based on the :mode of the state."
+  [state]
   (let [mode (:mode (rum/react state))
         mode-state (rum/cursor state mode)
         strings-notes (->> @state
@@ -152,7 +177,9 @@
       mode-state)]))
 
 
-(defn mount []
+(defn mount
+  "Mounts the application to the dom."
+  []
   (when-let [el (gdom/getElement "app")]
     (rum/mount (app state) el)))
 

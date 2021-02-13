@@ -1,6 +1,7 @@
 (ns guitar.notes)
 
 (def scales
+  "Supported scales represented as semitone increments."
   {:major "2212221"
    :melodic-minor "2122221"
    :minor "2122122"
@@ -12,7 +13,9 @@
    :diminished-half-whole "12121212"})
 
 
-(def notes ["c" "c#" "d" "d#" "e" "f" "f#" "g" "g#" "a" "a#" "b"])
+(def notes
+  "Named notes of the western c major scale."
+  ["c" "c#" "d" "d#" "e" "f" "f#" "g" "g#" "a" "a#" "b"])
 
 
 (defn scale-notes
@@ -28,23 +31,33 @@
        (map (partial nth (cycle notes)))))
 
 
-(defn string-notes [notes scale-length start-note]
+(defn string-notes
+  "Finds scale-length number of notes from a given start-note, representing the
+  notes on a guitar string."
+  [notes scale-length start-note]
   (->> notes
        (cycle)
        (drop-while (partial not= start-note))
        (take scale-length)))
 
 
-(def note-vowel? #{"e" "f" "f#" "a" "a#"})
+(def note-vowel?
+  "Set of notes that are pronounced as vowels."
+  #{"e" "f" "f#" "a" "a#"})
 
 
-(defn prefixed-note [note]
+(defn prefixed-note
+  "Prefixes a note with a or an, depending on wether the note is considered a
+  vowel."
+  [note]
   (str (if (note-vowel? note) "an" "a")
        " "
        (.toUpperCase note)))
 
 
-(defn ordinal-suffixed-number [n]
+(defn ordinal-suffixed-number
+  "Suffixes a number with its ordinal."
+  [n]
   (str n (condp = (->> n (str) (last) (int))
            1 "st"
            2 "nd"
