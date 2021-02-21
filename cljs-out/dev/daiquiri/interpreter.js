@@ -43,10 +43,10 @@ return ret;
  * Render an element vector as a HTML element.
  */
 daiquiri.interpreter.element = (function daiquiri$interpreter$element(element){
-var vec__13074 = daiquiri.normalize.element(element);
-var type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13074,(0),null);
-var attrs = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13074,(1),null);
-var content = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13074,(2),null);
+var vec__13779 = daiquiri.normalize.element(element);
+var type = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13779,(0),null);
+var attrs = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13779,(1),null);
+var content = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13779,(2),null);
 return daiquiri.interpreter.create_element(type,daiquiri.interpreter.attributes(attrs),daiquiri.interpreter.interpret_seq(content));
 });
 /**

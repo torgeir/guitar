@@ -38,15 +38,15 @@ return [(cljs.core.truth_((guitar.notes.note_vowel_QMARK_.cljs$core$IFn$_invoke$
  * Suffixes a number with its ordinal.
  */
 guitar.notes.ordinal_suffixed_number = (function guitar$notes$ordinal_suffixed_number(n){
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(n),(function (){var pred__13003 = cljs.core._EQ_;
-var expr__13004 = (cljs.core.last(cljs.core.str.cljs$core$IFn$_invoke$arity$1(n)) | (0));
-if(cljs.core.truth_((pred__13003.cljs$core$IFn$_invoke$arity$2 ? pred__13003.cljs$core$IFn$_invoke$arity$2((1),expr__13004) : pred__13003.call(null,(1),expr__13004)))){
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(n),(function (){var pred__13708 = cljs.core._EQ_;
+var expr__13709 = (cljs.core.last(cljs.core.str.cljs$core$IFn$_invoke$arity$1(n)) | (0));
+if(cljs.core.truth_((pred__13708.cljs$core$IFn$_invoke$arity$2 ? pred__13708.cljs$core$IFn$_invoke$arity$2((1),expr__13709) : pred__13708.call(null,(1),expr__13709)))){
 return "st";
 } else {
-if(cljs.core.truth_((pred__13003.cljs$core$IFn$_invoke$arity$2 ? pred__13003.cljs$core$IFn$_invoke$arity$2((2),expr__13004) : pred__13003.call(null,(2),expr__13004)))){
+if(cljs.core.truth_((pred__13708.cljs$core$IFn$_invoke$arity$2 ? pred__13708.cljs$core$IFn$_invoke$arity$2((2),expr__13709) : pred__13708.call(null,(2),expr__13709)))){
 return "nd";
 } else {
-if(cljs.core.truth_((pred__13003.cljs$core$IFn$_invoke$arity$2 ? pred__13003.cljs$core$IFn$_invoke$arity$2((3),expr__13004) : pred__13003.call(null,(3),expr__13004)))){
+if(cljs.core.truth_((pred__13708.cljs$core$IFn$_invoke$arity$2 ? pred__13708.cljs$core$IFn$_invoke$arity$2((3),expr__13709) : pred__13708.call(null,(3),expr__13709)))){
 return "rd";
 } else {
 return "th";
