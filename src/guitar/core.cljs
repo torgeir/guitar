@@ -16,8 +16,7 @@
 (defonce state
   (atom
    {:tuning tuning
-    ;; :mode   :explore
-    :mode   :guess
+    :mode   :explore
     :guess  guess/state
     :explore explore/state}))
 
