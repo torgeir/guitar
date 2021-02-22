@@ -13,12 +13,27 @@
   (partial string-notes notes (inc scale-length)))
 
 
+(defn location-hash
+  ([] (->> js/location .-hash (drop 1) (apply str)))
+  ([hash] (set! (.-hash js/location) hash)))
+
+
 (defonce state
   (atom
    {:tuning tuning
-    :mode   :explore
+    :mode (condp = (location-hash)
+            "guess" :guess
+            "explore" :explore
+            :explore)
     :guess  guess/state
     :explore explore/state}))
+
+
+(add-watch
+ state
+ :mode
+ (fn [_ _ _ {:keys [mode]}]
+   (location-hash (name mode))))
 
 
 (rum/defc app < rum/reactive

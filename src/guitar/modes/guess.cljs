@@ -6,6 +6,7 @@
    [guitar.unicode :refer [nbsp]]
    [rum.core :as rum]))
 
+
 (defn rand-note
   "Returns a map with a random note on a random string."
   []
@@ -15,8 +16,6 @@
         frets (keep-indexed #(when (= note %2) %1) notes-of-string)]
     {:string string :note note :frets (set frets)}))
 
-
-keep-indexed
 
 (def state
   {:show-notes false
