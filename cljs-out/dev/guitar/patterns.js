@@ -12,81 +12,81 @@ guitar.patterns.notes_per_string = (function guitar$patterns$notes_per_string(no
 return cljs.core.reverse(cljs.core.partition.cljs$core$IFn$_invoke$arity$2((guitar.setup.scale_length + (1)),(function (){var acc = cljs.core.PersistentVector.EMPTY;
 var skip = fret_position;
 var nps = notes_per_string;
-var G__17020 = cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.concat,cljs.core.reverse(strings_notes));
-var vec__17021 = G__17020;
-var seq__17022 = cljs.core.seq(vec__17021);
-var first__17023 = cljs.core.first(seq__17022);
-var seq__17022__$1 = cljs.core.next(seq__17022);
-var note = first__17023;
-var notes = seq__17022__$1;
+var G__14317 = cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.concat,cljs.core.reverse(strings_notes));
+var vec__14318 = G__14317;
+var seq__14319 = cljs.core.seq(vec__14318);
+var first__14320 = cljs.core.first(seq__14319);
+var seq__14319__$1 = cljs.core.next(seq__14319);
+var note = first__14320;
+var notes = seq__14319__$1;
 var acc__$1 = acc;
 var skip__$1 = skip;
 var nps__$1 = nps;
-var G__17020__$1 = G__17020;
+var G__14317__$1 = G__14317;
 while(true){
 var acc__$2 = acc__$1;
 var skip__$2 = skip__$1;
 var nps__$2 = nps__$1;
-var vec__17033 = G__17020__$1;
-var seq__17034 = cljs.core.seq(vec__17033);
-var first__17035 = cljs.core.first(seq__17034);
-var seq__17034__$1 = cljs.core.next(seq__17034);
-var note__$1 = first__17035;
-var notes__$1 = seq__17034__$1;
+var vec__14330 = G__14317__$1;
+var seq__14331 = cljs.core.seq(vec__14330);
+var first__14332 = cljs.core.first(seq__14331);
+var seq__14331__$1 = cljs.core.next(seq__14331);
+var note__$1 = first__14332;
+var notes__$1 = seq__14331__$1;
 if(cljs.core.empty_QMARK_(note__$1)){
 return acc__$2;
 } else {
 if((skip__$2 > (0))){
-var G__17042 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(cljs.core.truth_((function (){var G__17036 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
-return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__17036) : in_scale_QMARK_.call(null,G__17036));
+var G__14339 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(cljs.core.truth_((function (){var G__14333 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14333) : in_scale_QMARK_.call(null,G__14333));
 })())?note__$1:null));
-var G__17043 = (skip__$2 - (1));
-var G__17044 = nps__$2;
-var G__17045 = notes__$1;
-acc__$1 = G__17042;
-skip__$1 = G__17043;
-nps__$1 = G__17044;
-G__17020__$1 = G__17045;
+var G__14340 = (skip__$2 - (1));
+var G__14341 = nps__$2;
+var G__14342 = notes__$1;
+acc__$1 = G__14339;
+skip__$1 = G__14340;
+nps__$1 = G__14341;
+G__14317__$1 = G__14342;
 continue;
 } else {
-if(cljs.core.truth_((((nps__$2 === (0)))?(function (){var G__17038 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
-return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__17038) : in_scale_QMARK_.call(null,G__17038));
+if(cljs.core.truth_((((nps__$2 === (0)))?(function (){var G__14335 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14335) : in_scale_QMARK_.call(null,G__14335));
 })():false))){
-var G__17046 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(cljs.core.truth_((function (){var G__17039 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
-return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__17039) : in_scale_QMARK_.call(null,G__17039));
+var G__14343 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(cljs.core.truth_((function (){var G__14336 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14336) : in_scale_QMARK_.call(null,G__14336));
 })())?note__$1:null));
-var G__17047 = (guitar.setup.scale_length - (cljs.core.truth_((function (){var fexpr__17040 = cljs.core.set(cljs.core.range.cljs$core$IFn$_invoke$arity$2(cljs.core.count(acc__$2),(cljs.core.count(acc__$2) + guitar.setup.scale_length)));
-return (fexpr__17040.cljs$core$IFn$_invoke$arity$1 ? fexpr__17040.cljs$core$IFn$_invoke$arity$1((100)) : fexpr__17040.call(null,(100)));
+var G__14344 = (guitar.setup.scale_length - (cljs.core.truth_((function (){var fexpr__14337 = cljs.core.set(cljs.core.range.cljs$core$IFn$_invoke$arity$2(cljs.core.count(acc__$2),(cljs.core.count(acc__$2) + guitar.setup.scale_length)));
+return (fexpr__14337.cljs$core$IFn$_invoke$arity$1 ? fexpr__14337.cljs$core$IFn$_invoke$arity$1((100)) : fexpr__14337.call(null,(100)));
 })())?(4):(5)));
-var G__17048 = notes_per_string;
-var G__17049 = notes__$1;
-acc__$1 = G__17046;
-skip__$1 = G__17047;
-nps__$1 = G__17048;
-G__17020__$1 = G__17049;
+var G__14345 = notes_per_string;
+var G__14346 = notes__$1;
+acc__$1 = G__14343;
+skip__$1 = G__14344;
+nps__$1 = G__14345;
+G__14317__$1 = G__14346;
 continue;
 } else {
-if(cljs.core.truth_((function (){var G__17041 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
-return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__17041) : in_scale_QMARK_.call(null,G__17041));
+if(cljs.core.truth_((function (){var G__14338 = cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(note__$1);
+return (in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1 ? in_scale_QMARK_.cljs$core$IFn$_invoke$arity$1(G__14338) : in_scale_QMARK_.call(null,G__14338));
 })())){
-var G__17050 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(format_scale_note.cljs$core$IFn$_invoke$arity$1 ? format_scale_note.cljs$core$IFn$_invoke$arity$1(note__$1) : format_scale_note.call(null,note__$1)));
-var G__17051 = skip__$2;
-var G__17052 = (nps__$2 - (1));
-var G__17053 = notes__$1;
-acc__$1 = G__17050;
-skip__$1 = G__17051;
-nps__$1 = G__17052;
-G__17020__$1 = G__17053;
+var G__14347 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,(format_scale_note.cljs$core$IFn$_invoke$arity$1 ? format_scale_note.cljs$core$IFn$_invoke$arity$1(note__$1) : format_scale_note.call(null,note__$1)));
+var G__14348 = skip__$2;
+var G__14349 = (nps__$2 - (1));
+var G__14350 = notes__$1;
+acc__$1 = G__14347;
+skip__$1 = G__14348;
+nps__$1 = G__14349;
+G__14317__$1 = G__14350;
 continue;
 } else {
-var G__17054 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,null);
-var G__17055 = skip__$2;
-var G__17056 = nps__$2;
-var G__17057 = notes__$1;
-acc__$1 = G__17054;
-skip__$1 = G__17055;
-nps__$1 = G__17056;
-G__17020__$1 = G__17057;
+var G__14351 = cljs.core.conj.cljs$core$IFn$_invoke$arity$2(acc__$2,null);
+var G__14352 = skip__$2;
+var G__14353 = nps__$2;
+var G__14354 = notes__$1;
+acc__$1 = G__14351;
+skip__$1 = G__14352;
+nps__$1 = G__14353;
+G__14317__$1 = G__14354;
 continue;
 
 }
@@ -102,8 +102,8 @@ break;
  *   two note per string or three note per string.
  */
 guitar.patterns.scale_pattern = (function guitar$patterns$scale_pattern(scale){
-var or__4126__auto__ = (function (){var fexpr__17059 = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$major_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.patterns.notes_per_string,(2)),cljs.core.cst$kw$minor_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.patterns.notes_per_string,(2)),cljs.core.cst$kw$cljs$analyzer_SLASH_analyzed,true], null);
-return (fexpr__17059.cljs$core$IFn$_invoke$arity$1 ? fexpr__17059.cljs$core$IFn$_invoke$arity$1(scale) : fexpr__17059.call(null,scale));
+var or__4126__auto__ = (function (){var fexpr__14356 = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$major_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.patterns.notes_per_string,(2)),cljs.core.cst$kw$minor_DASH_pentatonic,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.patterns.notes_per_string,(2)),cljs.core.cst$kw$cljs$analyzer_SLASH_analyzed,true], null);
+return (fexpr__14356.cljs$core$IFn$_invoke$arity$1 ? fexpr__14356.cljs$core$IFn$_invoke$arity$1(scale) : fexpr__14356.call(null,scale));
 })();
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;

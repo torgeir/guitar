@@ -1,25 +1,29 @@
 :root {
   --page-bg: #010409;
-  --hover: rgba(100,100,100,70%);
+  --hover: rgba(100, 100, 100, 70%);
   --font: #999;
   --font-hl: #fefefe;
-  --font-faded: #333;
-  --guitar-bg: rgba(255, 255, 255, 10%);
+  --font-faded: #444;
+  --guitar-bg: rgba(255, 255, 255, 5%);
   --guitar-nut: var(--hover);
-  --guitar-headstock: #151515;
-  --guitar-string: rgba(255, 255, 255, 15%);
+  --guitar-headstock: #050505;
+  --guitar-string: rgba(255, 255, 255, 5%);
   --guitar-shadow: #000;
   --guitar-fret: rgba(0, 0, 0, 9%);
-  --guitar-fretboard-dot: rgba(0, 0, 0, 20%);
+  --guitar-fretboard-dot: rgba(0, 0, 0, 30%);
   --note-hl-0: #333;
   --note-hl-1: #f05;
   --note-hl-2: #e71;
   --note-hl-3: #fa0;
-  --note-hl-4: #29a;;
+  --note-hl-4: #29a;
   --note-hl-5: #080;
-  --guitar-string-width-s: 1px;
-  --guitar-string-width-m: 2px;
+  --guitar-string-width-xs: 1px;
+  --guitar-string-width-s: 1.6px;
+  --guitar-string-width-m: 1.9px;
   --guitar-string-width-l: 3px;
+  --button-bg: rgba(255, 255, 255, 2%);
+  --button-fg: rgba(255, 255, 255, 3%);
+  --button-border: rgba(255, 255, 255, 10%);
 }
 
 body {
@@ -40,6 +44,8 @@ body {
   flex-direction: column;
   box-shadow: 0px 5px 10px var(--guitar-shadow);
   background-color: var(--guitar-bg);
+  overflow-x: auto;
+  flex-wrap: nowrap;
 }
 
 .guitar--faded {
@@ -60,7 +66,10 @@ body {
   right: 0;
   pointer-events: none;
 }
-.guitar-string:nth-child(1):after,
+.guitar-string:nth-child(1):after {
+  top: calc(50% - var(--guitar-string-width-xs));
+  border-top: var(--guitar-string-width-xs) solid var(--guitar-string);
+}
 .guitar-string:nth-child(2):after {
   top: calc(50% - var(--guitar-string-width-s));
   border-top: var(--guitar-string-width-s) solid var(--guitar-string);
@@ -75,7 +84,6 @@ body {
   top: calc(50% - var(--guitar-string-width-l));
   border-top: var(--guitar-string-width-l) solid var(--guitar-string);
 }
-
 
 .guitar-string .guitar-nut {
   border-right: 0.3rem solid;
@@ -132,6 +140,11 @@ body {
   height: 1.4rem;
 }
 
+.guitar-fret:active .scale-note:before,
+.guitar-fret:active .scale-note:after {
+  filter: brightness(75%);
+}
+
 .scale-note--hl:before {
   /* background-color from script */
 }
@@ -144,12 +157,24 @@ body {
   color: var(--font-hl);
 }
 
-.scale-note--hl-0:before { background-color: var(--note-hl-0); }
-.scale-note--hl-1:before { background-color: var(--note-hl-1); }
-.scale-note--hl-2:before { background-color: var(--note-hl-2); }
-.scale-note--hl-3:before { background-color: var(--note-hl-3); }
-.scale-note--hl-4:before { background-color: var(--note-hl-4); }
-.scale-note--hl-5:before { background-color: var(--note-hl-5); }
+.scale-note--hl-0:before {
+  background-color: var(--note-hl-0);
+}
+.scale-note--hl-1:before {
+  background-color: var(--note-hl-1);
+}
+.scale-note--hl-2:before {
+  background-color: var(--note-hl-2);
+}
+.scale-note--hl-3:before {
+  background-color: var(--note-hl-3);
+}
+.scale-note--hl-4:before {
+  background-color: var(--note-hl-4);
+}
+.scale-note--hl-5:before {
+  background-color: var(--note-hl-5);
+}
 
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,
 .guitar-string:nth-child(2) .guitar-fret:nth-of-type(13):after,
@@ -170,4 +195,42 @@ body {
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(14):after,
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(24):after {
   content: none;
+}
+
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 0.4rem;
+  margin: 1rem;
+  /* justify-content: space-evenly; */
+}
+
+.button {
+  background: transparent;
+  background-color: var(--button-bg);
+  outline: none;
+  border-radius: 1rem;
+  border: 1px transparent solid;
+  color: var(--font-faded);
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1.5rem;
+  min-width: 2.2rem;
+  padding: 0.2rem 0.5rem;
+  text-transform: capitalize;
+}
+.button--selected {
+  background-color: var(--button-fg);
+  border-color: var(--button-border);
+}
+.button--huge {
+  font-size: 1rem;
+  line-height: 2rem;
+}
+.button:hover,
+.button:focus {
+  box-shadow: 0px 0px 2px var(--hover);
+}
+.button:active {
+  filter: brightness(85%);
 }
