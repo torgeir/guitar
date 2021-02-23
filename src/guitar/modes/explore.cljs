@@ -14,24 +14,26 @@
    :highlight #{1}})
 
 
+(defn indexed-map [set]
+  (->> set
+       (map-indexed vector)
+       (map (juxt (comp inc first) second))
+       (map reverse)
+       (map vec)
+       (into {})))
+
+
+;; TODO limit to number of notes in the scale
 (defn hl-notes [note notes-to-highlight scale-notes default]
-  (let [hl-colors (remove (partial = default)
-                          (range 5))]
-    ((->> notes-to-highlight
-          (map dec)
-          (map (partial nth (cycle scale-notes)))
-          (map vector hl-colors)
-          (map reverse)
-          (map vec)
-          (into {}))
-     note
-     default)))
+  (let [keys (map (partial nth scale-notes) (map dec notes-to-highlight))
+        note-colors (select-keys (indexed-map scale-notes) (set keys))]
+    (note-colors note default)))
 
 
 (defn toggle-in [el a-set]
   ((if (a-set el)
      disj
-    conj) a-set el))
+     conj) a-set el))
 
 
 (rum/defc button [props value]
@@ -71,7 +73,7 @@
              strings-notes
              (set in-scale)
              start-fret
-             #(assoc % :hl (hl-notes (:note %) highlight in-scale 4))))]
+             #(assoc % :hl (hl-notes (:note %) highlight in-scale 0))))]
      (rum/with-key
        (buttons {:value root
                  :on-click #(swap! state assoc :root %)}
@@ -84,6 +86,6 @@
                 (->> scales (keys) (map name)))
        "scales")
      (buttons-multi
-      (range 1 8)
+      (->> in-scale (count) (inc) (range 1))
       highlight
       #(swap! state update :highlight (partial toggle-in %))))))

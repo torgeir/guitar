@@ -21,6 +21,7 @@
 (defonce state
   (atom
    {:tuning tuning
+    :theme :dark
     :mode (condp = (location-hash)
             "guess" :guess
             "explore" :explore
@@ -35,11 +36,18 @@
  (fn [_ _ _ {:keys [mode]}]
    (location-hash (name mode))))
 
+(defn cycle-theme [v]
+  (condp = v
+    :light :dark
+    :dark :light
+    :dark))
+
 
 (rum/defc app < rum/reactive
   "Main component. Dispatches to other components based on the :mode of the state."
   [state]
   (let [mode (:mode (rum/react state))
+        theme (:theme (rum/react state))
         mode-state (rum/cursor state mode)
         strings-notes (->> @state
                            :tuning
@@ -47,6 +55,7 @@
                            (map (partial map #(conj {} [:note %])))
                            (reverse))]
     [:div
+     {:class (str "theme--" (name theme))}
      [:div.buttons
       [:button.button.button--huge
        {:on-click #(swap! state assoc :mode :explore)} "Explore scales"]
@@ -56,7 +65,10 @@
         :guess guess/guess-fretboard-notes
         :explore explore/visualize-scale)
       strings-notes
-      mode-state)]))
+      mode-state)
+     (comment [:button
+               {:on-click #(swap! state update :theme cycle-theme)}
+               (str (name theme) " theme")])]))
 
 
 (defn mount
