@@ -23,7 +23,6 @@
        (into {})))
 
 
-;; TODO limit to number of notes in the scale
 (defn hl-notes [note notes-to-highlight scale-notes default]
   (let [keys (map (partial nth scale-notes) (map dec notes-to-highlight))
         note-colors (select-keys (indexed-map scale-notes) (set keys))]
