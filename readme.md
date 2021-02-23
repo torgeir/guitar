@@ -1,6 +1,6 @@
 # guitar
 
-A playground for guitarists looking to master the fretboard, scales, chords and the guitar in general.
+The guitar website I always felt was missing - for those looking to master the fretboard, scales, chords and the guitar in general.
 
 https://torgeir.github.io/guitar/
 
