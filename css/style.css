@@ -1,29 +1,69 @@
 :root {
+  --color-light-aqua: #3af;
+  --color-light-bittersweet: #f60;
+  --color-light-bluejeans: #48f;
+  --color-light-grass: #7b0;
+  --color-light-mint: #0dd;
+  --color-light-pink: #e06;
+  --color-light-pinkrose: #c4f;
+  --color-light-sunflower: #eb0;
+  --color-light-lavander: #34f;
+  --color-light-light: #f5f7fa;
+  --color-light-medium: #ccd1d9;
+  --color-light-dark: #656d78;
+
+  --color-dark-aqua: #3af;
+  --color-dark-bittersweet: #f60;
+  --color-dark-bluejeans: #48f;
+  --color-dark-grass: #7b0;
+  --color-dark-mint: #0dd;
+  --color-dark-pink: #e06;
+  --color-dark-pinkrose: #c4f;
+  --color-dark-sunflower: #eb0;
+  --color-dark-lavander: #34f;
+  --color-gray-light: #e6e9ed;
+  --color-gray-medium: #aab2bd;
+  --color-gray-dark: #333;
+
   --page-bg: #010409;
   --hover: rgba(100, 100, 100, 70%);
   --font: #999;
   --font-hl: #fefefe;
   --font-faded: #444;
-  --guitar-bg: rgba(255, 255, 255, 5%);
+  --guitar-bg: rgba(255, 255, 255, 7%);
   --guitar-nut: var(--hover);
-  --guitar-headstock: #050505;
+  --guitar-headstock: #080808;
   --guitar-string: rgba(255, 255, 255, 5%);
   --guitar-shadow: #000;
   --guitar-fret: rgba(0, 0, 0, 9%);
   --guitar-fretboard-dot: rgba(0, 0, 0, 30%);
-  --note-hl-0: #333;
-  --note-hl-1: #f05;
-  --note-hl-2: #e71;
-  --note-hl-3: #fa0;
-  --note-hl-4: #29a;
-  --note-hl-5: #080;
+  --note-hl-0: var(--color-dark-aqua);
+  --note-hl-1: var(--color-dark-pink);
+  --note-hl-2: var(--color-dark-bittersweet);
+  --note-hl-3: var(--color-dark-sunflower);
+  --note-hl-4: var(--color-dark-mint);
+  --note-hl-5: var(--color-dark-grass);
+  --note-hl-6: var(--color-dark-pinkrose);
+  --note-hl-7: var(--color-dark-lavander);
   --guitar-string-width-xs: 1px;
   --guitar-string-width-s: 1.6px;
   --guitar-string-width-m: 1.9px;
   --guitar-string-width-l: 3px;
-  --button-bg: rgba(255, 255, 255, 2%);
-  --button-fg: rgba(255, 255, 255, 3%);
-  --button-border: rgba(255, 255, 255, 10%);
+  --button-bg: rgba(255, 255, 255, 3%);
+  --button-fg: rgba(255, 255, 255, 5%);
+  --button-border: rgba(255, 255, 255, 14%);
+}
+
+/* tuned https://i.pinimg.com/originals/2e/9f/63/2e9f6323123859937b6ef88834db2adb.jpg */
+.theme--light {
+  --note-hl-0: var(--color-light-aqua);
+  --note-hl-1: var(--color-light-pink);
+  --note-hl-2: var(--color-light-bittersweet);
+  --note-hl-3: var(--color-light-sunflower);
+  --note-hl-4: var(--color-light-mint);
+  --note-hl-5: var(--color-light-grass);
+  --note-hl-6: var(--color-light-pinkrose);
+  --note-hl-7: var(--color-light-lavander);
 }
 
 body {
@@ -175,6 +215,12 @@ body {
 .scale-note--hl-5:before {
   background-color: var(--note-hl-5);
 }
+.scale-note--hl-6:before {
+  background-color: var(--note-hl-6);
+}
+.scale-note--hl-7:before {
+  background-color: var(--note-hl-7);
+}
 
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,
 .guitar-string:nth-child(2) .guitar-fret:nth-of-type(13):after,
@@ -229,7 +275,7 @@ body {
 }
 .button:hover,
 .button:focus {
-  box-shadow: 0px 0px 2px var(--hover);
+  box-shadow: 0px 0px 5px var(--hover);
 }
 .button:active {
   filter: brightness(85%);
