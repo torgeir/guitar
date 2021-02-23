@@ -13,8 +13,8 @@ goog.require('rum.core');
  */
 guitar.core.notes_of_string = cljs.core.partial.cljs$core$IFn$_invoke$arity$3(guitar.notes.string_notes,guitar.notes.notes,(guitar.setup.scale_length + (1)));
 guitar.core.location_hash = (function guitar$core$location_hash(var_args){
-var G__14458 = arguments.length;
-switch (G__14458) {
+var G__14459 = arguments.length;
+switch (G__14459) {
 case 0:
 return guitar.core.location_hash.cljs$core$IFn$_invoke$arity$0();
 
@@ -41,12 +41,12 @@ return (location.hash = hash);
 
 if((typeof guitar !== 'undefined') && (typeof guitar.core !== 'undefined') && (typeof guitar.core.state !== 'undefined')){
 } else {
-guitar.core.state = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$tuning,guitar.setup.tuning,cljs.core.cst$kw$theme,cljs.core.cst$kw$dark,cljs.core.cst$kw$mode,(function (){var pred__14460 = cljs.core._EQ_;
-var expr__14461 = guitar.core.location_hash.cljs$core$IFn$_invoke$arity$0();
-if(cljs.core.truth_((pred__14460.cljs$core$IFn$_invoke$arity$2 ? pred__14460.cljs$core$IFn$_invoke$arity$2("guess",expr__14461) : pred__14460.call(null,"guess",expr__14461)))){
+guitar.core.state = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(new cljs.core.PersistentArrayMap(null, 5, [cljs.core.cst$kw$tuning,guitar.setup.tuning,cljs.core.cst$kw$theme,cljs.core.cst$kw$dark,cljs.core.cst$kw$mode,(function (){var pred__14461 = cljs.core._EQ_;
+var expr__14462 = guitar.core.location_hash.cljs$core$IFn$_invoke$arity$0();
+if(cljs.core.truth_((pred__14461.cljs$core$IFn$_invoke$arity$2 ? pred__14461.cljs$core$IFn$_invoke$arity$2("guess",expr__14462) : pred__14461.call(null,"guess",expr__14462)))){
 return cljs.core.cst$kw$guess;
 } else {
-if(cljs.core.truth_((pred__14460.cljs$core$IFn$_invoke$arity$2 ? pred__14460.cljs$core$IFn$_invoke$arity$2("explore",expr__14461) : pred__14460.call(null,"explore",expr__14461)))){
+if(cljs.core.truth_((pred__14461.cljs$core$IFn$_invoke$arity$2 ? pred__14461.cljs$core$IFn$_invoke$arity$2("explore",expr__14462) : pred__14461.call(null,"explore",expr__14462)))){
 return cljs.core.cst$kw$explore;
 } else {
 return cljs.core.cst$kw$explore;
@@ -54,24 +54,24 @@ return cljs.core.cst$kw$explore;
 }
 })(),cljs.core.cst$kw$guess,guitar.modes.guess.state,cljs.core.cst$kw$explore,guitar.modes.explore.state], null));
 }
-cljs.core.add_watch(guitar.core.state,cljs.core.cst$kw$mode,(function (_,___$1,___$2,p__14463){
-var map__14464 = p__14463;
-var map__14464__$1 = (((((!((map__14464 == null))))?(((((map__14464.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14464.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14464):map__14464);
-var mode = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14464__$1,cljs.core.cst$kw$mode);
+cljs.core.add_watch(guitar.core.state,cljs.core.cst$kw$mode,(function (_,___$1,___$2,p__14464){
+var map__14465 = p__14464;
+var map__14465__$1 = (((((!((map__14465 == null))))?(((((map__14465.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__14465.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__14465):map__14465);
+var mode = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__14465__$1,cljs.core.cst$kw$mode);
 return guitar.core.location_hash.cljs$core$IFn$_invoke$arity$1(cljs.core.name(mode));
 }));
 guitar.core.cycle_theme = (function guitar$core$cycle_theme(v){
-var pred__14466 = cljs.core._EQ_;
-var expr__14467 = v;
-if(cljs.core.truth_((function (){var G__14469 = cljs.core.cst$kw$light;
-var G__14470 = expr__14467;
-return (pred__14466.cljs$core$IFn$_invoke$arity$2 ? pred__14466.cljs$core$IFn$_invoke$arity$2(G__14469,G__14470) : pred__14466.call(null,G__14469,G__14470));
+var pred__14467 = cljs.core._EQ_;
+var expr__14468 = v;
+if(cljs.core.truth_((function (){var G__14470 = cljs.core.cst$kw$light;
+var G__14471 = expr__14468;
+return (pred__14467.cljs$core$IFn$_invoke$arity$2 ? pred__14467.cljs$core$IFn$_invoke$arity$2(G__14470,G__14471) : pred__14467.call(null,G__14470,G__14471));
 })())){
 return cljs.core.cst$kw$dark;
 } else {
-if(cljs.core.truth_((function (){var G__14471 = cljs.core.cst$kw$dark;
-var G__14472 = expr__14467;
-return (pred__14466.cljs$core$IFn$_invoke$arity$2 ? pred__14466.cljs$core$IFn$_invoke$arity$2(G__14471,G__14472) : pred__14466.call(null,G__14471,G__14472));
+if(cljs.core.truth_((function (){var G__14472 = cljs.core.cst$kw$dark;
+var G__14473 = expr__14468;
+return (pred__14467.cljs$core$IFn$_invoke$arity$2 ? pred__14467.cljs$core$IFn$_invoke$arity$2(G__14472,G__14473) : pred__14467.call(null,G__14472,G__14473));
 })())){
 return cljs.core.cst$kw$light;
 } else {
@@ -86,32 +86,32 @@ guitar.core.app = rum.core.lazy_build(rum.core.build_defc,(function (state){
 var mode = cljs.core.cst$kw$mode.cljs$core$IFn$_invoke$arity$1(rum.core.react(state));
 var theme = cljs.core.cst$kw$theme.cljs$core$IFn$_invoke$arity$1(rum.core.react(state));
 var mode_state = rum.core.cursor(state,mode);
-var strings_notes = cljs.core.reverse(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.map,(function (p1__14473_SHARP_){
-return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$note,p1__14473_SHARP_], null));
+var strings_notes = cljs.core.reverse(cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.map,(function (p1__14474_SHARP_){
+return cljs.core.conj.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$note,p1__14474_SHARP_], null));
 })),cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.core.notes_of_string,cljs.core.cst$kw$tuning.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)))));
 return daiquiri.core.create_element("div",{'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [["theme--",cljs.core.name(theme)].join('')], null))},[daiquiri.core.create_element("div",{'className':"buttons"},[daiquiri.core.create_element("button",{'onClick':(function (){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$mode,cljs.core.cst$kw$explore);
 }),'className':"button button--huge"},["Explore scales"]),daiquiri.core.create_element("button",{'onClick':(function (){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$mode,cljs.core.cst$kw$guess);
-}),'className':"button button--huge"},["Guess notes"])]),daiquiri.interpreter.interpret((function (){var fexpr__14496 = (function (){var pred__14497 = cljs.core._EQ_;
-var expr__14498 = mode;
-if(cljs.core.truth_((function (){var G__14500 = cljs.core.cst$kw$guess;
-var G__14501 = expr__14498;
-return (pred__14497.cljs$core$IFn$_invoke$arity$2 ? pred__14497.cljs$core$IFn$_invoke$arity$2(G__14500,G__14501) : pred__14497.call(null,G__14500,G__14501));
+}),'className':"button button--huge"},["Guess notes"])]),daiquiri.interpreter.interpret((function (){var fexpr__14497 = (function (){var pred__14498 = cljs.core._EQ_;
+var expr__14499 = mode;
+if(cljs.core.truth_((function (){var G__14501 = cljs.core.cst$kw$guess;
+var G__14502 = expr__14499;
+return (pred__14498.cljs$core$IFn$_invoke$arity$2 ? pred__14498.cljs$core$IFn$_invoke$arity$2(G__14501,G__14502) : pred__14498.call(null,G__14501,G__14502));
 })())){
 return guitar.modes.guess.guess_fretboard_notes;
 } else {
-if(cljs.core.truth_((function (){var G__14502 = cljs.core.cst$kw$explore;
-var G__14503 = expr__14498;
-return (pred__14497.cljs$core$IFn$_invoke$arity$2 ? pred__14497.cljs$core$IFn$_invoke$arity$2(G__14502,G__14503) : pred__14497.call(null,G__14502,G__14503));
+if(cljs.core.truth_((function (){var G__14503 = cljs.core.cst$kw$explore;
+var G__14504 = expr__14499;
+return (pred__14498.cljs$core$IFn$_invoke$arity$2 ? pred__14498.cljs$core$IFn$_invoke$arity$2(G__14503,G__14504) : pred__14498.call(null,G__14503,G__14504));
 })())){
 return guitar.modes.explore.visualize_scale;
 } else {
-throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__14498)].join('')));
+throw (new Error(["No matching clause: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(expr__14499)].join('')));
 }
 }
 })();
-return (fexpr__14496.cljs$core$IFn$_invoke$arity$2 ? fexpr__14496.cljs$core$IFn$_invoke$arity$2(strings_notes,mode_state) : fexpr__14496.call(null,strings_notes,mode_state));
+return (fexpr__14497.cljs$core$IFn$_invoke$arity$2 ? fexpr__14497.cljs$core$IFn$_invoke$arity$2(strings_notes,mode_state) : fexpr__14497.call(null,strings_notes,mode_state));
 })()),null]);
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.core/app");
 /**

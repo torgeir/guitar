@@ -45,6 +45,7 @@
   --note-hl-5: var(--color-dark-grass);
   --note-hl-6: var(--color-dark-pinkrose);
   --note-hl-7: var(--color-dark-lavander);
+  --note-hl-8: var(--color-gray-dark);
   --guitar-string-width-xs: 1px;
   --guitar-string-width-s: 1.6px;
   --guitar-string-width-m: 1.9px;
@@ -64,6 +65,7 @@
   --note-hl-5: var(--color-light-grass);
   --note-hl-6: var(--color-light-pinkrose);
   --note-hl-7: var(--color-light-lavander);
+  --note-hl-8: var(--color-gray-dark);
 }
 
 body {
@@ -220,6 +222,9 @@ body {
 }
 .scale-note--hl-7:before {
   background-color: var(--note-hl-7);
+}
+.scale-note--hl-8:before {
+  background-color: var(--note-hl-8);
 }
 
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,
