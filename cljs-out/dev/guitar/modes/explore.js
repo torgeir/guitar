@@ -38,7 +38,7 @@ return (highlighted.cljs$core$IFn$_invoke$arity$1 ? highlighted.cljs$core$IFn$_i
 })())?"button--selected":null),cljs.core.cst$kw$on_DASH_click,(function (){
 var G__14369 = (index + (1));
 return (on_click.cljs$core$IFn$_invoke$arity$1 ? on_click.cljs$core$IFn$_invoke$arity$1(G__14369) : on_click.call(null,G__14369));
-})], null),value], null);
+})], null),guitar.notes.ordinal_suffixed_number(value)], null);
 }),values);
 return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs14367))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["buttons"], null)], null),attrs14367], 0))):{'className':"buttons"}),((cljs.core.map_QMARK_(attrs14367))?null:[daiquiri.interpreter.interpret(attrs14367)]));
 }),null,"guitar.modes.explore/buttons-multi");
