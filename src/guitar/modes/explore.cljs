@@ -63,7 +63,8 @@
 
 (rum/defc visualize-scale < rum/reactive [strings-notes state]
   (let [{:keys [root scale start-fret highlight]} (rum/react state)
-        in-scale (scale-notes root scale)]
+        in-scale (scale-notes root scale)
+        scale-highlight (set (remove #(>= (dec %) (count in-scale)) highlight))]
     (rum/fragment
      [:div (guitar
             {:class "guitar--faded"}
@@ -72,7 +73,7 @@
              strings-notes
              (set in-scale)
              start-fret
-             #(assoc % :hl (hl-notes (:note %) highlight in-scale 0))))]
+             #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0))))]
      (rum/with-key
        (buttons {:value root
                  :on-click #(swap! state assoc :root %)}
@@ -80,11 +81,10 @@
        "notes")
      (rum/with-key
        (buttons {:value (name scale)
-                 :on-click #(swap! state assoc :scale
-                                   (->> % keyword))}
+                 :on-click #(swap! state assoc :scale (->> % keyword))}
                 (->> scales (keys) (map name)))
        "scales")
      (buttons-multi
       (->> in-scale (count) (inc) (range 1))
-      highlight
+      scale-highlight
       #(swap! state update :highlight (partial toggle-in %))))))
