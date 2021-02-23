@@ -1,6 +1,6 @@
 (ns guitar.modes.explore
   (:require
-   [guitar.notes :refer [scales scale-notes notes]]
+   [guitar.notes :refer [scales scale-notes notes ordinal-suffixed-number]]
    [guitar.patterns :refer [scale-pattern]]
    [guitar.guitar :refer [guitar]]
    [cljsjs.react-select]
@@ -57,7 +57,7 @@
        {:key (str value index)
         :class (when (highlighted (inc index)) "button--selected")
         :on-click #(on-click (inc index))}
-       value])
+       (ordinal-suffixed-number value)])
     values)])
 
 
