@@ -150,6 +150,7 @@ body {
 
 .guitar-fret {
   background-color: var(--guitar-fret);
+  transition: all 0.1s;
 }
 
 .scale-note {
@@ -187,6 +188,7 @@ body {
 }
 
 .scale-note--hl:before {
+  transition: all 0.1s;
   /* background-color from script */
 }
 
@@ -251,7 +253,7 @@ body {
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 0.4rem;
-  margin: 1rem;
+  margin: 1rem 0.4rem;
   /* justify-content: space-evenly; */
 }
 
@@ -269,6 +271,8 @@ body {
   padding: 0.2rem 0.5rem;
   text-transform: capitalize;
   user-select: none;
+  box-shadow: none;
+  transition: all 0.1s;
 }
 .button--selected {
   background-color: var(--button-fg);
@@ -284,4 +288,29 @@ body {
 }
 .button:active {
   filter: brightness(85%);
+}
+
+/* buy me a coffee */
+.bmc-btn-container {
+  text-align: right;
+  transition: transform;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+}
+
+.bmc-btn-container .bmc-btn {
+  margin-right: 1rem;
+}
+
+.bmc-btn-container .bmc-btn {
+  transition: all 0.1s;
+  filter: grayscale(100%);
+  filter: brightness(20%);
+}
+
+.bmc-btn-container .bmc-btn:active,
+.bmc-btn-container .bmc-btn:focus,
+.bmc-btn-container .bmc-btn:hover {
+  filter: grayscale(0%);
+  filter: brightness(100%);
 }
