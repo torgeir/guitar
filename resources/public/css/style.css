@@ -1,25 +1,25 @@
 :root {
   --color-light-aqua: #3af;
-  --color-light-bittersweet: #f60;
+  --color-light-bittersweet: #f50;
   --color-light-bluejeans: #48f;
   --color-light-grass: #7b0;
-  --color-light-mint: #0dd;
+  --color-light-mint: #0ed;
   --color-light-pink: #e06;
   --color-light-pinkrose: #c4f;
-  --color-light-sunflower: #eb0;
+  --color-light-sunflower: #fc0;
   --color-light-lavander: #34f;
   --color-light-light: #f5f7fa;
   --color-light-medium: #ccd1d9;
   --color-light-dark: #656d78;
 
   --color-dark-aqua: #3af;
-  --color-dark-bittersweet: #f60;
+  --color-dark-bittersweet: #f50;
   --color-dark-bluejeans: #48f;
   --color-dark-grass: #7b0;
-  --color-dark-mint: #0dd;
+  --color-dark-mint: #0ed;
   --color-dark-pink: #e06;
   --color-dark-pinkrose: #c4f;
-  --color-dark-sunflower: #eb0;
+  --color-dark-sunflower: #fc0;
   --color-dark-lavander: #34f;
   --color-gray-light: #e6e9ed;
   --color-gray-medium: #aab2bd;
