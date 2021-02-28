@@ -288,12 +288,11 @@ body {
 
 /* buy me a coffee */
 .bmc-btn-container {
-  position: absolute;
+  text-align: right;
   transform: scale3d(0.65, 0.65, 1);
   filter: brightness(80%);
   transition: transform;
-  bottom: 1rem;
-  right: -2rem;
+  margin-top: 2rem;
 }
 .bmc-btn-container:hover {
   filter: brightness(100%);
