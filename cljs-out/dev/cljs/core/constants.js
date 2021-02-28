@@ -19,6 +19,7 @@ cljs.core.cst$kw$will_DASH_unmount = new cljs.core.Keyword(null,"will-unmount","
 cljs.core.cst$sym$rear = new cljs.core.Symbol(null,"rear","rear",-900164830,null);
 cljs.core.cst$sym$hierarchy = new cljs.core.Symbol(null,"hierarchy","hierarchy",587061186,null);
 cljs.core.cst$sym$iter = new cljs.core.Symbol(null,"iter","iter",-1346195486,null);
+cljs.core.cst$kw$harmonic_DASH_major = new cljs.core.Keyword(null,"harmonic-major","harmonic-major",1076134947);
 cljs.core.cst$sym$step = new cljs.core.Symbol(null,"step","step",-1365547645,null);
 cljs.core.cst$sym$boolean = new cljs.core.Symbol(null,"boolean","boolean",-278886877,null);
 cljs.core.cst$sym$update_DASH_count = new cljs.core.Symbol(null,"update-count","update-count",-411982269,null);
