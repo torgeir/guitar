@@ -23,7 +23,7 @@
 
 
 (def modes
-  [:ionian :dorian :phrygian :lydian :aolian :mixolydian :locrian])
+  [:ionian :dorian :phrygian :lydian :aeolian :mixolydian :locrian])
 
 
 (defn shift-n [at coll]
