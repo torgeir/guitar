@@ -22,17 +22,37 @@
   ["c" "c#" "d" "d#" "e" "f" "f#" "g" "g#" "a" "a#" "b"])
 
 
+(def modes
+  [:ionian :dorian :phrygian :lydian :aolian :mixolydian :locrian])
+
+
+(defn shift-n [at coll]
+  (->> coll
+    (split-at at)
+    (reverse)
+    (apply concat)))
+
+
+(defn index-of [coll el]
+  (->> coll
+       (map-indexed vector)
+       (drop-while #(not= el (second %)))
+       (ffirst)))
+
+
 (defn scale-notes
   "Finds the notes for the type of scale, starting from the root."
-  [root scale]
-  (->> scales
-       (scale)
-       (seq)
-       (map js/parseInt)
-       (concat [(.indexOf notes root)])
-       (reductions +)
-       (drop-last)
-       (map (partial nth (cycle notes)))))
+  ([root scale] (scale-notes root scale :ionian))
+  ([root scale mode]
+   (->> scales
+        (scale)
+        (shift-n (index-of modes mode))
+        (seq)
+        (map js/parseInt)
+        (concat [(.indexOf notes root)])
+        (reductions +)
+        (drop-last)
+        (map (partial nth (cycle notes))))))
 
 
 (defn string-notes

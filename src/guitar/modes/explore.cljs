@@ -1,14 +1,17 @@
 (ns guitar.modes.explore
   (:require
-   [guitar.notes :refer [scales scale-notes notes ordinal-suffixed-number]]
+   [guitar.notes :refer [scales scale-notes notes modes ordinal-suffixed-number]]
    [guitar.patterns :refer [scale-pattern]]
+   [guitar.buttons :refer [buttons buttons-multi]]
    [guitar.guitar :refer [guitar]]
-   [cljsjs.react-select]
+   [guitar.math :refer [diff]]
+   [guitar.sets :refer [toggle-in]]
    [rum.core :as rum]))
 
 
 (def state
   {:root "c"
+   :mode :ionian
    :scale :major
    :start-fret 8
    :highlight #{1}})
@@ -29,62 +32,88 @@
     (note-colors note default)))
 
 
-(defn toggle-in [el a-set]
-  ((if (a-set el)
-     disj
-     conj) a-set el))
+(defn start-note [in-scale last-string fret]
+  (let [from-fret (drop fret last-string)]
+    (->>
+     ;; handle :start-fret not nescessarily on a note
+     ;; of the scale, you can click anywhere.
+     ;; TODO Maybe that's not a good idea..
+     (if (in-scale from-fret)
+       start-note
+       (drop-while (comp not in-scale :note) from-fret))
+     (first)
+     (:note))))
 
 
-(rum/defc button [props value]
-  [:button.button
-   {:class (when (= (:value props) value) "button--selected")
-    :on-click #((:on-click props) value)}
-   value])
+(defn find-closest-fret-index [last-strings-notes scale-notes fret note]
+  (->> last-strings-notes
+       (map :note)
+       (map-indexed vector)
+       (filter #(scale-notes (second %)))
+       (map (fn [[index note]] [(diff fret index) note index]))
+       (sort-by first)
+       (filter #(= note (second %)))
+       (map last)
+       (first)))
 
 
-(rum/defc buttons [props values]
-  [:div.buttons
-   (map
-    #(rum/with-key (button props %) %)
-    values)])
+(defn colored-guitar [state notes in-scale start-fret scale-highlight]
+  (guitar {:class "guitar--faded"}
+          #(swap! state assoc :start-fret (:fret %))
+          (notes
+           (set in-scale)
+           start-fret
+           #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0)))))
 
 
-(rum/defc buttons-multi [values highlighted on-click]
-  [:div.buttons
-   (map-indexed
-    (fn [index value]
-      [:button.button
-       {:key (str value index)
-        :class (when (highlighted (inc index)) "button--selected")
-        :on-click #(on-click (inc index))}
-       (ordinal-suffixed-number value)])
-    values)])
+(defn mode-buttons [state modes mode]
+  (buttons
+   {:value (name mode)
+    :on-click #(swap! state assoc :mode (keyword %))}
+   (map name modes)))
+
+
+(defn scale-buttons [state scales scale]
+  (buttons {:value (name scale)
+            :on-click #(swap! state assoc :scale (->> % keyword))}
+           (->> scales (keys) (map name))))
+
+
+(defn note-buttons [state root find-start-fret]
+  (buttons {:value root
+            :on-click #(swap! state assoc
+                              :root %
+                              :start-fret (find-start-fret %))}
+           notes))
+
+
+(defn highlight-buttons [state in-scale scale-highlight]
+  (buttons-multi (->> in-scale (count) (inc) (range 1))
+                 scale-highlight
+                 #(swap! state update :highlight (partial toggle-in %))
+                 ordinal-suffixed-number))
 
 
 (rum/defc visualize-scale < rum/reactive [strings-notes state]
-  (let [{:keys [root scale start-fret highlight]} (rum/react state)
-        in-scale (scale-notes root scale)
-        scale-highlight (set (remove #(>= (dec %) (count in-scale)) highlight))]
+  (let [{:keys [root scale start-fret highlight mode]} (rum/react state)
+        in-scale (scale-notes root scale mode)
+        notes (partial (scale-pattern scale) strings-notes)
+        scale-highlight (set (remove #(>= (dec %) (count in-scale)) highlight))
+        scale-modes (take (count in-scale) modes)]
     (rum/fragment
-     [:div (guitar
-            {:class "guitar--faded"}
-            #(swap! state assoc :start-fret (:fret %))
-            ((scale-pattern scale)
-             strings-notes
-             (set in-scale)
-             start-fret
-             #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0))))]
+     [:div] ;; bug?
      (rum/with-key
-       (buttons {:value root
-                 :on-click #(swap! state assoc :root %)}
-                notes)
+       (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
+     (rum/with-key
+       (mode-buttons state scale-modes mode) "modes")
+     (rum/with-key
+       (note-buttons state root #(find-closest-fret-index
+                                  (last strings-notes)
+                                  (set (scale-notes % scale mode))
+                                  start-fret
+                                  %))
        "notes")
      (rum/with-key
-       (buttons {:value (name scale)
-                 :on-click #(swap! state assoc :scale (->> % keyword))}
-                (->> scales (keys) (map name)))
-       "scales")
-     (buttons-multi
-      (->> in-scale (count) (inc) (range 1))
-      scale-highlight
-      #(swap! state update :highlight (partial toggle-in %))))))
+       (scale-buttons state scales scale) "scales")
+     (rum/with-key
+       (highlight-buttons state in-scale scale-highlight) "highlights"))))
