@@ -192,7 +192,7 @@ body {
 
 .guitar-fret:hover .scale-note:after,
 .scale-note--hl:after {
-  content: attr(title);
+  content: attr(data-note);
   top: auto;
   right: calc(50% - 0.7rem);
   color: var(--font-hl);

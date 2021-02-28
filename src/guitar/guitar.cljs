@@ -1,5 +1,7 @@
 (ns guitar.guitar
-  (:require [rum.core :as rum]))
+  (:require
+   [rum.core :as rum]
+   [clojure.string :refer [trim]]))
 
 
 (rum/defc scale-note
@@ -7,7 +9,7 @@
   [{:keys [note hl]}]
   (when note
     [:div.scale-note
-     {:title note
+     {:data-note (trim note)
       :class (when hl
                (str "scale-note--hl scale-note--hl-" hl))}
      note]))
