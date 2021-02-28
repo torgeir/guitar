@@ -30,13 +30,13 @@
   --font: #999;
   --font-hl: #fefefe;
   --font-faded: #444;
-  --guitar-bg: rgba(255, 255, 255, 7%);
+  --guitar-bg: rgba(255, 255, 255, 6%);
   --guitar-nut: var(--hover);
   --guitar-headstock: #080808;
   --guitar-string: rgba(255, 255, 255, 5%);
   --guitar-shadow: #000;
-  --guitar-fret: rgba(0, 0, 0, 9%);
-  --guitar-fretboard-dot: rgba(0, 0, 0, 30%);
+  --guitar-fret: rgba(0, 0, 0, 15%);
+  --guitar-fretboard-dot: rgba(0, 0, 0, 50%);
   --note-hl-0: var(--color-dark-aqua);
   --note-hl-1: var(--color-dark-pink);
   --note-hl-2: var(--color-dark-bittersweet);
@@ -52,7 +52,7 @@
   --guitar-string-width-l: 3px;
   --button-bg: rgba(255, 255, 255, 3%);
   --button-fg: rgba(255, 255, 255, 5%);
-  --button-border: rgba(255, 255, 255, 14%);
+  --button-border: rgba(255, 255, 255, 15%);
 }
 
 /* tuned https://i.pinimg.com/originals/2e/9f/63/2e9f6323123859937b6ef88834db2adb.jpg */
