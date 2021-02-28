@@ -293,6 +293,7 @@ body {
   filter: brightness(80%);
   transition: transform;
   margin-top: 2rem;
+  margin-right: -2rem;
 }
 .bmc-btn-container:hover {
   filter: brightness(100%);
