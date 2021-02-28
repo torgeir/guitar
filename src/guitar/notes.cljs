@@ -9,6 +9,7 @@
    :minor-pentatonic "32232"
    :major-pentatonic "22323"
    :harmonic-minor "2122131"
+   :harmonic-major "2212131"
    :diminished-whole-half "21212121"
    :diminished-half-whole "12121212"
    ;; TODO this is funky with both 2 and 3 nps, leave it for now
