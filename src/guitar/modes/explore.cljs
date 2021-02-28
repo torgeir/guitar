@@ -63,7 +63,7 @@
 (defn scale-buttons [state scales scale]
   (buttons {:value (name scale)
             :on-click #(swap! state assoc :scale (->> % keyword))}
-           (->> scales (keys) (map name))))
+           (map (comp name first) scales)))
 
 
 (defn note-buttons [state root find-start-fret]

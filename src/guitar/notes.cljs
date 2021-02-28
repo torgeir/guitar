@@ -3,18 +3,18 @@
 
 (def scales
   "Supported scales represented as semitone increments."
-  {:major "2212221"
-   :melodic-minor "2122221"
-   :minor "2122122"
-   :minor-pentatonic "32232"
-   :major-pentatonic "22323"
-   :harmonic-minor "2122131"
-   :harmonic-major "2212131"
-   :diminished-whole-half "21212121"
-   :diminished-half-whole "12121212"
+  [[:major "2212221"]
+   [:minor "2122122"]
+   [:harmonic-minor "2122131"]
+   [:harmonic-major "2212131"]
+   [:melodic-minor "2122221"]
+   [:minor-pentatonic "32232"]
+   [:major-pentatonic "22323"]
+   [:diminished-whole-half "21212121"]
+   [:diminished-half-whole "12121212"]
    ;; TODO this is funky with both 2 and 3 nps, leave it for now
    ;; :blues "321132"
-   })
+   ])
 
 
 (def notes
@@ -28,9 +28,9 @@
 
 (defn shift-n [at coll]
   (->> coll
-    (split-at at)
-    (reverse)
-    (apply concat)))
+       (split-at at)
+       (reverse)
+       (apply concat)))
 
 
 (defn index-of [coll el]
@@ -45,6 +45,7 @@
   ([root scale] (scale-notes root scale :ionian))
   ([root scale mode]
    (->> scales
+        (into {})
         (scale)
         (shift-n (index-of modes mode))
         (seq)
