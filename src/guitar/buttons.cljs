@@ -17,13 +17,13 @@
     values)])
 
 
-(rum/defc buttons-multi [values highlighted on-click format]
+(rum/defc buttons-multi [values selected on-click format]
   [:div.buttons
    (map-indexed
     (fn [index value]
       [:button.button
        {:key (str value index)
-        :class (when (highlighted (inc index)) "button--selected")
+        :class (when (selected (inc index)) "button--selected")
         :on-click #(on-click (inc index))}
        (format value)])
     values)])

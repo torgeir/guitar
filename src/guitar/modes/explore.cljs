@@ -101,7 +101,7 @@
         scale-highlight (set (remove #(>= (dec %) (count in-scale)) highlight))
         scale-modes (take (count in-scale) modes)]
     (rum/fragment
-     [:div] ;; bug?
+     [:div] ; bug?
      (rum/with-key
        (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
      (rum/with-key
