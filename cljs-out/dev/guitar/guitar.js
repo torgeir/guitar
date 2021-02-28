@@ -3,6 +3,7 @@ goog.provide('guitar.guitar');
 goog.require('cljs.core');
 goog.require('cljs.core.constants');
 goog.require('rum.core');
+goog.require('clojure.string');
 /**
  * A visible note on a fret.
  */
@@ -12,7 +13,7 @@ var map__15097__$1 = (((((!((map__15097 == null))))?(((((map__15097.cljs$lang$pr
 var note = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15097__$1,cljs.core.cst$kw$note);
 var hl = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__15097__$1,cljs.core.cst$kw$hl);
 if(cljs.core.truth_(note)){
-return daiquiri.core.create_element("div",{'title':note,'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["scale-note",(cljs.core.truth_(hl)?["scale-note--hl scale-note--hl-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(hl)].join(''):null)], null))},[daiquiri.interpreter.interpret(note)]);
+return daiquiri.core.create_element("div",{'data-note':clojure.string.trim(note),'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["scale-note",(cljs.core.truth_(hl)?["scale-note--hl scale-note--hl-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(hl)].join(''):null)], null))},[daiquiri.interpreter.interpret(note)]);
 } else {
 return null;
 }
