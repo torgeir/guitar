@@ -39,9 +39,10 @@
 (rum/defc guitar
   "A guitar, with clickable frets for each of the strings-notes"
   [props on-fret-click strings-notes]
-  [:div.guitar
-   props
-   (->> strings-notes
-        (map-indexed (partial guitar-string on-fret-click))
-        (map-indexed #(rum/with-key %2 %1)))])
+  [:div.guitar-container
+   [:div.guitar
+    props
+    (->> strings-notes
+         (map-indexed (partial guitar-string on-fret-click))
+         (map-indexed #(rum/with-key %2 %1)))]])
 
