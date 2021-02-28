@@ -81,6 +81,11 @@ body {
   cursor: pointer;
 }
 
+.guitar-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .guitar {
   display: flex;
   flex-direction: column;
@@ -88,6 +93,7 @@ body {
   background-color: var(--guitar-bg);
   overflow-x: auto;
   flex-wrap: nowrap;
+  min-width: 50rem;
 }
 
 .guitar--faded {

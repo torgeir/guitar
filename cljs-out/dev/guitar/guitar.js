@@ -44,10 +44,11 @@ return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs15102))?da
  * A guitar, with clickable frets for each of the strings-notes
  */
 guitar.guitar.guitar = rum.core.lazy_build(rum.core.build_defc,(function (props,on_fret_click,strings_notes){
-var attrs15105 = props;
+return daiquiri.core.create_element("div",{'className':"guitar-container"},[(function (){var attrs15105 = props;
 return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs15105))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["guitar"], null)], null),attrs15105], 0))):{'className':"guitar"}),((cljs.core.map_QMARK_(attrs15105))?[daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__15104_SHARP_,p2__15103_SHARP_){
 return rum.core.with_key(p2__15103_SHARP_,p1__15104_SHARP_);
 }),cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.guitar.guitar_string,on_fret_click),strings_notes)))]:[daiquiri.interpreter.interpret(attrs15105),daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__15104_SHARP_,p2__15103_SHARP_){
 return rum.core.with_key(p2__15103_SHARP_,p1__15104_SHARP_);
 }),cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.guitar.guitar_string,on_fret_click),strings_notes)))]));
+})()]);
 }),null,"guitar.guitar/guitar");
