@@ -6,11 +6,15 @@
  :paths   ["src" "resources"]
  :aliases {:fig   {:extra-deps
                    {com.bhauman/rebel-readline-cljs {:mvn/version "0.1.4"}
-                    com.bhauman/figwheel-main       {:mvn/version "0.2.11"}}
-                   :extra-paths ["target" "test"]}
+                    com.bhauman/figwheel-main       {:mvn/version "0.2.11"}
+                    hashp/hashp                     {:mvn/version "0.2.1"}}
+                   :extra-paths ["target" "test"]
+                   :main-opts ["-e" "(require,'hashp.core)"]}
            :build {:main-opts ["-m" "figwheel.main" "-b" "dev" "-r"]}
            :min   {:main-opts ["-m" "figwheel.main" "-O" "advanced" "-bo" "dev"]}
            :test  {:main-opts ["-m" "figwheel.main" "-co" "test.cljs.edn" "-m" "guitar.test-runner"]}
-           :clj-kondo/config {:extra-deps
-                              {clj-kondo/config {:git/url "https://github.com/clj-kondo/config" :sha "4b4afb49b3ecc957f9df17b5d67fc6d349b9cf97"}}
-                              :main-opts ["-m" "clj-kondo.config"]}}}
+           :clj-kondo/config
+           {:extra-deps
+            {clj-kondo/config {:git/url "https://github.com/clj-kondo/config"
+                               :sha "4b4afb49b3ecc957f9df17b5d67fc6d349b9cf97"}}
+            :main-opts ["-m" "clj-kondo.config"]}}}
