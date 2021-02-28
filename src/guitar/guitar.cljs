@@ -15,12 +15,13 @@
 
 (rum/defc guitar-fret
   "A clickable guitar nut or fret."
-  [on-click string-index index note]
+  [on-click string-index fret note]
   [:div
-   {:class (if (zero? index) "guitar-nut" "guitar-fret")
-    :on-click #(on-click (assoc note
-                                :string string-index
-                                :fret index))}
+   {:class (if (zero? fret) "guitar-nut" "guitar-fret")
+    :on-click #(when note
+                 (on-click (assoc note
+                                  :fret fret
+                                  :string string-index)))}
    (scale-note note)])
 
 

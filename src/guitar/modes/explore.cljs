@@ -32,19 +32,6 @@
     (note-colors note default)))
 
 
-(defn start-note [in-scale last-string fret]
-  (let [from-fret (drop fret last-string)]
-    (->>
-     ;; handle :start-fret not nescessarily on a note
-     ;; of the scale, you can click anywhere.
-     ;; TODO Maybe that's not a good idea..
-     (if (in-scale from-fret)
-       start-note
-       (drop-while (comp not in-scale :note) from-fret))
-     (first)
-     (:note))))
-
-
 (defn find-closest-fret-index [last-strings-notes scale-notes fret note]
   (->> last-strings-notes
        (map :note)
