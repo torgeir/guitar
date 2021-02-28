@@ -93,7 +93,7 @@ body {
   background-color: var(--guitar-bg);
   overflow-x: auto;
   flex-wrap: nowrap;
-  min-width: 50rem;
+  min-width: 40rem;
 }
 
 .guitar--faded {
