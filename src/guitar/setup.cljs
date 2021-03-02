@@ -11,9 +11,9 @@
 
 (def tuning-distances
   (->> tuning
-       (partition 2 1)
-       (map (fn [[a b]]
-              (->> (cycle notes)
-                   (drop-while (partial not= a))
-                   (take-while (partial not= b))
-                   (count))))))
+    (partition 2 1)
+    (map (fn [[a b]]
+           (->> (cycle notes)
+             (drop-while (partial not= a))
+             (take-while (partial not= b))
+             (count))))))

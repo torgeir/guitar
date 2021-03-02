@@ -1,34 +1,46 @@
 (ns guitar.patterns
   (:require
-   [guitar.setup :refer [scale-length]]))
+   [guitar.setup :refer [scale-length tuning tuning-distances]]))
+
+
+(def zip (partial map vector))
+
+
+(def tuning-shifts
+  (zip
+    (map
+      (fn [string]
+        (* string (inc scale-length)))
+      (range (count tuning)))
+    tuning-distances))
+
+
+(defn find-string-offset [n]
+  (->>(reverse tuning-shifts)
+    (drop-while #(<= n (first %)))
+    (first)
+    (last)))
 
 
 (defn notes-per-string
   "Locates clusters of notes-per-string from strings-notes that are in the
   scale, starting fret-posision. These clusters represent well known finger
   patterns when playing guitar scales."
-  [notes-per-string strings-notes in-scale? fret-position format-scale-note]
-  (->> (loop [acc []
-              skip fret-position
-              nps notes-per-string
+  [notes-per-string strings-notes in-scale? fret-position format]
+  (->> (loop [acc            []
+              skip           fret-position
+              nps            notes-per-string
               [note & notes] (->> strings-notes (reverse) (apply concat))]
          (if (empty? note)
            acc
            (cond
-             (pos? skip)                    (recur (conj acc (if (in-scale? (:note note)) note nil)) (dec skip) nps notes)
-             (and (zero? nps)
-                  (in-scale? (:note note))) (recur (conj acc (if (in-scale? (:note note)) note nil))
-                                                        ;; TODO support other tunings
-                                                   (- scale-length
-                                                      (if ((set (range (count acc)
-                                                                       (+ (count acc) scale-length))) 100)
-                                                        4 5)) ; on note 100 (4 x (inc scale-length)) the offset is 4, not 5
-                                                   notes-per-string
-                                                   notes)
-             (in-scale? (:note note))       (recur (conj acc (format-scale-note note)) skip (dec nps) notes)
-             :else                          (recur (conj acc nil) skip nps notes))))
-       (partition (inc scale-length))
-       (reverse)))
+             (and (pos? skip) (in-scale? (:note note))) (recur (conj acc note) (dec skip) nps notes)
+             (pos? skip)                                (recur (conj acc nil) (dec skip) nps notes)
+             (and (zero? nps) (in-scale? (:note note))) (recur (conj acc note) (- scale-length (find-string-offset (count acc))) notes-per-string notes)
+             (in-scale? (:note note))                   (recur (conj acc (format note)) skip (dec nps) notes)
+             :else                                      (recur (conj acc nil) skip nps notes))))
+    (partition (inc scale-length))
+    (reverse)))
 
 
 (defn scale-pattern

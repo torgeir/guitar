@@ -47,10 +47,9 @@
 (defn colored-guitar [state notes in-scale start-fret scale-highlight]
   (guitar {:class "guitar--faded"}
           #(swap! state assoc :start-fret (:fret %))
-          (notes
-           (set in-scale)
-           start-fret
-           #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0)))))
+          (notes (set in-scale)
+                 start-fret
+                 #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0)))))
 
 
 (defn mode-buttons [state modes mode]
