@@ -58,10 +58,8 @@
     [:div
      {:class (str "theme--" (name theme))}
      [:div.buttons
-      [:button.button.button--huge
-       {:on-click #(swap! state assoc :mode :explore)} "Explore scales"]
-      [:button.button.button--huge
-       {:on-click #(swap! state assoc :mode :guess)} "Guess notes"]]
+      [:button.button.button--huge {:on-click #(swap! state assoc :mode :explore)} "Explore scales"]
+      [:button.button.button--huge {:on-click #(swap! state assoc :mode :guess)} "Guess notes"]]
      ((condp = mode
         :guess   guess/guess-fretboard-notes
         :explore explore/visualize-scale)

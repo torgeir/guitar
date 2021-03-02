@@ -88,18 +88,13 @@
         scale-modes (take (count in-scale) modes)]
     (rum/fragment
      [:div] ; bug?
-     (rum/with-key
-       (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
-     (rum/with-key
-       (mode-buttons state scale-modes mode) "modes")
-     (rum/with-key
-       (note-buttons state root #(find-closest-fret-index
-                                  (last strings-notes)
-                                  (set (scale-notes % scale mode))
-                                  start-fret
-                                  %))
+     (rum/with-key (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
+     (rum/with-key (mode-buttons state scale-modes mode) "modes")
+     (rum/with-key (note-buttons state root #(find-closest-fret-index
+                                              (last strings-notes)
+                                              (set (scale-notes % scale mode))
+                                              start-fret
+                                              %))
        "notes")
-     (rum/with-key
-       (scale-buttons state scales scale) "scales")
-     (rum/with-key
-       (highlight-buttons state in-scale scale-highlight) "highlights"))))
+     (rum/with-key (scale-buttons state scales scale) "scales")
+     (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights"))))
