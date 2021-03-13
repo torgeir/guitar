@@ -79,22 +79,39 @@
                  #(swap! state update :highlight (partial toggle-in %))
                  ordinal-suffixed-number))
 
+(defn remove-overshooting-hl [in-scale highlights]
+  (remove #(>= (dec %) (count in-scale))
+          highlights))
 
-(rum/defc visualize-scale < rum/reactive [strings-notes state]
-  (let [{:keys [root scale start-fret highlight mode]} (rum/react state)
-        in-scale (scale-notes root scale mode)
-        notes (partial (scale-pattern scale) strings-notes)
-        scale-highlight (set (remove #(>= (dec %) (count in-scale)) highlight))
-        scale-modes (take (count in-scale) modes)]
-    (rum/fragment
-     [:div] ; bug?
-     (rum/with-key (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
-     (rum/with-key (mode-buttons state scale-modes mode) "modes")
-     (rum/with-key (note-buttons state root #(find-closest-fret-index
+(defn data [strings-notes scale-state]
+  (let [{:keys [root scale start-fret highlight mode]}
+        scale-state
+        in-scale (scale-notes root scale mode)]
+    {:scale           scale
+     :root            root
+     :mode            mode
+     :start-fret      start-fret
+     :in-scale        in-scale
+     :notes           (partial (scale-pattern scale) strings-notes)
+     :scale-highlight (set (remove-overshooting-hl in-scale highlight))
+     :scale-modes     (take (count in-scale) modes)}))
+
+(defn btns [scale-modes mode root strings-notes scale start-fret in-scale scale-highlight]
+  (rum/fragment
+    [:div]
+    (rum/with-key (mode-buttons state scale-modes mode) "modes")
+    (rum/with-key (note-buttons state root #(find-closest-fret-index
                                               (last strings-notes)
                                               (set (scale-notes % scale mode))
                                               start-fret
                                               %))
-       "notes")
-     (rum/with-key (scale-buttons state scales scale) "scales")
-     (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights"))))
+      "notes")
+    (rum/with-key (scale-buttons state scales scale) "scales")
+    (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")))
+
+(rum/defc visualize-scale < rum/reactive [strings-notes state]
+  (let [{:keys [in-scale start-fret notes scale-highlight scale-modes scale root mode]} (data strings-notes (rum/react state))]
+    (rum/fragment
+      [:div] ;; bug?
+      (rum/with-key (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
+      (btns scale-modes mode root strings-notes scale start-fret in-scale scale-highlight))))
