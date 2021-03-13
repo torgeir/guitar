@@ -96,6 +96,17 @@
      :scale-highlight (set (remove-overshooting-hl in-scale highlight))
      :scale-modes     (take (count in-scale) modes)}))
 
+
+(def zip (partial map vector))
+
+
+(defn combine-scales [as bs]
+  (->> bs
+    (zip as)
+    (map (partial remove nil?))
+    (map #(if (empty? %) nil %))))
+
+
 (defn btns [scale-modes mode root strings-notes scale start-fret in-scale scale-highlight]
   (rum/fragment
     [:div]
