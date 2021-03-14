@@ -1,6 +1,6 @@
 (ns guitar.modes.explore
   (:require
-   [guitar.notes :refer [scales scale-notes notes modes ordinal-suffixed-number]]
+   [guitar.notes :refer [scales scale-notes index-of notes modes ordinal-suffixed-number]]
    [guitar.patterns :refer [scale-pattern]]
    [guitar.buttons :refer [buttons buttons-multi]]
    [guitar.guitar :refer [guitar]]
@@ -120,11 +120,16 @@
     (map distinct-non-highlighted)))
 
 
+(comment
+  ;; cleanup guitar.cljs
+  )
+
+
 (defn remove-overshooting-highlights [in-scale highlight]
   (remove #(>= (dec %) (count in-scale)) highlight))
 
 
-(rum/defc visualize-scale < rum/reactive [key on-click strings-notes state]
+(rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state]
   (let [{:keys [root scale start-fret highlight mode]}
         (rum/react state)
         in-scale        (scale-notes root scale mode)
@@ -132,7 +137,9 @@
         scale-modes     (take (count in-scale) modes)]
     (rum/fragment
       [:div] ; bug?
-      (buttons {:on-click #(on-click key)} "-")
+      [:div.buttons
+       (buttons {:on-click #(on-sub-click key)} "-")
+       (buttons {:on-click #(on-add-click key)} "+")]
       (rum/with-key
         (mode-buttons state scale-modes mode) "modes")
       (rum/with-key
@@ -191,6 +198,11 @@
     (apply zip (map notes-of-scale scale-data))))
 
 
+(defn insert-at [coll at n]
+  (let [[l r] (split-at at coll)]
+    (vec (concat l [n] r))))
+
+
 (rum/defc visualize-scales < rum/reactive [strings-notes state]
   (rum/fragment
     [:div]
@@ -213,15 +225,15 @@
                  (swap! state update
                         :scales (fn [s]
                                   (vec (filter #(not= key %) s)))))
+               (fn [before-key]
+                 (let [new-key (scale-key)]
+                   (swap! state assoc
+                          :scales (insert-at
+                                    (:scales @state)
+                                    (index-of (:scales @state) before-key)
+                                    new-key)
+                          new-key (before-key @state))) "+")
                strings-notes cursor)))
-      (map-indexed #(rum/with-key %2 %1)))
-    [:div.buttons
-     (buttons {:on-click
-               #(let [key (scale-key)]
-                  (swap! state assoc
-                         :scales (conj (:scales @state) key)
-                         key (or (when-let [last-key (last (:scales @state))]
-                                   (last-key @state))
-                                 default-state)))} "+")]))
+      (map-indexed #(rum/with-key %2 %1)))))
 
 
