@@ -1,0 +1,170 @@
+// Compiled by ClojureScript 1.10.773 {:static-fns true, :optimize-constants true}
+goog.provide('sci.impl.parser.edamame.syntax_quote');
+goog.require('cljs.core');
+goog.require('cljs.core.constants');
+goog.require('clojure.string');
+sci.impl.parser.edamame.syntax_quote.unquote_QMARK_ = (function sci$impl$parser$edamame$syntax_quote$unquote_QMARK_(form){
+return ((cljs.core.seq_QMARK_(form)) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.first(form),cljs.core.cst$sym$clojure$core_SLASH_unquote)));
+});
+sci.impl.parser.edamame.syntax_quote.unquote_splicing_QMARK_ = (function sci$impl$parser$edamame$syntax_quote$unquote_splicing_QMARK_(form){
+return ((cljs.core.seq_QMARK_(form)) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.first(form),cljs.core.cst$sym$clojure$core_SLASH_unquote_DASH_splicing)));
+});
+/**
+ * Expand a list by resolving its syntax quotes and unquotes
+ */
+sci.impl.parser.edamame.syntax_quote.expand_list = (function sci$impl$parser$edamame$syntax_quote$expand_list(ctx,reader,s){
+var s__$1 = cljs.core.seq(s);
+var r = cljs.core.transient$(cljs.core.PersistentVector.EMPTY);
+while(true){
+if(s__$1){
+var item = cljs.core.first(s__$1);
+var ret = cljs.core.conj_BANG_.cljs$core$IFn$_invoke$arity$2(r,((sci.impl.parser.edamame.syntax_quote.unquote_QMARK_(item))?(new cljs.core.List(null,cljs.core.cst$sym$clojure$core_SLASH_list,(new cljs.core.List(null,cljs.core.second(item),null,(1),null)),(2),null)):((sci.impl.parser.edamame.syntax_quote.unquote_splicing_QMARK_(item))?cljs.core.second(item):(new cljs.core.List(null,cljs.core.cst$sym$clojure$core_SLASH_list,(new cljs.core.List(null,(sci.impl.parser.edamame.syntax_quote.syntax_quote.cljs$core$IFn$_invoke$arity$3 ? sci.impl.parser.edamame.syntax_quote.syntax_quote.cljs$core$IFn$_invoke$arity$3(ctx,reader,item) : sci.impl.parser.edamame.syntax_quote.syntax_quote.call(null,ctx,reader,item)),null,(1),null)),(2),null))
+)));
+var G__17371 = cljs.core.next(s__$1);
+var G__17372 = ret;
+s__$1 = G__17371;
+r = G__17372;
+continue;
+} else {
+return cljs.core.seq(cljs.core.persistent_BANG_(r));
+}
+break;
+}
+});
+sci.impl.parser.edamame.syntax_quote.syntax_quote_coll = (function sci$impl$parser$edamame$syntax_quote$syntax_quote_coll(ctx,reader,type,coll){
+var res = (new cljs.core.List(null,cljs.core.cst$sym$clojure$core_SLASH_sequence,(new cljs.core.List(null,(new cljs.core.List(null,cljs.core.cst$sym$clojure$core_SLASH_seq,(new cljs.core.List(null,cljs.core.cons(cljs.core.cst$sym$clojure$core_SLASH_concat,sci.impl.parser.edamame.syntax_quote.expand_list(ctx,reader,coll)),null,(1),null)),(2),null)),null,(1),null)),(2),null));
+if(cljs.core.truth_(type)){
+return (new cljs.core.List(null,cljs.core.cst$sym$clojure$core_SLASH_apply,(new cljs.core.List(null,type,(new cljs.core.List(null,res,null,(1),null)),(2),null)),(3),null));
+} else {
+return res;
+}
+});
+/**
+ * Decide which map type to use, array-map if less than 16 elements
+ */
+sci.impl.parser.edamame.syntax_quote.map_func = (function sci$impl$parser$edamame$syntax_quote$map_func(coll){
+if((cljs.core.count(coll) >= (16))){
+return cljs.core.cst$sym$clojure$core_SLASH_hash_DASH_map;
+} else {
+return cljs.core.cst$sym$clojure$core_SLASH_array_DASH_map;
+}
+});
+/**
+ * Flatten a map into a seq of alternate keys and values
+ */
+sci.impl.parser.edamame.syntax_quote.flatten_map = (function sci$impl$parser$edamame$syntax_quote$flatten_map(form){
+var s = cljs.core.seq(form);
+var key_vals = cljs.core.transient$(cljs.core.PersistentVector.EMPTY);
+while(true){
+if(s){
+var e = cljs.core.first(s);
+var G__17373 = cljs.core.next(s);
+var G__17374 = cljs.core.conj_BANG_.cljs$core$IFn$_invoke$arity$2(cljs.core.conj_BANG_.cljs$core$IFn$_invoke$arity$2(key_vals,cljs.core.key(e)),cljs.core.val(e));
+s = G__17373;
+key_vals = G__17374;
+continue;
+} else {
+return cljs.core.seq(cljs.core.persistent_BANG_(key_vals));
+}
+break;
+}
+});
+sci.impl.parser.edamame.syntax_quote.syntax_quote_STAR_ = (function sci$impl$parser$edamame$syntax_quote$syntax_quote_STAR_(p__17375,reader,form){
+var map__17376 = p__17375;
+var map__17376__$1 = (((((!((map__17376 == null))))?(((((map__17376.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__17376.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__17376):map__17376);
+var ctx = map__17376__$1;
+var gensyms = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__17376__$1,cljs.core.cst$kw$gensyms);
+if(cljs.core.special_symbol_QMARK_(form)){
+return (new cljs.core.List(null,cljs.core.cst$sym$quote,(new cljs.core.List(null,form,null,(1),null)),(2),null));
+} else {
+if((form instanceof cljs.core.Symbol)){
+return (new cljs.core.List(null,cljs.core.cst$sym$quote,(new cljs.core.List(null,(function (){var sym_name = cljs.core.name(form);
+if(cljs.core.special_symbol_QMARK_(form)){
+return form;
+} else {
+if(clojure.string.ends_with_QMARK_(sym_name,"#")){
+var temp__5718__auto__ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(cljs.core.deref(gensyms),form);
+if(cljs.core.truth_(temp__5718__auto__)){
+var generated = temp__5718__auto__;
+return generated;
+} else {
+var n = cljs.core.subs.cljs$core$IFn$_invoke$arity$3(sym_name,(0),(((sym_name).length) - (1)));
+var generated = cljs.core.gensym.cljs$core$IFn$_invoke$arity$1([n,"__"].join(''));
+var generated__$1 = cljs.core.symbol.cljs$core$IFn$_invoke$arity$1([cljs.core.name(generated),"__auto__"].join(''));
+cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(gensyms,cljs.core.assoc,form,generated__$1);
+
+return generated__$1;
+}
+} else {
+var f = cljs.core.cst$kw$resolve_DASH_symbol.cljs$core$IFn$_invoke$arity$1(cljs.core.cst$kw$syntax_DASH_quote.cljs$core$IFn$_invoke$arity$1(ctx));
+var fexpr__17378 = (function (){var or__4126__auto__ = f;
+if(cljs.core.truth_(or__4126__auto__)){
+return or__4126__auto__;
+} else {
+return cljs.core.identity;
+}
+})();
+return (fexpr__17378.cljs$core$IFn$_invoke$arity$1 ? fexpr__17378.cljs$core$IFn$_invoke$arity$1(form) : fexpr__17378.call(null,form));
+
+}
+}
+})(),null,(1),null)),(2),null));
+} else {
+if(sci.impl.parser.edamame.syntax_quote.unquote_QMARK_(form)){
+return cljs.core.second(form);
+} else {
+if(sci.impl.parser.edamame.syntax_quote.unquote_splicing_QMARK_(form)){
+throw (new Error("unquote-splice not in list"));
+} else {
+if(cljs.core.coll_QMARK_(form)){
+if((form instanceof cljs.core.IRecord)){
+return form;
+} else {
+if(cljs.core.map_QMARK_(form)){
+return sci.impl.parser.edamame.syntax_quote.syntax_quote_coll(ctx,reader,sci.impl.parser.edamame.syntax_quote.map_func(form),sci.impl.parser.edamame.syntax_quote.flatten_map(form));
+} else {
+if(cljs.core.vector_QMARK_(form)){
+return (new cljs.core.List(null,cljs.core.cst$sym$clojure$core_SLASH_vec,(new cljs.core.List(null,sci.impl.parser.edamame.syntax_quote.syntax_quote_coll(ctx,reader,null,form),null,(1),null)),(2),null));
+} else {
+if(cljs.core.set_QMARK_(form)){
+return sci.impl.parser.edamame.syntax_quote.syntax_quote_coll(ctx,reader,cljs.core.cst$sym$clojure$core_SLASH_hash_DASH_set,form);
+} else {
+if(((cljs.core.seq_QMARK_(form)) || (cljs.core.list_QMARK_(form)))){
+var seq = cljs.core.seq(form);
+if(seq){
+return sci.impl.parser.edamame.syntax_quote.syntax_quote_coll(ctx,reader,null,seq);
+} else {
+return cljs.core.list(cljs.core.cst$sym$clojure$core_SLASH_list);
+}
+} else {
+throw (new Error("Unknown Collection type"));
+
+}
+}
+}
+}
+}
+} else {
+if((((form instanceof cljs.core.Keyword)) || (typeof form === 'number') || (cljs.core.char_QMARK_(form)) || (typeof form === 'string') || ((form == null)) || (cljs.core.boolean_QMARK_(form)) || (cljs.core.regexp_QMARK_(form)))){
+return form;
+} else {
+return (new cljs.core.List(null,cljs.core.cst$sym$quote,(new cljs.core.List(null,form,null,(1),null)),(2),null));
+
+}
+}
+}
+}
+}
+}
+});
+sci.impl.parser.edamame.syntax_quote.add_meta = (function sci$impl$parser$edamame$syntax_quote$add_meta(ctx,reader,form,ret){
+if((((((!((form == null))))?(((((form.cljs$lang$protocol_mask$partition0$ & (262144))) || ((cljs.core.PROTOCOL_SENTINEL === form.cljs$core$IWithMeta$))))?true:false):false))?cljs.core.seq(cljs.core.dissoc.cljs$core$IFn$_invoke$arity$variadic(cljs.core.meta(form),cljs.core.cst$kw$line,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.cst$kw$column,cljs.core.cst$kw$end_DASH_line,cljs.core.cst$kw$end_DASH_column], 0))):false)){
+return (new cljs.core.List(null,cljs.core.cst$sym$cljs$core_SLASH_with_DASH_meta,(new cljs.core.List(null,ret,(new cljs.core.List(null,sci.impl.parser.edamame.syntax_quote.syntax_quote_STAR_(ctx,reader,cljs.core.meta(form)),null,(1),null)),(2),null)),(3),null));
+} else {
+return ret;
+}
+});
+sci.impl.parser.edamame.syntax_quote.syntax_quote = (function sci$impl$parser$edamame$syntax_quote$syntax_quote(ctx,reader,form){
+var ret = sci.impl.parser.edamame.syntax_quote.syntax_quote_STAR_(ctx,reader,form);
+return sci.impl.parser.edamame.syntax_quote.add_meta(ctx,reader,form,ret);
+});

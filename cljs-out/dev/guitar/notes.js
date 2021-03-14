@@ -15,16 +15,16 @@ guitar.notes.shift_n = (function guitar$notes$shift_n(at,coll){
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.concat,cljs.core.reverse(cljs.core.split_at(at,coll)));
 });
 guitar.notes.index_of = (function guitar$notes$index_of(coll,el){
-return cljs.core.ffirst(cljs.core.drop_while.cljs$core$IFn$_invoke$arity$2((function (p1__13831_SHARP_){
-return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(el,cljs.core.second(p1__13831_SHARP_));
+return cljs.core.ffirst(cljs.core.drop_while.cljs$core$IFn$_invoke$arity$2((function (p1__13703_SHARP_){
+return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(el,cljs.core.second(p1__13703_SHARP_));
 }),cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2(cljs.core.vector,coll)));
 });
 /**
  * Finds the notes for the type of scale, starting from the root.
  */
 guitar.notes.scale_notes = (function guitar$notes$scale_notes(var_args){
-var G__13833 = arguments.length;
-switch (G__13833) {
+var G__13705 = arguments.length;
+switch (G__13705) {
 case 2:
 return guitar.notes.scale_notes.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -44,8 +44,8 @@ return guitar.notes.scale_notes.cljs$core$IFn$_invoke$arity$3(root,scale,cljs.co
 }));
 
 (guitar.notes.scale_notes.cljs$core$IFn$_invoke$arity$3 = (function (root,scale,mode){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.nth,cljs.core.cycle(guitar.notes.notes)),cljs.core.drop_last.cljs$core$IFn$_invoke$arity$1(cljs.core.reductions.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [guitar.notes.notes.indexOf(root)], null),cljs.core.map.cljs$core$IFn$_invoke$arity$2(parseInt,cljs.core.seq(guitar.notes.shift_n(guitar.notes.index_of(guitar.notes.modes,mode),(function (){var G__13834 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,guitar.notes.scales);
-return (scale.cljs$core$IFn$_invoke$arity$1 ? scale.cljs$core$IFn$_invoke$arity$1(G__13834) : scale.call(null,G__13834));
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.nth,cljs.core.cycle(guitar.notes.notes)),cljs.core.drop_last.cljs$core$IFn$_invoke$arity$1(cljs.core.reductions.cljs$core$IFn$_invoke$arity$2(cljs.core._PLUS_,cljs.core.concat.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [guitar.notes.notes.indexOf(root)], null),cljs.core.map.cljs$core$IFn$_invoke$arity$2(parseInt,cljs.core.seq(guitar.notes.shift_n(guitar.notes.index_of(guitar.notes.modes,mode),(function (){var G__13706 = cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentArrayMap.EMPTY,guitar.notes.scales);
+return (scale.cljs$core$IFn$_invoke$arity$1 ? scale.cljs$core$IFn$_invoke$arity$1(G__13706) : scale.call(null,G__13706));
 })())))))));
 }));
 
@@ -73,15 +73,15 @@ return [(cljs.core.truth_((guitar.notes.note_vowel_QMARK_.cljs$core$IFn$_invoke$
  * Suffixes a number with its ordinal.
  */
 guitar.notes.ordinal_suffixed_number = (function guitar$notes$ordinal_suffixed_number(n){
-return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(n),(function (){var pred__13839 = cljs.core._EQ_;
-var expr__13840 = (cljs.core.last(cljs.core.str.cljs$core$IFn$_invoke$arity$1(n)) | (0));
-if(cljs.core.truth_((pred__13839.cljs$core$IFn$_invoke$arity$2 ? pred__13839.cljs$core$IFn$_invoke$arity$2((1),expr__13840) : pred__13839.call(null,(1),expr__13840)))){
+return [cljs.core.str.cljs$core$IFn$_invoke$arity$1(n),(function (){var pred__13711 = cljs.core._EQ_;
+var expr__13712 = (cljs.core.last(cljs.core.str.cljs$core$IFn$_invoke$arity$1(n)) | (0));
+if(cljs.core.truth_((pred__13711.cljs$core$IFn$_invoke$arity$2 ? pred__13711.cljs$core$IFn$_invoke$arity$2((1),expr__13712) : pred__13711.call(null,(1),expr__13712)))){
 return "st";
 } else {
-if(cljs.core.truth_((pred__13839.cljs$core$IFn$_invoke$arity$2 ? pred__13839.cljs$core$IFn$_invoke$arity$2((2),expr__13840) : pred__13839.call(null,(2),expr__13840)))){
+if(cljs.core.truth_((pred__13711.cljs$core$IFn$_invoke$arity$2 ? pred__13711.cljs$core$IFn$_invoke$arity$2((2),expr__13712) : pred__13711.call(null,(2),expr__13712)))){
 return "nd";
 } else {
-if(cljs.core.truth_((pred__13839.cljs$core$IFn$_invoke$arity$2 ? pred__13839.cljs$core$IFn$_invoke$arity$2((3),expr__13840) : pred__13839.call(null,(3),expr__13840)))){
+if(cljs.core.truth_((pred__13711.cljs$core$IFn$_invoke$arity$2 ? pred__13711.cljs$core$IFn$_invoke$arity$2((3),expr__13712) : pred__13711.call(null,(3),expr__13712)))){
 return "rd";
 } else {
 return "th";

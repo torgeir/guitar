@@ -3,6 +3,6 @@ goog.provide('guitar.sets');
 goog.require('cljs.core');
 goog.require('cljs.core.constants');
 guitar.sets.toggle_in = (function guitar$sets$toggle_in(el,a_set){
-var fexpr__13703 = (cljs.core.truth_((a_set.cljs$core$IFn$_invoke$arity$1 ? a_set.cljs$core$IFn$_invoke$arity$1(el) : a_set.call(null,el)))?cljs.core.disj:cljs.core.conj);
-return (fexpr__13703.cljs$core$IFn$_invoke$arity$2 ? fexpr__13703.cljs$core$IFn$_invoke$arity$2(a_set,el) : fexpr__13703.call(null,a_set,el));
+var fexpr__38369 = (cljs.core.truth_((a_set.cljs$core$IFn$_invoke$arity$1 ? a_set.cljs$core$IFn$_invoke$arity$1(el) : a_set.call(null,el)))?cljs.core.disj:cljs.core.conj);
+return (fexpr__38369.cljs$core$IFn$_invoke$arity$2 ? fexpr__38369.cljs$core$IFn$_invoke$arity$2(a_set,el) : fexpr__38369.call(null,a_set,el));
 });
