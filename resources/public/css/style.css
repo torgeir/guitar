@@ -36,7 +36,7 @@
   --guitar-string: rgba(255, 255, 255, 5%);
   --guitar-shadow: #000;
   --guitar-fret: rgba(0, 0, 0, 15%);
-  --guitar-fretboard-dot: rgba(0, 0, 0, 50%);
+  --guitar-fretboard-dot: rgba(255, 255, 255, 5%);
   --note-hl-0: var(--color-dark-aqua);
   --note-hl-1: var(--color-dark-pink);
   --note-hl-2: var(--color-dark-bittersweet);
@@ -93,7 +93,7 @@ body {
   background-color: var(--guitar-bg);
   overflow-x: auto;
   flex-wrap: nowrap;
-  min-width: 35rem;
+  min-width: 50rem;
 }
 
 .guitar--faded {
@@ -143,11 +143,10 @@ body {
 .guitar-fret {
   position: relative;
   display: flex;
-  align-self: stretch;
+  justify-content: space-evenly;
   margin: 0 1px;
   height: 2rem;
   width: 100%;
-  text-align: center;
   font-family: Helvetica;
   font-size: 0.7rem;
   font-weight: bold;
@@ -159,13 +158,26 @@ body {
   transition: all 0.1s;
 }
 
+/* hide non-frontmost note names */
+.scale-note:not(:last-child):after {
+  visibility: hidden;
+}
+
 .scale-note {
   position: relative;
   display: block;
-  width: 100%;
   text-align: center;
   line-height: 2rem;
   cursor: pointer;
+}
+
+.scale-note ~ .scale-note {
+  margin-left: -20%;
+}
+.scale-note:first-child:before,
+.scale-note ~ .scale-note:before {
+  border: 1px solid rgba(0, 0, 0, 100%);
+  box-shadow: -1px 0px 5px 2px rgba(0, 0, 0, 50%);
 }
 
 .guitar-fret:hover .scale-note:before {
@@ -182,7 +194,7 @@ body {
   content: " ";
   position: absolute;
   top: calc(50% - 0.78rem);
-  right: calc(50% - 0.7rem);
+  right: calc(50% - 0.7rem - 1px /* .scale-note border */);
   border-radius: 20rem;
   width: 1.4rem;
   height: 1.4rem;
