@@ -147,6 +147,7 @@
         "notes")
       (rum/with-key (scale-buttons state scales scale) "scales")
       (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
+      [:div.buttons (button {:on-click #(swap! state assoc :color (rand-int 8))} "Colorize")]
       [:div.buttons (button {:class    "button--square"
                              :on-click #(on-add-click key)} "+")]]
      [:div.column-col
