@@ -2,7 +2,7 @@
   (:require
    [guitar.notes :refer [scales scale-notes index-of notes modes ordinal-suffixed-number]]
    [guitar.patterns :refer [scale-pattern]]
-   [guitar.buttons :refer [buttons buttons-multi]]
+   [guitar.buttons :refer [button buttons buttons-multi]]
    [guitar.guitar :refer [guitar]]
    [guitar.math :refer [diff]]
    [guitar.sets :refer [toggle-in]]
@@ -24,15 +24,9 @@
 
 
 (def state
-  (let [k    (scale-key)
-        kk   (scale-key)
-        kkk  (scale-key)
-        kkkk (scale-key)]
-    {:scales [k kk kkk kkkk]
-     k       default-state
-     kk      (assoc default-state :mode :dorian :color 1)
-     kkk     (assoc default-state :mode :phrygian :color 3)
-     kkkk    (assoc default-state :mode :phrygian :color 4)}))
+  (as-> (scale-key) k
+    {:scales [k]
+     k       default-state}))
 
 
 (defn update-scales [state f]
@@ -92,6 +86,14 @@
     notes))
 
 
+(defn fret-button [state op fret text]
+  (button
+    {:value    fret
+     :class    "button--square"
+     :on-click #(swap! state update :start-fret op %)}
+    text))
+
+
 (defn highlight-buttons [state in-scale scale-highlight]
   (buttons-multi
     (->> in-scale (count) (inc) (range 1))
@@ -120,11 +122,6 @@
     (map distinct-non-highlighted)))
 
 
-(comment
-  ;; cleanup guitar.cljs
-  )
-
-
 (defn remove-overshooting-highlights [in-scale highlight]
   (remove #(>= (dec %) (count in-scale)) highlight))
 
@@ -135,13 +132,12 @@
         in-scale        (scale-notes root scale mode)
         scale-highlight (set (remove-overshooting-highlights in-scale highlight))
         scale-modes     (take (count in-scale) modes)]
-    (rum/fragment
-      [:div] ; bug?
-      [:div.buttons
-       (buttons {:on-click #(on-sub-click key)} "-")
-       (buttons {:on-click #(on-add-click key)} "+")]
-      (rum/with-key
-        (mode-buttons state scale-modes mode) "modes")
+    [:div.column
+     [:div.column-col (fret-button state dec start-fret "❮")]
+     [:div
+      [:div.buttons (button {:class    "button--square"
+                             :on-click #(on-sub-click key)} "-")]
+      (rum/with-key (mode-buttons state scale-modes mode) "modes")
       (rum/with-key
         (note-buttons state root #(find-closest-fret-index
                                     (last strings-notes)
@@ -149,10 +145,12 @@
                                     start-fret
                                     %))
         "notes")
-      (rum/with-key
-        (scale-buttons state scales scale) "scales")
-      (rum/with-key
-        (highlight-buttons state in-scale scale-highlight) "highlights"))))
+      (rum/with-key (scale-buttons state scales scale) "scales")
+      (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
+      [:div.buttons (button {:class    "button--square"
+                             :on-click #(on-add-click key)} "+")]]
+     [:div.column-col
+      (rum/with-key (fret-button state inc start-fret "❯") "fret")]]))
 
 
 (defn active-scales [state]
@@ -203,6 +201,20 @@
     (vec (concat l [n] r))))
 
 
+(defn add-scale
+  ([state new-key]
+   (swap! state assoc
+          :scales (conj (:scale @state) new-key)
+          new-key default-state))
+  ([state new-key before-key]
+   (swap! state assoc
+          :scales (insert-at
+                    (:scales @state)
+                    (index-of (:scales @state) before-key)
+                    new-key)
+          new-key (before-key @state))))
+
+
 (rum/defc visualize-scales < rum/reactive [strings-notes state]
   (rum/fragment
     [:div]
@@ -213,7 +225,10 @@
           notes          (combined-notes scale-data)]
       (guitar {:class "guitar--faded"}
               (fn [note]
-                (reset! state (update-scales @state #(assoc % :start-fret (:fret note)))))
+                (reset! state
+                        (update-scales
+                          @state
+                          #(assoc % :start-fret (:fret note)))))
               notes))
     (->> (:scales (rum/react state))
       (map (juxt identity (partial rum/cursor state)))
@@ -226,14 +241,10 @@
                         :scales (fn [s]
                                   (vec (filter #(not= key %) s)))))
                (fn [before-key]
-                 (let [new-key (scale-key)]
-                   (swap! state assoc
-                          :scales (insert-at
-                                    (:scales @state)
-                                    (index-of (:scales @state) before-key)
-                                    new-key)
-                          new-key (before-key @state))) "+")
-               strings-notes cursor)))
-      (map-indexed #(rum/with-key %2 %1)))))
-
-
+                 (add-scale state (scale-key) before-key) "+")
+               strings-notes
+               cursor)))
+      (map-indexed #(rum/with-key %2 %1)))
+    (when (empty? (:scales (rum/react state)))
+      [:.buttons
+       (button {:on-click #(add-scale state (scale-key))} "+")])))

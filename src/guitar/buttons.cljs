@@ -5,7 +5,12 @@
 
 (rum/defc button [props value]
   [:button.button
-   {:class (when (= (:value props) value) "button--selected")
+   {:class (str
+             (or (:class props) " ")
+             " "
+             (when
+                 (= (:value props) value)
+               "button--selected"))
     :on-click #((:on-click props) value)}
    value])
 

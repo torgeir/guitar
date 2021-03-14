@@ -6,14 +6,12 @@
 
 (rum/defc scale-note
   "A visible note on a fret."
-  [note]
-  (when (seq note)
-    (let [{:keys [note hl]} note]
-      [:div.scale-note
-       {:data-note (trim note)
-        :class     (when hl
-                     (str "scale-note--hl scale-note--hl-" hl))}
-       note])))
+  [{:keys [note hl]}]
+  [:div.scale-note
+   {:data-note (trim note)
+    :class     (when hl
+                 (str "scale-note--hl scale-note--hl-" hl))}
+   note])
 
 
 (rum/defc guitar-fret

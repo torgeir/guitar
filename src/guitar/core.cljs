@@ -31,15 +31,16 @@
 
 
 (add-watch
- state
- :mode
- (fn [_ _ _ {:keys [mode]}]
-   (location-hash (name mode))))
+  state
+  :mode
+  (fn [_ _ _ {:keys [mode]}]
+    (location-hash (name mode))))
+
 
 (defn cycle-theme [v]
   (condp = v
     :light :dark
-    :dark :light
+    :dark  :light
     :dark))
 
 

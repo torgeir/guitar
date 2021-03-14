@@ -93,7 +93,7 @@ body {
   background-color: var(--guitar-bg);
   overflow-x: auto;
   flex-wrap: nowrap;
-  min-width: 50rem;
+  min-width: 48rem;
 }
 
 .guitar--faded {
@@ -270,23 +270,22 @@ body {
 .buttons {
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 0.4rem;
-  margin: 1rem 0.4rem;
-  /* justify-content: space-evenly; */
+  grid-column-gap: 0.25rem;
+  margin: 0.25rem 0;
 }
 
 .button {
   background: transparent;
   background-color: var(--button-bg);
   outline: none;
-  border-radius: 1rem;
+  border-radius: 0.3rem;
   border: 1px transparent solid;
   color: var(--font-faded);
   cursor: pointer;
   font-size: 0.8rem;
   line-height: 1.5rem;
-  min-width: 2.2rem;
-  padding: 0.2rem 0.5rem;
+  min-width: 1rem;
+  padding: 0.1rem 0;
   text-transform: capitalize;
   user-select: none;
   box-shadow: none;
@@ -296,7 +295,12 @@ body {
   background-color: var(--button-fg);
   border-color: var(--button-border);
 }
+.button--square {
+  border-radius: 0;
+  line-height: 0.8rem;
+}
 .button--huge {
+  margin: 1rem;
   font-size: 1rem;
   line-height: 2rem;
 }
@@ -332,4 +336,19 @@ body {
 .bmc-btn-container .bmc-btn:hover {
   filter: grayscale(0%);
   filter: brightness(100%);
+}
+
+.column {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 1rem;
+  grid-template-columns:
+    minmax(1rem, 1rem)
+    1fr
+    minmax(1rem, 1rem);
+}
+.column-col {
+  display: grid;
+  align-self: stretch;
+  padding: 0.25rem 0;
 }
