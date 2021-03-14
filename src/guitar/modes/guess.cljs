@@ -39,29 +39,29 @@
   "A mode to guess where a note is located on a given string."
   [strings-notes state]
   (let [reset-state #(reset! state {:locate (rand-note) :attempt nil})
-        attempt (:attempt (rum/react state))
-        locate (:locate (rum/react state))]
+        attempt     (:attempt (rum/react state))
+        locate      (:locate (rum/react state))]
     [:div
      (guitar
-      {}
-      #(if attempt
-         (reset-state)
-         (swap! state assoc :attempt %))
-      (->> strings-notes
-           (map (partial map (if-not attempt conceal-note identity)))
-           (map-indexed (fn [string string-notes]
-                          (map-indexed
-                           (fn [fret note]
-                             (cond
+       {}
+       #(if attempt
+          (reset-state)
+          (swap! state assoc :attempt %))
+       (->> strings-notes
+         (map (partial map (if-not attempt conceal-note identity)))
+         (map-indexed (fn [string string-notes]
+                        (map-indexed
+                          (fn [fret note]
+                            [(cond
                                (and ((:frets locate) (:fret attempt))
                                     (= (:note note) (:note locate))
                                     (= string (:string attempt) (:string locate))) (assoc note :hl 5)
                                (and (= string (:string locate))
-                                    (= (:note note) (:note locate))) (assoc note :hl 1)
+                                    (= (:note note) (:note locate)))               (assoc note :hl 1)
                                (and (= fret (:fret attempt))
-                                    (= string (:string attempt))) (assoc note :hl 0)
-                               :else note))
-                           string-notes)))))
+                                    (= string (:string attempt)))                  (assoc note :hl 0)
+                               :else                                               note)])
+                          string-notes)))))
      [:h3.center-text
       (locate-note-text (:locate @state))
       (if attempt
