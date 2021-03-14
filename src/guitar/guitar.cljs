@@ -45,4 +45,3 @@
     (->> strings-notes
          (map-indexed (partial guitar-string on-fret-click))
          (map-indexed #(rum/with-key %2 %1)))]])
-

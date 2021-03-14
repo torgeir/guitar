@@ -62,8 +62,8 @@
       [:button.button.button--huge
        {:on-click #(swap! state assoc :mode :guess)} "Guess notes"]]
      ((condp = mode
-        :guess guess/guess-fretboard-notes
-        :explore explore/visualize-scale)
+        :guess   guess/guess-fretboard-notes
+        :explore explore/visualize-scales)
       strings-notes
       mode-state)
      (comment [:button
