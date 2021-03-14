@@ -10,8 +10,8 @@ https://torgeir.github.io/guitar/
 - [x] visualize scales on the neck
 - [x] visualize different positions of scales on the neck
 - [x] support a variety of scales
-- [ ] show what notes selected scales have in common
-- [x] visualize root, thirds, fifths, sevents in each position of each scale 
+- [x] show what notes selected scales have in common
+- [x] visualize root, thirds, fifths, sevents in each position of each scale
 - [ ] visualize ninths, thirteens in each position of each scale
 - [ ] an easy to use drum machine with support for more interesting measures than 4/4
 
