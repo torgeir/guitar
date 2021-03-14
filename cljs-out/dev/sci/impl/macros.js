@@ -2,20 +2,20 @@
 goog.provide('sci.impl.macros');
 goog.require('cljs.core');
 goog.require('cljs.core.constants');
-var ret__4785__auto___16702 = (function (){
+var ret__4785__auto___13730 = (function (){
 /**
  * Private. deftime macro from https://github.com/cgrand/macrovich
  */
 sci.impl.macros.deftime = (function sci$impl$macros$deftime(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___16703 = arguments.length;
-var i__4737__auto___16704 = (0);
+var len__4736__auto___13731 = arguments.length;
+var i__4737__auto___13732 = (0);
 while(true){
-if((i__4737__auto___16704 < len__4736__auto___16703)){
-args__4742__auto__.push((arguments[i__4737__auto___16704]));
+if((i__4737__auto___13732 < len__4736__auto___13731)){
+args__4742__auto__.push((arguments[i__4737__auto___13732]));
 
-var G__16705 = (i__4737__auto___16704 + (1));
-i__4737__auto___16704 = G__16705;
+var G__13733 = (i__4737__auto___13732 + (1));
+i__4737__auto___13732 = G__13733;
 continue;
 } else {
 }
@@ -50,13 +50,13 @@ return null;
 (sci.impl.macros.deftime.cljs$lang$maxFixedArity = (2));
 
 /** @this {Function} */
-(sci.impl.macros.deftime.cljs$lang$applyTo = (function (seq16699){
-var G__16700 = cljs.core.first(seq16699);
-var seq16699__$1 = cljs.core.next(seq16699);
-var G__16701 = cljs.core.first(seq16699__$1);
-var seq16699__$2 = cljs.core.next(seq16699__$1);
+(sci.impl.macros.deftime.cljs$lang$applyTo = (function (seq13727){
+var G__13728 = cljs.core.first(seq13727);
+var seq13727__$1 = cljs.core.next(seq13727);
+var G__13729 = cljs.core.first(seq13727__$1);
+var seq13727__$2 = cljs.core.next(seq13727__$1);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__16700,G__16701,seq16699__$2);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__13728,G__13729,seq13727__$2);
 }));
 
 return null;

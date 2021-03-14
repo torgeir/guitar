@@ -3,6 +3,6 @@ goog.provide('guitar.math');
 goog.require('cljs.core');
 goog.require('cljs.core.constants');
 guitar.math.diff = (function guitar$math$diff(n,m){
-var G__38354 = (n - m);
-return Math.abs(G__38354);
+var G__38414 = (n - m);
+return Math.abs(G__38414);
 });

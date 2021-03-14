@@ -100,12 +100,12 @@ return next_index;
 return current_index;
 }
 } else {
-var G__30998 = (current_index + row_or_direction__$1);
-var G__30999 = current_index;
-var G__31000 = (tries + (1));
-current_index = G__30998;
-previous_index = G__30999;
-tries = G__31000;
+var G__31058 = (current_index + row_or_direction__$1);
+var G__31059 = current_index;
+var G__31060 = (tries + (1));
+current_index = G__31058;
+previous_index = G__31059;
+tries = G__31060;
 continue;
 }
 
@@ -150,8 +150,8 @@ return n;
  *   removed from it (or this routine would do that for you).
  */
 zprint.range.find_row = (function zprint$range$find_row(var_args){
-var G__31002 = arguments.length;
-switch (G__31002) {
+var G__31062 = arguments.length;
+switch (G__31062) {
 case 4:
 return zprint.range.find_row.cljs$core$IFn$_invoke$arity$4((arguments[(0)]),(arguments[(1)]),(arguments[(2)]),(arguments[(3)]));
 
@@ -187,16 +187,16 @@ return maybe_index;
 if(((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(maybe_index,cljs.core.cst$kw$before_DASH_beginning)) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(maybe_index,cljs.core.cst$kw$beyond_DASH_end)))){
 return maybe_index;
 } else {
-var G__31010 = (function (){var G__31007 = row_vec_index;
-var G__31008 = ((zprint.range.abs((row_vec_index - previous_index)) / (2)) | (0));
-var fexpr__31006 = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(maybe_index,cljs.core.cst$kw$before))?cljs.core._:cljs.core._PLUS_);
-return (fexpr__31006.cljs$core$IFn$_invoke$arity$2 ? fexpr__31006.cljs$core$IFn$_invoke$arity$2(G__31007,G__31008) : fexpr__31006.call(null,G__31007,G__31008));
+var G__31070 = (function (){var G__31067 = row_vec_index;
+var G__31068 = ((zprint.range.abs((row_vec_index - previous_index)) / (2)) | (0));
+var fexpr__31066 = ((cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(maybe_index,cljs.core.cst$kw$before))?cljs.core._:cljs.core._PLUS_);
+return (fexpr__31066.cljs$core$IFn$_invoke$arity$2 ? fexpr__31066.cljs$core$IFn$_invoke$arity$2(G__31067,G__31068) : fexpr__31066.call(null,G__31067,G__31068));
 })();
-var G__31011 = row_vec_index;
-var G__31012 = (tries + (1));
-row_vec_index = G__31010;
-previous_index = G__31011;
-tries = G__31012;
+var G__31071 = row_vec_index;
+var G__31072 = (tries + (1));
+row_vec_index = G__31070;
+previous_index = G__31071;
+tries = G__31072;
 continue;
 
 }
@@ -225,8 +225,8 @@ var line = cljs.core.nth.cljs$core$IFn$_invoke$arity$2(line_vec,idx);
 if((((!(cljs.core.empty_QMARK_(clojure.string.trim(line))))) || ((idx >= max_idx)))){
 return idx;
 } else {
-var G__31013 = (idx + (1));
-idx = G__31013;
+var G__31073 = (idx + (1));
+idx = G__31073;
 continue;
 }
 break;
@@ -247,8 +247,8 @@ return idx;
 if((idx === (0))){
 return (-1);
 } else {
-var G__31014 = (idx - (1));
-idx = G__31014;
+var G__31074 = (idx - (1));
+idx = G__31074;
 continue;
 
 }
@@ -278,7 +278,7 @@ var end__$2 = (((end__$1 < start__$1))?start__$1:end__$1);
 var row_vec = (function (){try{return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(cljs.core.meta,edamame.core.parse_string_all.cljs$core$IFn$_invoke$arity$2(filestring,new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$all,true,cljs.core.cst$kw$features,new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$clj,null,cljs.core.cst$kw$cljs,null], null), null),cljs.core.cst$kw$read_DASH_cond,(function (expr){
 return cljs.core.with_meta(cljs.core.PersistentVector.EMPTY,cljs.core.meta(expr));
 }),cljs.core.cst$kw$auto_DASH_resolve,new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$current,cljs.core._STAR_ns_STAR_], null)], null)));
-}catch (e31015){var e = e31015;
+}catch (e31075){var e = e31075;
 return null;
 }})();
 var row_vec__$1 = (cljs.core.truth_(row_vec)?cljs.core.into.cljs$core$IFn$_invoke$arity$2(cljs.core.PersistentVector.EMPTY,cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,row_vec)):null);

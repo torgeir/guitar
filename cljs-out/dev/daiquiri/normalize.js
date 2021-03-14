@@ -48,8 +48,8 @@ return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMP
 if((class$ instanceof cljs.core.Keyword)){
 return new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [daiquiri.normalize.class_name(class$)], null);
 } else {
-if(((((cljs.core.set_QMARK_(class$)) || (cljs.core.sequential_QMARK_(class$)))) && (cljs.core.every_QMARK_((function (p1__13884_SHARP_){
-return (((p1__13884_SHARP_ instanceof cljs.core.Keyword)) || (typeof p1__13884_SHARP_ === 'string'));
+if(((((cljs.core.set_QMARK_(class$)) || (cljs.core.sequential_QMARK_(class$)))) && (cljs.core.every_QMARK_((function (p1__24509_SHARP_){
+return (((p1__24509_SHARP_ instanceof cljs.core.Keyword)) || (typeof p1__24509_SHARP_ === 'string'));
 }),class$)))){
 return cljs.core.mapv.cljs$core$IFn$_invoke$arity$2(daiquiri.normalize.class_name,class$);
 } else {
@@ -71,11 +71,11 @@ return class$;
  * Normalize the `attrs` of an element.
  */
 daiquiri.normalize.attributes = (function daiquiri$normalize$attributes(attrs){
-var G__13885 = attrs;
+var G__24510 = attrs;
 if(cljs.core.truth_(cljs.core.cst$kw$class.cljs$core$IFn$_invoke$arity$1(attrs))){
-return cljs.core.update.cljs$core$IFn$_invoke$arity$3(G__13885,cljs.core.cst$kw$class,daiquiri.normalize.normalize_class);
+return cljs.core.update.cljs$core$IFn$_invoke$arity$3(G__24510,cljs.core.cst$kw$class,daiquiri.normalize.normalize_class);
 } else {
-return G__13885;
+return G__24510;
 }
 });
 /**
@@ -83,14 +83,14 @@ return G__13885;
  */
 daiquiri.normalize.merge_with_class = (function daiquiri$normalize$merge_with_class(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___13888 = arguments.length;
-var i__4737__auto___13889 = (0);
+var len__4736__auto___24513 = arguments.length;
+var i__4737__auto___24514 = (0);
 while(true){
-if((i__4737__auto___13889 < len__4736__auto___13888)){
-args__4742__auto__.push((arguments[i__4737__auto___13889]));
+if((i__4737__auto___24514 < len__4736__auto___24513)){
+args__4742__auto__.push((arguments[i__4737__auto___24514]));
 
-var G__13890 = (i__4737__auto___13889 + (1));
-i__4737__auto___13889 = G__13890;
+var G__24515 = (i__4737__auto___24514 + (1));
+i__4737__auto___24514 = G__24515;
 continue;
 } else {
 }
@@ -105,11 +105,11 @@ return daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(
 var maps__$1 = cljs.core.map.cljs$core$IFn$_invoke$arity$2(daiquiri.normalize.attributes,maps);
 var classes = cljs.core.mapcat.cljs$core$IFn$_invoke$arity$variadic(cljs.core.cst$kw$class,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([maps__$1], 0));
 if(cljs.core.seq(maps__$1)){
-var G__13887 = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.into,cljs.core.PersistentArrayMap.EMPTY,maps__$1);
+var G__24512 = cljs.core.reduce.cljs$core$IFn$_invoke$arity$3(cljs.core.into,cljs.core.PersistentArrayMap.EMPTY,maps__$1);
 if((!(cljs.core.empty_QMARK_(classes)))){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__13887,cljs.core.cst$kw$class,cljs.core.vec(classes));
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__24512,cljs.core.cst$kw$class,cljs.core.vec(classes));
 } else {
-return G__13887;
+return G__24512;
 }
 } else {
 return null;
@@ -119,9 +119,9 @@ return null;
 (daiquiri.normalize.merge_with_class.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(daiquiri.normalize.merge_with_class.cljs$lang$applyTo = (function (seq13886){
+(daiquiri.normalize.merge_with_class.cljs$lang$applyTo = (function (seq24511){
 var self__4724__auto__ = this;
-return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq13886));
+return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq24511));
 }));
 
 /**
@@ -140,19 +140,19 @@ return null;
  */
 daiquiri.normalize.match_tag = (function daiquiri$normalize$match_tag(s){
 var matches = cljs.core.re_seq(/[#.]?[^#.]+/,cljs.core.name(s));
-var vec__13893 = ((cljs.core.empty_QMARK_(matches))?(function(){throw cljs.core.ex_info.cljs$core$IFn$_invoke$arity$2(["Can't match CSS tag: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(s)].join(''),new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$tag,s], null))})():((cljs.core.contains_QMARK_(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, ["#",null,".",null], null), null),cljs.core.ffirst(matches)))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["div",matches], null):new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.first(matches),cljs.core.rest(matches)], null)
+var vec__24518 = ((cljs.core.empty_QMARK_(matches))?(function(){throw cljs.core.ex_info.cljs$core$IFn$_invoke$arity$2(["Can't match CSS tag: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(s)].join(''),new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$tag,s], null))})():((cljs.core.contains_QMARK_(new cljs.core.PersistentHashSet(null, new cljs.core.PersistentArrayMap(null, 2, ["#",null,".",null], null), null),cljs.core.ffirst(matches)))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["div",matches], null):new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.first(matches),cljs.core.rest(matches)], null)
 ));
-var tag_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13893,(0),null);
-var names = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13893,(1),null);
-return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [tag_name,daiquiri.normalize.strip_css(cljs.core.some((function (p1__13891_SHARP_){
-if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("#",cljs.core.first(p1__13891_SHARP_))){
-return p1__13891_SHARP_;
+var tag_name = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__24518,(0),null);
+var names = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__24518,(1),null);
+return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [tag_name,daiquiri.normalize.strip_css(cljs.core.some((function (p1__24516_SHARP_){
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2("#",cljs.core.first(p1__24516_SHARP_))){
+return p1__24516_SHARP_;
 } else {
 return null;
 }
-}),names)),cljs.core.into.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentVector.EMPTY,cljs.core.keep.cljs$core$IFn$_invoke$arity$1((function (p1__13892_SHARP_){
-if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(".",cljs.core.first(p1__13892_SHARP_))){
-return daiquiri.normalize.strip_css(p1__13892_SHARP_);
+}),names)),cljs.core.into.cljs$core$IFn$_invoke$arity$3(cljs.core.PersistentVector.EMPTY,cljs.core.keep.cljs$core$IFn$_invoke$arity$1((function (p1__24517_SHARP_){
+if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(".",cljs.core.first(p1__24517_SHARP_))){
+return daiquiri.normalize.strip_css(p1__24517_SHARP_);
 } else {
 return null;
 }
@@ -162,8 +162,8 @@ return null;
  * Normalize the children of a HTML element.
  */
 daiquiri.normalize.children = (function daiquiri$normalize$children(x){
-return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,(((x == null))?cljs.core.List.EMPTY:((typeof x === 'string')?(new cljs.core.List(null,x,null,(1),null)):((daiquiri.util.element_QMARK_(x))?(new cljs.core.List(null,x,null,(1),null)):((((cljs.core.list_QMARK_(x)) && ((cljs.core.first(x) instanceof cljs.core.Symbol))))?(new cljs.core.List(null,x,null,(1),null)):((cljs.core.list_QMARK_(x))?x:((((cljs.core.sequential_QMARK_(x)) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(x),(1))) && (cljs.core.sequential_QMARK_(cljs.core.first(x))) && ((!(typeof cljs.core.first(x) === 'string'))) && ((!(daiquiri.util.element_QMARK_(cljs.core.first(x)))))))?(function (){var G__13896 = cljs.core.first(x);
-return (daiquiri.normalize.children.cljs$core$IFn$_invoke$arity$1 ? daiquiri.normalize.children.cljs$core$IFn$_invoke$arity$1(G__13896) : daiquiri.normalize.children.call(null,G__13896));
+return cljs.core.remove.cljs$core$IFn$_invoke$arity$2(cljs.core.nil_QMARK_,(((x == null))?cljs.core.List.EMPTY:((typeof x === 'string')?(new cljs.core.List(null,x,null,(1),null)):((daiquiri.util.element_QMARK_(x))?(new cljs.core.List(null,x,null,(1),null)):((((cljs.core.list_QMARK_(x)) && ((cljs.core.first(x) instanceof cljs.core.Symbol))))?(new cljs.core.List(null,x,null,(1),null)):((cljs.core.list_QMARK_(x))?x:((((cljs.core.sequential_QMARK_(x)) && (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.count(x),(1))) && (cljs.core.sequential_QMARK_(cljs.core.first(x))) && ((!(typeof cljs.core.first(x) === 'string'))) && ((!(daiquiri.util.element_QMARK_(cljs.core.first(x)))))))?(function (){var G__24521 = cljs.core.first(x);
+return (daiquiri.normalize.children.cljs$core$IFn$_invoke$arity$1 ? daiquiri.normalize.children.cljs$core$IFn$_invoke$arity$1(G__24521) : daiquiri.normalize.children.call(null,G__24521));
 })():((cljs.core.sequential_QMARK_(x))?x:(new cljs.core.List(null,x,null,(1),null))
 ))))))));
 });
@@ -177,28 +177,28 @@ return cljs.core.map_QMARK_(x);
 /**
  * Ensure an element vector is of the form [tag-name attrs content].
  */
-daiquiri.normalize.element = (function daiquiri$normalize$element(p__13897){
-var vec__13898 = p__13897;
-var seq__13899 = cljs.core.seq(vec__13898);
-var first__13900 = cljs.core.first(seq__13899);
-var seq__13899__$1 = cljs.core.next(seq__13899);
-var tag = first__13900;
-var content = seq__13899__$1;
+daiquiri.normalize.element = (function daiquiri$normalize$element(p__24522){
+var vec__24523 = p__24522;
+var seq__24524 = cljs.core.seq(vec__24523);
+var first__24525 = cljs.core.first(seq__24524);
+var seq__24524__$1 = cljs.core.next(seq__24524);
+var tag = first__24525;
+var content = seq__24524__$1;
 if((((tag instanceof cljs.core.Keyword)) || ((tag instanceof cljs.core.Symbol)) || (typeof tag === 'string'))){
 } else {
 throw cljs.core.ex_info.cljs$core$IFn$_invoke$arity$2([cljs.core.str.cljs$core$IFn$_invoke$arity$1(tag)," is not a valid element name."].join(''),new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$tag,tag,cljs.core.cst$kw$content,content], null));
 }
 
-var vec__13901 = daiquiri.normalize.match_tag(tag);
-var tag__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13901,(0),null);
-var id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13901,(1),null);
-var class$ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__13901,(2),null);
-var tag_attrs = (function (){var G__13904 = cljs.core.PersistentArrayMap.EMPTY;
-var G__13904__$1 = (((!(cljs.core.empty_QMARK_(id))))?cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__13904,cljs.core.cst$kw$id,id):G__13904);
+var vec__24526 = daiquiri.normalize.match_tag(tag);
+var tag__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__24526,(0),null);
+var id = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__24526,(1),null);
+var class$ = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__24526,(2),null);
+var tag_attrs = (function (){var G__24529 = cljs.core.PersistentArrayMap.EMPTY;
+var G__24529__$1 = (((!(cljs.core.empty_QMARK_(id))))?cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__24529,cljs.core.cst$kw$id,id):G__24529);
 if((!(cljs.core.empty_QMARK_(class$)))){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__13904__$1,cljs.core.cst$kw$class,class$);
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(G__24529__$1,cljs.core.cst$kw$class,class$);
 } else {
-return G__13904__$1;
+return G__24529__$1;
 }
 })();
 var map_attrs = cljs.core.first(content);
