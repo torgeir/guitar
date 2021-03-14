@@ -181,71 +181,78 @@ var scale_highlight = cljs.core.set(guitar.modes.explore.remove_overshooting_hig
 var scale_modes = cljs.core.take.cljs$core$IFn$_invoke$arity$2(cljs.core.count(in_scale),guitar.notes.modes);
 return daiquiri.core.create_element("div",{'className':"column"},[(function (){var attrs38470 = guitar.modes.explore.fret_button(state,cljs.core.dec,start_fret,"\u276E");
 return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs38470))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["column-col"], null)], null),attrs38470], 0))):{'className':"column-col"}),((cljs.core.map_QMARK_(attrs38470))?null:[daiquiri.interpreter.interpret(attrs38470)]));
-})(),daiquiri.core.create_element("div",null,[(function (){var attrs38475 = (function (){var G__38481 = new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,"button--square",cljs.core.cst$kw$on_DASH_click,(function (){
+})(),daiquiri.core.create_element("div",null,[(function (){var attrs38475 = (function (){var G__38486 = new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,"button--square",cljs.core.cst$kw$on_DASH_click,(function (){
 return (on_sub_click.cljs$core$IFn$_invoke$arity$1 ? on_sub_click.cljs$core$IFn$_invoke$arity$1(key) : on_sub_click.call(null,key));
 })], null);
-var G__38482 = "-";
-return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38481,G__38482) : guitar.buttons.button.call(null,G__38481,G__38482));
+var G__38487 = "-";
+return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38486,G__38487) : guitar.buttons.button.call(null,G__38486,G__38487));
 })();
 return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs38475))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["buttons"], null)], null),attrs38475], 0))):{'className':"buttons"}),((cljs.core.map_QMARK_(attrs38475))?null:[daiquiri.interpreter.interpret(attrs38475)]));
 })(),rum.core.with_key(guitar.modes.explore.mode_buttons(state,scale_modes,mode),"modes"),rum.core.with_key(guitar.modes.explore.note_buttons(state,root,(function (p1__38467_SHARP_){
 return guitar.modes.explore.find_closest_fret_index(cljs.core.last(strings_notes),cljs.core.set(guitar.notes.scale_notes.cljs$core$IFn$_invoke$arity$3(p1__38467_SHARP_,scale,mode)),start_fret,p1__38467_SHARP_);
-})),"notes"),rum.core.with_key(guitar.modes.explore.scale_buttons(state,guitar.notes.scales,scale),"scales"),rum.core.with_key(guitar.modes.explore.highlight_buttons(state,in_scale,scale_highlight),"highlights"),(function (){var attrs38480 = (function (){var G__38483 = new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,"button--square",cljs.core.cst$kw$on_DASH_click,(function (){
-return (on_add_click.cljs$core$IFn$_invoke$arity$1 ? on_add_click.cljs$core$IFn$_invoke$arity$1(key) : on_add_click.call(null,key));
+})),"notes"),rum.core.with_key(guitar.modes.explore.scale_buttons(state,guitar.notes.scales,scale),"scales"),rum.core.with_key(guitar.modes.explore.highlight_buttons(state,in_scale,scale_highlight),"highlights"),(function (){var attrs38480 = (function (){var G__38488 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,(function (){
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$color,cljs.core.rand_int((8)));
 })], null);
-var G__38484 = "+";
-return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38483,G__38484) : guitar.buttons.button.call(null,G__38483,G__38484));
+var G__38489 = "Colorize";
+return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38488,G__38489) : guitar.buttons.button.call(null,G__38488,G__38489));
 })();
 return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs38480))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["buttons"], null)], null),attrs38480], 0))):{'className':"buttons"}),((cljs.core.map_QMARK_(attrs38480))?null:[daiquiri.interpreter.interpret(attrs38480)]));
+})(),(function (){var attrs38485 = (function (){var G__38490 = new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,"button--square",cljs.core.cst$kw$on_DASH_click,(function (){
+return (on_add_click.cljs$core$IFn$_invoke$arity$1 ? on_add_click.cljs$core$IFn$_invoke$arity$1(key) : on_add_click.call(null,key));
+})], null);
+var G__38491 = "+";
+return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38490,G__38491) : guitar.buttons.button.call(null,G__38490,G__38491));
+})();
+return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs38485))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["buttons"], null)], null),attrs38485], 0))):{'className':"buttons"}),((cljs.core.map_QMARK_(attrs38485))?null:[daiquiri.interpreter.interpret(attrs38485)]));
 })()]),daiquiri.core.create_element("div",{'className':"column-col"},[rum.core.with_key(guitar.modes.explore.fret_button(state,cljs.core.inc,start_fret,"\u276F"),"fret")])]);
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.modes.explore/visualize-scale");
 guitar.modes.explore.active_scales = (function guitar$modes$explore$active_scales(state){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__38485_SHARP_){
-return (p1__38485_SHARP_.cljs$core$IFn$_invoke$arity$1 ? p1__38485_SHARP_.cljs$core$IFn$_invoke$arity$1(state) : p1__38485_SHARP_.call(null,state));
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__38492_SHARP_){
+return (p1__38492_SHARP_.cljs$core$IFn$_invoke$arity$1 ? p1__38492_SHARP_.cljs$core$IFn$_invoke$arity$1(state) : p1__38492_SHARP_.call(null,state));
 }),cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(state));
 });
-guitar.modes.explore.notes_of_scale = (function guitar$modes$explore$notes_of_scale(p__38487){
-var vec__38488 = p__38487;
-var start_fret = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38488,(0),null);
-var color = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38488,(1),null);
-var notes = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38488,(2),null);
-var in_scale = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38488,(3),null);
-var highlight = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38488,(4),null);
-var G__38491 = in_scale;
-var G__38492 = start_fret;
-var G__38493 = (function (p1__38486_SHARP_){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__38486_SHARP_,cljs.core.cst$kw$hl,guitar.modes.explore.hl_notes(cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(p1__38486_SHARP_),cljs.core.set(highlight),cljs.core.vec(in_scale),color));
+guitar.modes.explore.notes_of_scale = (function guitar$modes$explore$notes_of_scale(p__38494){
+var vec__38495 = p__38494;
+var start_fret = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(0),null);
+var color = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(1),null);
+var notes = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(2),null);
+var in_scale = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(3),null);
+var highlight = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(4),null);
+var G__38498 = in_scale;
+var G__38499 = start_fret;
+var G__38500 = (function (p1__38493_SHARP_){
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__38493_SHARP_,cljs.core.cst$kw$hl,guitar.modes.explore.hl_notes(cljs.core.cst$kw$note.cljs$core$IFn$_invoke$arity$1(p1__38493_SHARP_),cljs.core.set(highlight),cljs.core.vec(in_scale),color));
 });
-return (notes.cljs$core$IFn$_invoke$arity$3 ? notes.cljs$core$IFn$_invoke$arity$3(G__38491,G__38492,G__38493) : notes.call(null,G__38491,G__38492,G__38493));
+return (notes.cljs$core$IFn$_invoke$arity$3 ? notes.cljs$core$IFn$_invoke$arity$3(G__38498,G__38499,G__38500) : notes.call(null,G__38498,G__38499,G__38500));
 });
 guitar.modes.explore.combined_in_scale = (function guitar$modes$explore$combined_in_scale(current_scales){
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.set,cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.apply,guitar.notes.scale_notes),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.juxt.cljs$core$IFn$_invoke$arity$3(cljs.core.cst$kw$root,cljs.core.cst$kw$scale,cljs.core.cst$kw$mode),current_scales)));
 });
 guitar.modes.explore.combined_highlights = (function guitar$modes$explore$combined_highlights(current_scales,in_scales){
-return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__38494){
-var vec__38495 = p__38494;
-var in_scale = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(0),null);
-var highlight = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38495,(1),null);
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__38501){
+var vec__38502 = p__38501;
+var in_scale = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38502,(0),null);
+var highlight = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38502,(1),null);
 return guitar.modes.explore.remove_overshooting_highlights(in_scale,highlight);
 }),guitar.modes.explore.zip.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([in_scales,cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$highlight,current_scales)], 0)));
 });
 guitar.modes.explore.combined_scale_data = (function guitar$modes$explore$combined_scale_data(current_scales,in_scales,strings_notes,highlights){
-return guitar.modes.explore.zip.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$start_DASH_fret,current_scales),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$color,current_scales),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__38498_SHARP_){
-return cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.patterns.scale_pattern(cljs.core.cst$kw$scale.cljs$core$IFn$_invoke$arity$1(p1__38498_SHARP_)),strings_notes);
+return guitar.modes.explore.zip.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$start_DASH_fret,current_scales),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$color,current_scales),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__38505_SHARP_){
+return cljs.core.partial.cljs$core$IFn$_invoke$arity$2(guitar.patterns.scale_pattern(cljs.core.cst$kw$scale.cljs$core$IFn$_invoke$arity$1(p1__38505_SHARP_)),strings_notes);
 }),current_scales),in_scales,highlights], 0));
 });
 guitar.modes.explore.combined_notes = (function guitar$modes$explore$combined_notes(scale_data){
 return cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.apply,guitar.modes.explore.combine_scales),cljs.core.apply.cljs$core$IFn$_invoke$arity$2(guitar.modes.explore.zip,cljs.core.map.cljs$core$IFn$_invoke$arity$2(guitar.modes.explore.notes_of_scale,scale_data)));
 });
 guitar.modes.explore.insert_at = (function guitar$modes$explore$insert_at(coll,at,n){
-var vec__38499 = cljs.core.split_at(at,coll);
-var l = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38499,(0),null);
-var r = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38499,(1),null);
+var vec__38506 = cljs.core.split_at(at,coll);
+var l = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38506,(0),null);
+var r = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38506,(1),null);
 return cljs.core.vec(cljs.core.concat.cljs$core$IFn$_invoke$arity$variadic(l,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [n], null),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([r], 0)));
 });
 guitar.modes.explore.add_scale = (function guitar$modes$explore$add_scale(var_args){
-var G__38503 = arguments.length;
-switch (G__38503) {
+var G__38510 = arguments.length;
+switch (G__38510) {
 case 2:
 return guitar.modes.explore.add_scale.cljs$core$IFn$_invoke$arity$2((arguments[(0)]),(arguments[(1)]));
 
@@ -265,8 +272,8 @@ return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(state,cljs.core
 }));
 
 (guitar.modes.explore.add_scale.cljs$core$IFn$_invoke$arity$3 = (function (state,new_key,before_key){
-return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(state,cljs.core.assoc,cljs.core.cst$kw$scales,guitar.modes.explore.insert_at(cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)),guitar.notes.index_of(cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)),before_key),new_key),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new_key,(function (){var G__38504 = cljs.core.deref(state);
-return (before_key.cljs$core$IFn$_invoke$arity$1 ? before_key.cljs$core$IFn$_invoke$arity$1(G__38504) : before_key.call(null,G__38504));
+return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$variadic(state,cljs.core.assoc,cljs.core.cst$kw$scales,guitar.modes.explore.insert_at(cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)),guitar.notes.index_of(cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(state)),before_key),new_key),cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new_key,(function (){var G__38511 = cljs.core.deref(state);
+return (before_key.cljs$core$IFn$_invoke$arity$1 ? before_key.cljs$core$IFn$_invoke$arity$1(G__38511) : before_key.call(null,G__38511));
 })()], 0));
 }));
 
@@ -278,45 +285,45 @@ var in_scales = guitar.modes.explore.combined_in_scale(current_scales);
 var highlights = guitar.modes.explore.combined_highlights(current_scales,in_scales);
 var scale_data = guitar.modes.explore.combined_scale_data(current_scales,in_scales,strings_notes,highlights);
 var notes = guitar.modes.explore.combined_notes(scale_data);
-return daiquiri.interpreter.interpret((function (){var G__38548 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,"guitar--faded"], null);
-var G__38549 = (function (note){
-return cljs.core.reset_BANG_(state,guitar.modes.explore.update_scales(cljs.core.deref(state),(function (p1__38506_SHARP_){
-return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__38506_SHARP_,cljs.core.cst$kw$start_DASH_fret,cljs.core.cst$kw$fret.cljs$core$IFn$_invoke$arity$1(note));
+return daiquiri.interpreter.interpret((function (){var G__38555 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,"guitar--faded"], null);
+var G__38556 = (function (note){
+return cljs.core.reset_BANG_(state,guitar.modes.explore.update_scales(cljs.core.deref(state),(function (p1__38513_SHARP_){
+return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__38513_SHARP_,cljs.core.cst$kw$start_DASH_fret,cljs.core.cst$kw$fret.cljs$core$IFn$_invoke$arity$1(note));
 })));
 });
-var G__38550 = notes;
-return (guitar.guitar.guitar.cljs$core$IFn$_invoke$arity$3 ? guitar.guitar.guitar.cljs$core$IFn$_invoke$arity$3(G__38548,G__38549,G__38550) : guitar.guitar.guitar.call(null,G__38548,G__38549,G__38550));
+var G__38557 = notes;
+return (guitar.guitar.guitar.cljs$core$IFn$_invoke$arity$3 ? guitar.guitar.guitar.cljs$core$IFn$_invoke$arity$3(G__38555,G__38556,G__38557) : guitar.guitar.guitar.call(null,G__38555,G__38556,G__38557));
 })());
-})(),daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__38509_SHARP_,p2__38508_SHARP_){
-return rum.core.with_key(p2__38508_SHARP_,p1__38509_SHARP_);
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__38560){
-var vec__38561 = p__38560;
-var key = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38561,(0),null);
-var cursor = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38561,(1),null);
-var G__38564 = key;
-var G__38565 = (function (_){
+})(),daiquiri.interpreter.interpret(cljs.core.map_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__38516_SHARP_,p2__38515_SHARP_){
+return rum.core.with_key(p2__38515_SHARP_,p1__38516_SHARP_);
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p__38567){
+var vec__38568 = p__38567;
+var key = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38568,(0),null);
+var cursor = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__38568,(1),null);
+var G__38571 = key;
+var G__38572 = (function (_){
 cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$3(state,cljs.core.dissoc,key);
 
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.update,cljs.core.cst$kw$scales,(function (s){
-return cljs.core.vec(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__38507_SHARP_){
-return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(key,p1__38507_SHARP_);
+return cljs.core.vec(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__38514_SHARP_){
+return cljs.core.not_EQ_.cljs$core$IFn$_invoke$arity$2(key,p1__38514_SHARP_);
 }),s));
 }));
 });
-var G__38566 = (function (before_key){
+var G__38573 = (function (before_key){
 guitar.modes.explore.add_scale.cljs$core$IFn$_invoke$arity$3(state,guitar.modes.explore.scale_key(),before_key);
 
 return "+";
 });
-var G__38567 = strings_notes;
-var G__38568 = cursor;
-return (guitar.modes.explore.visualize_scale.cljs$core$IFn$_invoke$arity$5 ? guitar.modes.explore.visualize_scale.cljs$core$IFn$_invoke$arity$5(G__38564,G__38565,G__38566,G__38567,G__38568) : guitar.modes.explore.visualize_scale.call(null,G__38564,G__38565,G__38566,G__38567,G__38568));
-}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.juxt.cljs$core$IFn$_invoke$arity$2(cljs.core.identity,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(rum.core.cursor,state)),cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(rum.core.react(state)))))),((cljs.core.empty_QMARK_(cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(rum.core.react(state))))?(function (){var attrs38573 = (function (){var G__38574 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,(function (){
+var G__38574 = strings_notes;
+var G__38575 = cursor;
+return (guitar.modes.explore.visualize_scale.cljs$core$IFn$_invoke$arity$5 ? guitar.modes.explore.visualize_scale.cljs$core$IFn$_invoke$arity$5(G__38571,G__38572,G__38573,G__38574,G__38575) : guitar.modes.explore.visualize_scale.call(null,G__38571,G__38572,G__38573,G__38574,G__38575));
+}),cljs.core.map.cljs$core$IFn$_invoke$arity$2(cljs.core.juxt.cljs$core$IFn$_invoke$arity$2(cljs.core.identity,cljs.core.partial.cljs$core$IFn$_invoke$arity$2(rum.core.cursor,state)),cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(rum.core.react(state)))))),((cljs.core.empty_QMARK_(cljs.core.cst$kw$scales.cljs$core$IFn$_invoke$arity$1(rum.core.react(state))))?(function (){var attrs38580 = (function (){var G__38581 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$on_DASH_click,(function (){
 return guitar.modes.explore.add_scale.cljs$core$IFn$_invoke$arity$2(state,guitar.modes.explore.scale_key());
 })], null);
-var G__38575 = "+";
-return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38574,G__38575) : guitar.buttons.button.call(null,G__38574,G__38575));
+var G__38582 = "+";
+return (guitar.buttons.button.cljs$core$IFn$_invoke$arity$2 ? guitar.buttons.button.cljs$core$IFn$_invoke$arity$2(G__38581,G__38582) : guitar.buttons.button.call(null,G__38581,G__38582));
 })();
-return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs38573))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["buttons"], null)], null),attrs38573], 0))):{'className':"buttons"}),((cljs.core.map_QMARK_(attrs38573))?null:[daiquiri.interpreter.interpret(attrs38573)]));
+return daiquiri.core.create_element("div",((cljs.core.map_QMARK_(attrs38580))?daiquiri.interpreter.attributes(daiquiri.normalize.merge_with_class.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["buttons"], null)], null),attrs38580], 0))):{'className':"buttons"}),((cljs.core.map_QMARK_(attrs38580))?null:[daiquiri.interpreter.interpret(attrs38580)]));
 })():null));
 }),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [rum.core.reactive], null),"guitar.modes.explore/visualize-scales");
