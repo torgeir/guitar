@@ -6,15 +6,27 @@
    [guitar.guitar :refer [guitar]]
    [guitar.math :refer [diff]]
    [guitar.sets :refer [toggle-in]]
+   [hashp.core]
    [rum.core :as rum]))
 
 
-(def state
-  {:root "c"
-   :mode :ionian
-   :scale :major
+(defn scale-key []
+  (keyword (str (random-uuid))))
+
+
+(def default-state
+  {:root       "c"
+   :mode       :ionian
+   :scale      :major
    :start-fret 8
-   :highlight #{1}})
+   :color      0
+   :highlight  #{1}})
+
+
+(def state
+  (let [default-key (scale-key)]
+    {:scales [default-key]
+     default-key default-state}))
 
 
 (defn indexed-map [set]
@@ -42,15 +54,6 @@
        (filter #(= note (second %)))
        (map last)
        (first)))
-
-
-(defn colored-guitar [state notes in-scale start-fret scale-highlight]
-  (guitar {:class "guitar--faded"}
-          #(swap! state assoc :start-fret (:fret %))
-          (notes
-           (set in-scale)
-           start-fret
-           #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0)))))
 
 
 (defn mode-buttons [state modes mode]
@@ -81,16 +84,36 @@
                  ordinal-suffixed-number))
 
 
+(def zip (partial map vector))
+
+
+(defn combine-scales [as bs]
+  (->> bs
+       (zip as)
+       (map (partial remove nil?))
+       (map #(if (empty? %) nil %))))
+
+
+(defn remove-overshooting-highlights [in-scale highlight]
+  (remove #(>= (dec %) (count in-scale)) highlight))
+
+
 (rum/defc visualize-scale < rum/reactive [strings-notes state]
   (let [{:keys [root scale start-fret highlight mode]} (rum/react state)
         in-scale (scale-notes root scale mode)
-        notes (partial (scale-pattern scale) strings-notes)
-        scale-highlight (set (remove #(>= (dec %) (count in-scale)) highlight))
-        scale-modes (take (count in-scale) modes)]
+        scale-pattern-notes (partial (scale-pattern scale) strings-notes)
+        scale-highlight (set (remove-overshooting-highlights in-scale highlight))
+        scale-modes (take (count in-scale) modes)
+        notes (scale-pattern-notes
+               (set in-scale)
+               start-fret
+               #(assoc % :hl (hl-notes (:note %) scale-highlight in-scale 0)))]
     (rum/fragment
      [:div] ; bug?
      (rum/with-key
-       (colored-guitar state notes in-scale start-fret scale-highlight) "guitar")
+       (guitar {:class "guitar--faded"}
+               #(swap! state assoc :start-fret (:fret %))
+               notes) "guitar")
      (rum/with-key
        (mode-buttons state scale-modes mode) "modes")
      (rum/with-key
@@ -104,3 +127,22 @@
        (scale-buttons state scales scale) "scales")
      (rum/with-key
        (highlight-buttons state in-scale scale-highlight) "highlights"))))
+
+
+(rum/defc visualize-scales < rum/reactive [strings-notes state]
+  (rum/fragment
+   [:div]
+   (->> (:scales (rum/react state))
+        (map (partial rum/cursor state))
+        (map #(visualize-scale strings-notes %1))
+        (map-indexed #(rum/with-key %2 %1)))
+   [:div.buttons
+    (buttons {:on-click #(do
+                           (swap! state dissoc (last (:scales @state)))
+                           (swap! state update :scales (comp vec drop-last)))} "-")
+    (buttons {:on-click #(let [key (scale-key)]
+                           (swap! state assoc
+                                  :scales (conj (:scales @state) key)
+                                  key (or (when-let [last-key (last (:scales @state))]
+                                            (last-key @state))
+                                          default-state)))} "+")]))
