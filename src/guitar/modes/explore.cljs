@@ -24,11 +24,17 @@
 
 
 (def state
-  (as-> (scale-key) key
-    {:scales      [key]
+  (let [key   (scale-key)
+        key-2 (scale-key)]
+    {:scales      [key key-2]
      key          default-state
+     key-2        (assoc default-state
+                         :root "a"
+                         :scale :minor-pentatonic
+                         :start-fret 10
+                         :color 3)
      :joined-neck true
-     :condensed false}))
+     :condensed   true}))
 
 
 (defn update-scales [state f]
@@ -196,38 +202,39 @@
         in-scale        (scale-notes root scale mode)
         scale-highlight (set (remove-overshooting-highlights in-scale highlight))
         scale-modes     (take (count in-scale) modes)]
-    [:div
-     (when-not joined-neck
-       (guitar {:class "guitar--faded"}
-               #(swap! state assoc :start-fret (:fret %))
-               (combined-notes
-                (list [start-fret
-                       color
-                       (partial (scale-pattern tuning scale) strings-notes)
-                       (set in-scale)
-                       scale-highlight]))))
-     [:div.column
-      [:div.column-col (fret-button state dec start-fret "❮")]
-      [:div.guitar-buttons-wrapper
-       [:div.guitar-buttons-opener {:tabindex 0} ""]
-       [:div.guitar-buttons
-        [:div.buttons (button {:class    "button--square"
-                               :on-click #(on-sub-click key)} "-")]
-        (rum/with-key (mode-buttons state scale-modes mode) "modes")
-        (rum/with-key
-          (note-buttons state root #(find-closest-fret-index
-                                     (last strings-notes)
-                                     (set (scale-notes % scale mode))
-                                     start-fret
-                                     %))
-          "notes")
-        (rum/with-key (scale-buttons state scales scale) "scales")
-        (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
-        [:div.buttons (button {:on-click #(swap! state assoc :color (rand-int 8))} "Colorize")]
-        [:div.buttons (button {:class    "button--square"
-                               :on-click #(on-add-click key)} "+")]]]
-      [:div.column-col
-       (rum/with-key (fret-button state inc start-fret "❯") "fret")]]]))
+    (rum/fragment
+      [:div]
+      (when-not joined-neck
+        (guitar {:class "guitar--faded"}
+                #(swap! state assoc :start-fret (:fret %))
+                (combined-notes
+                  (list [start-fret
+                         color
+                         (partial (scale-pattern tuning scale) strings-notes)
+                         (set in-scale)
+                         scale-highlight]))))
+      [:div.column
+       [:div.column-col (fret-button state dec start-fret "❮")]
+       [:div.column-col.guitar-buttons-wrapper {:tabIndex 0}
+        (button {:tabIndex 0 :class "guitar-buttons-opener"} "")
+        [:div.guitar-buttons
+         [:div.buttons (button {:class    "button--square"
+                                :on-click #(on-sub-click key)} "-")]
+         (rum/with-key (mode-buttons state scale-modes mode) "modes")
+         (rum/with-key
+           (note-buttons state root #(find-closest-fret-index
+                                       (last strings-notes)
+                                       (set (scale-notes % scale mode))
+                                       start-fret
+                                       %))
+           "notes")
+         (rum/with-key (scale-buttons state scales scale) "scales")
+         (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
+         [:div.buttons (button {:on-click #(swap! state assoc :color (rand-int 8))} "Colorize")]
+         [:div.buttons (button {:class    "button--square"
+                                :on-click #(on-add-click key)} "+")]]]
+       [:div.column-col
+        (rum/with-key (fret-button state inc start-fret "❯") "fret")]])))
 
 
 (rum/defc visualize-scales < rum/reactive [tuning strings-notes state]
@@ -244,26 +251,26 @@
                    (reset! state (update-scales @state #(assoc % :start-fret (:fret note)))))
                  notes)))
      (->> (:scales (rum/react state))
-          (map (juxt identity (partial rum/cursor state)))
-          (map (fn [[key cursor]]
-                 (visualize-scale
-                  key
-                  (fn [_]
-                    (swap! state dissoc key)
-                    (swap! state update :scales (fn [s] (vec (filter #(not= key %) s)))))
-                  (fn [before-key]
-                    (add-scale state (scale-key) before-key) "+")
-                  strings-notes
-                  cursor
-                  tuning
-                  joined-neck)))
-          (map-indexed #(rum/with-key %2 %1)))
+       (map (juxt identity (partial rum/cursor state)))
+       (map (fn [[key cursor]]
+              (visualize-scale
+                key
+                (fn [_]
+                  (swap! state dissoc key)
+                  (swap! state update :scales (fn [s] (vec (filter #(not= key %) s)))))
+                (fn [before-key]
+                  (add-scale state (scale-key) before-key) "+")
+                strings-notes
+                cursor
+                tuning
+                joined-neck)))
+       (map-indexed #(rum/with-key %2 %1)))
      (when (empty? (:scales (rum/react state)))
        [:.buttons
         (button {:on-click #(add-scale state (scale-key))} "+")])
      (toggle-button
-      {:value (:joined-neck @state) :on-click (partial swap! state assoc :joined-neck)}
-      "Single neck" "Exploded neck")
+       {:value (:joined-neck @state) :on-click (partial swap! state assoc :joined-neck)}
+       "Single neck" "Exploded neck")
      (toggle-button
-      {:value (:condensed @state) :on-click (partial swap! state assoc :condensed)}
-      "Condensed settings" "Expanded settings")]))
+       {:value (:condensed @state) :on-click (partial swap! state assoc :condensed)}
+       "Condensed settings" "Expanded settings")]))
