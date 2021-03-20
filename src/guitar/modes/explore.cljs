@@ -126,13 +126,31 @@
   (remove #(>= (dec %) (count in-scale)) highlight))
 
 
+(defn notes-of-scale [[start-fret color notes in-scale highlight]]
+  (notes
+   in-scale
+   start-fret
+   #(assoc % :hl
+           (hl-notes (:note %) (set highlight) (vec in-scale) color))))
+
+
 (rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state]
-  (let [{:keys [root scale start-fret highlight mode]}
+  (let [{:keys [root scale start-fret highlight mode color]}
         (rum/react state)
         in-scale        (scale-notes root scale mode)
         scale-highlight (set (remove-overshooting-highlights in-scale highlight))
         scale-modes     (take (count in-scale) modes)]
     [:div.column
+
+     (let [nts (notes-of-scale [start-fret color (partial (scale-pattern scale) strings-notes) (set in-scale) scale-highlight])]
+       (println nts))
+     (comment guitar {:class "guitar--faded"}
+              (fn [note]
+                (comment reset! state
+                         (update-scales
+                          @state
+                          #(assoc % :start-fret (:fret note)))))
+              nil)
      [:div.column-col (fret-button state dec start-fret "❮")]
      [:div
       [:div.buttons (button {:class    "button--square"
@@ -140,10 +158,10 @@
       (rum/with-key (mode-buttons state scale-modes mode) "modes")
       (rum/with-key
         (note-buttons state root #(find-closest-fret-index
-                                    (last strings-notes)
-                                    (set (scale-notes % scale mode))
-                                    start-fret
-                                    %))
+                                   (last strings-notes)
+                                   (set (scale-notes % scale mode))
+                                   start-fret
+                                   %))
         "notes")
       (rum/with-key (scale-buttons state scales scale) "scales")
       (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
@@ -156,14 +174,6 @@
 
 (defn active-scales [state]
   (map #(% state) (:scales state)))
-
-
-(defn notes-of-scale [[start-fret color notes in-scale highlight]]
-  (notes
-    in-scale
-    start-fret
-    #(assoc % :hl
-            (hl-notes (:note %) (set highlight) (vec in-scale) color))))
 
 
 (defn combined-in-scale [current-scales]
@@ -238,9 +248,7 @@
                key
                (fn [_]
                  (swap! state dissoc key)
-                 (swap! state update
-                        :scales (fn [s]
-                                  (vec (filter #(not= key %) s)))))
+                 (swap! state update :scales (fn [s] (vec (filter #(not= key %) s)))))
                (fn [before-key]
                  (add-scale state (scale-key) before-key) "+")
                strings-notes
