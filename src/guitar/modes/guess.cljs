@@ -37,7 +37,7 @@
 
 (rum/defc guess-fretboard-notes < rum/reactive
   "A mode to guess where a note is located on a given string."
-  [strings-notes state]
+  [_ strings-notes state]
   (let [reset-state #(reset! state {:locate (rand-note) :attempt nil})
         attempt     (:attempt (rum/react state))
         locate      (:locate (rum/react state))]

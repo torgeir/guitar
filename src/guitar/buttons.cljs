@@ -3,16 +3,20 @@
    [rum.core :as rum]))
 
 
+(defn title-case [[fst & rst]]
+  (apply str (.toUpperCase fst) rst))
+
+
 (rum/defc button [props value]
   [:button.button
-   {:class (str
-             (or (:class props) " ")
-             " "
-             (when
-                 (= (:value props) value)
-               "button--selected"))
+   {:class    (str
+                (or (:class props) " ")
+                " "
+                (when
+                    (= (:value props) value)
+                  "button--selected"))
     :on-click #((:on-click props) value)}
-   value])
+   (title-case value)])
 
 
 (rum/defc buttons [props values]

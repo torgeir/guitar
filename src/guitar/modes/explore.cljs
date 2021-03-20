@@ -155,10 +155,10 @@
         (remove-overshooting-highlights in-scale highlight)))))
 
 
-(defn combined-scale-data [current-scales in-scales strings-notes highlights]
+(defn combined-scale-data [current-scales in-scales tuning strings-notes highlights]
   (zip (map :start-fret current-scales)
        (map :color current-scales)
-       (map #(partial (scale-pattern (:scale %)) strings-notes)
+       (map #(partial (scale-pattern tuning (:scale %)) strings-notes)
             current-scales)
        in-scales
        highlights))
@@ -189,7 +189,7 @@
           new-key (before-key @state))))
 
 
-(rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state joined-neck]
+(rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state tuning joined-neck]
   (let [{:keys [root scale start-fret highlight mode color]}
         (rum/react state)
         in-scale        (scale-notes root scale mode)
@@ -203,7 +203,7 @@
                 (combined-notes
                   (list [start-fret
                          color
-                         (partial (scale-pattern scale) strings-notes)
+                         (partial (scale-pattern tuning scale) strings-notes)
                          (set in-scale)
                          scale-highlight]))))
       [:div.column
@@ -228,7 +228,7 @@
         (rum/with-key (fret-button state inc start-fret "❯") "fret")]])))
 
 
-(rum/defc visualize-scales < rum/reactive [strings-notes state]
+(rum/defc visualize-scales < rum/reactive [tuning strings-notes state]
   (let [{:keys [joined-neck]} @state]
     (rum/fragment
       [:div]
@@ -236,7 +236,7 @@
         (let [current-scales (active-scales @state)
               in-scales      (combined-in-scale current-scales)
               highlights     (combined-highlights current-scales in-scales)
-              scale-data     (combined-scale-data current-scales in-scales strings-notes highlights)
+              scale-data     (combined-scale-data current-scales in-scales tuning strings-notes highlights)
               notes          (combined-notes scale-data)]
           (guitar {:class "guitar--faded"}
                   (fn [note]
@@ -254,6 +254,7 @@
                    (add-scale state (scale-key) before-key) "+")
                  strings-notes
                  cursor
+                 tuning
                  joined-neck)))
         (map-indexed #(rum/with-key %2 %1)))
       (when (empty? (:scales (rum/react state)))

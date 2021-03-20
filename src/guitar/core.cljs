@@ -5,6 +5,7 @@
    [guitar.modes.guess :as guess]
    [guitar.notes :refer [notes string-notes]]
    [guitar.setup :refer [scale-length tuning]]
+   [guitar.buttons :refer [button]]
    [rum.core :as rum]))
 
 
@@ -47,14 +48,14 @@
 (rum/defc app < rum/reactive
   "Main component. Dispatches to other components based on the :mode of the state."
   [state]
-  (let [mode (:mode (rum/react state))
-        theme (:theme (rum/react state))
-        mode-state (rum/cursor state mode)
+  (let [mode          (:mode (rum/react state))
+        theme         (:theme (rum/react state))
+        mode-state    (rum/cursor state mode)
         strings-notes (->> @state
-                           :tuning
-                           (map notes-of-string)
-                           (map (partial map #(conj {} [:note %])))
-                           (reverse))]
+                        :tuning
+                        (map notes-of-string)
+                        (map (partial map #(conj {} [:note %])))
+                        (reverse))]
     [:div
      {:class (str "theme--" (name theme))}
      [:div.buttons
@@ -65,8 +66,13 @@
      ((condp = mode
         :guess   guess/guess-fretboard-notes
         :explore explore/visualize-scales)
+      (:tuning (rum/react state))
       strings-notes
       mode-state)
+     [:.buttons
+      (button {:on-click #(swap! state assoc :tuning tuning)} "6-string")
+      (button {:on-click #(swap! state assoc :tuning (vec (concat "b" tuning)))} "7-string")
+      (button {:on-click #(swap! state assoc :tuning (vec (concat "g" "b" tuning)))} "8-string")]
      (comment [:button
                {:on-click #(swap! state update :theme cycle-theme)}
                (str (name theme) " theme")])]))

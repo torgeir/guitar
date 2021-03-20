@@ -50,6 +50,8 @@
   --guitar-string-width-s: 1.6px;
   --guitar-string-width-m: 1.9px;
   --guitar-string-width-l: 3px;
+  --guitar-string-width-xl: 4px;
+  --guitar-string-width-xxl: 5px;
   --button-bg: rgba(255, 255, 255, 3%);
   --button-fg: rgba(255, 255, 255, 5%);
   --button-border: rgba(255, 255, 255, 15%);
@@ -130,6 +132,14 @@ body {
 .guitar-string:nth-child(6):after {
   top: calc(50% - var(--guitar-string-width-l));
   border-top: var(--guitar-string-width-l) solid var(--guitar-string);
+}
+.guitar-string:nth-child(7):after {
+  top: calc(50% - var(--guitar-string-width-xl));
+  border-top: var(--guitar-string-width-xl) solid var(--guitar-string);
+}
+.guitar-string:nth-child(8):after {
+  top: calc(50% - var(--guitar-string-width-xxl));
+  border-top: var(--guitar-string-width-xxl) solid var(--guitar-string);
 }
 
 .guitar-string .guitar-nut {
@@ -286,7 +296,6 @@ body {
   line-height: 1.5rem;
   min-width: 1rem;
   padding: 0.1rem 0;
-  text-transform: capitalize;
   user-select: none;
   box-shadow: none;
   transition: all 0.1s;
