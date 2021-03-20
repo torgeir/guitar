@@ -389,7 +389,8 @@ body {
   content: " settings for scale " counter(scale);
 }
 .condensed .guitar-buttons-wrapper:focus-within .guitar-buttons-opener {
-  display: none;
+  opacity: 0;
+  position: absolute;
 }
 .condensed .guitar-buttons-wrapper:focus-within .guitar-buttons {
   display: block;
