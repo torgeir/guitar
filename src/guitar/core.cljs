@@ -52,10 +52,10 @@
         theme         (:theme (rum/react state))
         mode-state    (rum/cursor state mode)
         strings-notes (->> @state
-                        :tuning
-                        (map notes-of-string)
-                        (map (partial map #(conj {} [:note %])))
-                        (reverse))]
+                           :tuning
+                           (map notes-of-string)
+                           (map (partial map #(conj {} [:note %])))
+                           (reverse))]
     [:div
      {:class (str "theme--" (name theme))}
      [:div.buttons
@@ -70,9 +70,12 @@
       strings-notes
       mode-state)
      [:.buttons
-      (button {:on-click #(swap! state assoc :tuning tuning)} "6-string")
-      (button {:on-click #(swap! state assoc :tuning (vec (concat "b" tuning)))} "7-string")
-      (button {:on-click #(swap! state assoc :tuning (vec (concat "g" "b" tuning)))} "8-string")]
+      (button {:value (when (= (:tuning @state) tuning) "6-string")
+               :on-click #(swap! state assoc :tuning tuning)} "6-string")
+      (button {:value (when (= (:tuning @state) (vec (concat "b" tuning))) "7-string")
+               :on-click #(swap! state assoc :tuning (vec (concat "b" tuning)))} "7-string")
+      (button {:value (when (= (:tuning @state) (vec (concat "g" "b" tuning))) "8-string")
+               :on-click #(swap! state assoc :tuning (vec (concat "g" "b" tuning)))} "8-string")]
      (comment [:button
                {:on-click #(swap! state update :theme cycle-theme)}
                (str (name theme) " theme")])]))

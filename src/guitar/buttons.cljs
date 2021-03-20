@@ -10,13 +10,27 @@
 (rum/defc button [props value]
   [:button.button
    {:class    (str
-                (or (:class props) " ")
-                " "
-                (when
-                    (= (:value props) value)
-                  "button--selected"))
+               (or (:class props) " ")
+               " "
+               (when
+                (= (:value props) value)
+                 "button--selected"))
     :on-click #((:on-click props) value)}
    (title-case value)])
+
+
+(rum/defc toggle-button [props on-value off-value]
+  [:div.buttons
+   (button
+    (assoc props
+           :value (when (true? (:value props)) on-value)
+           :on-click #((:on-click props) true))
+    on-value)
+   (button
+    (assoc props
+           :value (when (false? (:value props)) off-value)
+           :on-click #((:on-click props) false))
+    off-value)])
 
 
 (rum/defc buttons [props values]
