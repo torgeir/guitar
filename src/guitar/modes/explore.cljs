@@ -209,7 +209,7 @@
      [:div.column
       [:div.column-col (fret-button state dec start-fret "❮")]
       [:div.guitar-buttons-wrapper
-       (button {:class "guitar-buttons-opener"} "expand")
+       [:div.guitar-buttons-opener {:tabindex 0} ""]
        [:div.guitar-buttons
         [:div.buttons (button {:class    "button--square"
                                :on-click #(on-sub-click key)} "-")]
