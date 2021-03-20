@@ -73,6 +73,7 @@
 body {
   color: var(--font);
   background-color: var(--page-bg);
+  counter-reset: scale;
 }
 
 .center-text {
@@ -96,6 +97,7 @@ body {
   overflow-x: auto;
   flex-wrap: nowrap;
   min-width: 48rem;
+  user-select: none;
 }
 
 .guitar--faded {
@@ -161,6 +163,7 @@ body {
   font-size: 0.7rem;
   font-weight: bold;
   text-transform: uppercase;
+  user-select: none;
 }
 
 .guitar-fret {
@@ -282,6 +285,7 @@ body {
   grid-auto-flow: column;
   grid-column-gap: 0.25rem;
   margin: 0.25rem 0;
+  user-select: none;
 }
 
 .button {
@@ -350,7 +354,7 @@ body {
 .column {
   display: grid;
   gap: 0.25rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   grid-template-columns:
     minmax(1rem, 1rem)
     1fr
@@ -362,10 +366,32 @@ body {
   padding: 0.25rem 0;
 }
 
+.condensed .column {
+  margin: 0.1rem 0;
+}
 .condensed .guitar-buttons {
   display: none;
 }
-
-.condensed .guitar {
-  margin-bottom: 1rem;
+.guitar-buttons-wrapper {
+  display: grid;
+  counter-increment: scale;
+}
+.guitar-buttons-wrapper .guitar-buttons-opener {
+  display: none;
+}
+.condensed .guitar-buttons-wrapper .guitar-buttons-opener {
+  display: block;
+  border-radius: 0;
+  align-self: stretch;
+  margin: 0.25rem 0;
+}
+.condensed .guitar-buttons-wrapper .guitar-buttons-opener:after {
+  content: " settings for scale " counter(scale);
+}
+.condensed .guitar-buttons-wrapper:focus-within .guitar-buttons-opener {
+  display: none;
+}
+.condensed .guitar-buttons-wrapper:focus-within .guitar-buttons {
+  display: block;
+  height: auto;
 }
