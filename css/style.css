@@ -361,3 +361,11 @@ body {
   align-self: stretch;
   padding: 0.25rem 0;
 }
+
+.condensed .guitar-buttons {
+  display: none;
+}
+
+.condensed .guitar {
+  margin-bottom: 1rem;
+}

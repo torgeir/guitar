@@ -2228,6 +2228,7 @@ cljs.core.cst$sym$cform = new cljs.core.Symbol(null,"cform","cform",1319506748,n
 cljs.core.cst$sym$meths = new cljs.core.Symbol(null,"meths","meths",1226876764,null);
 cljs.core.cst$kw$zprint$spec_SLASH_string = new cljs.core.Keyword("zprint.spec","string","zprint.spec/string",-1346647204);
 cljs.core.cst$sym$current = new cljs.core.Symbol(null,"current","current",552492924,null);
+cljs.core.cst$kw$condensed = new cljs.core.Keyword(null,"condensed","condensed",1524918140);
 cljs.core.cst$sym$off = new cljs.core.Symbol(null,"off","off",-2047994980,null);
 cljs.core.cst$sym$interpose = new cljs.core.Symbol(null,"interpose","interpose",-2078295140,null);
 cljs.core.cst$kw$min_DASH_elements = new cljs.core.Keyword(null,"min-elements","min-elements",949370780);

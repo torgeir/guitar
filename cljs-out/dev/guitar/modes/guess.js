@@ -10,9 +10,9 @@ goog.require('rum.core');
 /**
  * Returns a map with a random note on a random string.
  */
-guitar.modes.guess.rand_note = (function guitar$modes$guess$rand_note(){
-var string = cljs.core.rand_int(cljs.core.count(guitar.setup.tuning));
-var notes_of_string = guitar.notes.string_notes(guitar.notes.notes,(guitar.setup.scale_length + (1)),cljs.core.nth.cljs$core$IFn$_invoke$arity$2(cljs.core.reverse(guitar.setup.tuning),string));
+guitar.modes.guess.rand_note = (function guitar$modes$guess$rand_note(tuning){
+var string = cljs.core.rand_int(cljs.core.count(tuning));
+var notes_of_string = guitar.notes.string_notes(guitar.notes.notes,(guitar.setup.scale_length + (1)),cljs.core.nth.cljs$core$IFn$_invoke$arity$2(cljs.core.reverse(tuning),string));
 var note = cljs.core.rand_nth(guitar.notes.notes);
 var frets = cljs.core.keep_indexed.cljs$core$IFn$_invoke$arity$2((function (p1__25812_SHARP_,p2__25811_SHARP_){
 if(cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(note,p2__25811_SHARP_)){
@@ -23,7 +23,7 @@ return null;
 }),notes_of_string);
 return new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$string,string,cljs.core.cst$kw$note,note,cljs.core.cst$kw$frets,cljs.core.set(frets)], null);
 });
-guitar.modes.guess.state = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$show_DASH_notes,false,cljs.core.cst$kw$locate,guitar.modes.guess.rand_note(),cljs.core.cst$kw$attempt,null], null);
+guitar.modes.guess.state = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$kw$show_DASH_notes,false,cljs.core.cst$kw$locate,guitar.modes.guess.rand_note(guitar.setup.tuning),cljs.core.cst$kw$attempt,null], null);
 guitar.modes.guess.conceal_note = (function guitar$modes$guess$conceal_note(note){
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(note,cljs.core.cst$kw$note,guitar.unicode.nbsp);
 });
@@ -40,9 +40,9 @@ return daiquiri.core.create_element("p",null,[["Locate ",guitar.notes.prefixed_n
 /**
  * A mode to guess where a note is located on a given string.
  */
-guitar.modes.guess.guess_fretboard_notes = rum.core.lazy_build(rum.core.build_defc,(function (_,strings_notes,state){
+guitar.modes.guess.guess_fretboard_notes = rum.core.lazy_build(rum.core.build_defc,(function (tuning,strings_notes,state){
 var reset_state = (function (){
-return cljs.core.reset_BANG_(state,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$locate,guitar.modes.guess.rand_note(),cljs.core.cst$kw$attempt,null], null));
+return cljs.core.reset_BANG_(state,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$locate,guitar.modes.guess.rand_note(tuning),cljs.core.cst$kw$attempt,null], null));
 });
 var attempt = cljs.core.cst$kw$attempt.cljs$core$IFn$_invoke$arity$1(rum.core.react(state));
 var locate = cljs.core.cst$kw$locate.cljs$core$IFn$_invoke$arity$1(rum.core.react(state));
