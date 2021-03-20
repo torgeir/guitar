@@ -40,7 +40,7 @@ return daiquiri.core.create_element("p",null,[["Locate ",guitar.notes.prefixed_n
 /**
  * A mode to guess where a note is located on a given string.
  */
-guitar.modes.guess.guess_fretboard_notes = rum.core.lazy_build(rum.core.build_defc,(function (strings_notes,state){
+guitar.modes.guess.guess_fretboard_notes = rum.core.lazy_build(rum.core.build_defc,(function (_,strings_notes,state){
 var reset_state = (function (){
 return cljs.core.reset_BANG_(state,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$locate,guitar.modes.guess.rand_note(),cljs.core.cst$kw$attempt,null], null));
 });

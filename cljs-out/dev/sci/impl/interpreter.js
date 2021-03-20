@@ -17,8 +17,8 @@ return cljs.core.update.cljs$core$IFn$_invoke$arity$4(cljs.core.update.cljs$core
 }));
 });
 sci.impl.interpreter.print_stats = (function sci$impl$interpreter$print_stats(){
-return cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.zipmap(cljs.core.keys(cljs.core.deref(sci.impl.interpreter.stats)),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__27507_SHARP_){
-return (p1__27507_SHARP_ / 1000000.0);
+return cljs.core.prn.cljs$core$IFn$_invoke$arity$variadic(cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([cljs.core.zipmap(cljs.core.keys(cljs.core.deref(sci.impl.interpreter.stats)),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__27512_SHARP_){
+return (p1__27512_SHARP_ / 1000000.0);
 }),cljs.core.vals(cljs.core.deref(sci.impl.interpreter.stats))))], 0));
 });
 sci.impl.interpreter.eval_form_stats = (function sci$impl$interpreter$eval_form_stats(ctx,form){
@@ -28,13 +28,13 @@ var exprs = cljs.core.rest(form);
 var ret = null;
 while(true){
 if(cljs.core.seq(exprs)){
-var G__27514 = cljs.core.rest(exprs);
-var G__27515 = (function (){var G__27510 = ctx;
-var G__27511 = cljs.core.first(exprs);
-return (sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2(G__27510,G__27511) : sci.impl.interpreter.eval_form_stats.call(null,G__27510,G__27511));
+var G__27519 = cljs.core.rest(exprs);
+var G__27520 = (function (){var G__27515 = ctx;
+var G__27516 = cljs.core.first(exprs);
+return (sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2(G__27515,G__27516) : sci.impl.interpreter.eval_form_stats.call(null,G__27515,G__27516));
 })();
-exprs = G__27514;
-ret = G__27515;
+exprs = G__27519;
+ret = G__27520;
 continue;
 } else {
 return ret;
@@ -44,9 +44,9 @@ break;
 } else {
 if(((cljs.core.not(cljs.core.cst$kw$uberscript.cljs$core$IFn$_invoke$arity$1(ctx))) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$sym$ns,cljs.core.first(form))) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$sym$require,cljs.core.first(form))))){
 var analyzed = sci.impl.analyzer.analyze.cljs$core$IFn$_invoke$arity$3(ctx,form,true);
-var ret = (((analyzed instanceof sci.impl.types.EvalForm))?(function (){var G__27512 = ctx;
-var G__27513 = analyzed.sci$impl$types$IBox$getVal$arity$1(null);
-return (sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2(G__27512,G__27513) : sci.impl.interpreter.eval_form_stats.call(null,G__27512,G__27513));
+var ret = (((analyzed instanceof sci.impl.types.EvalForm))?(function (){var G__27517 = ctx;
+var G__27518 = analyzed.sci$impl$types$IBox$getVal$arity$1(null);
+return (sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form_stats.cljs$core$IFn$_invoke$arity$2(G__27517,G__27518) : sci.impl.interpreter.eval_form_stats.call(null,G__27517,G__27518));
 })():(function (){var ret = sci.impl.evaluator.eval(ctx,analyzed);
 return ret;
 })());
@@ -68,13 +68,13 @@ var exprs = cljs.core.rest(form);
 var ret = null;
 while(true){
 if(cljs.core.seq(exprs)){
-var G__27522 = cljs.core.rest(exprs);
-var G__27523 = (function (){var G__27518 = ctx;
-var G__27519 = cljs.core.first(exprs);
-return (sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2(G__27518,G__27519) : sci.impl.interpreter.eval_form.call(null,G__27518,G__27519));
+var G__27527 = cljs.core.rest(exprs);
+var G__27528 = (function (){var G__27523 = ctx;
+var G__27524 = cljs.core.first(exprs);
+return (sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2(G__27523,G__27524) : sci.impl.interpreter.eval_form.call(null,G__27523,G__27524));
 })();
-exprs = G__27522;
-ret = G__27523;
+exprs = G__27527;
+ret = G__27528;
 continue;
 } else {
 return ret;
@@ -84,9 +84,9 @@ break;
 } else {
 if(((cljs.core.not(cljs.core.cst$kw$uberscript.cljs$core$IFn$_invoke$arity$1(ctx))) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$sym$ns,cljs.core.first(form))) || (cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$sym$require,cljs.core.first(form))))){
 var analyzed = sci.impl.analyzer.analyze.cljs$core$IFn$_invoke$arity$3(ctx,form,true);
-var ret = (((analyzed instanceof sci.impl.types.EvalForm))?(function (){var G__27520 = ctx;
-var G__27521 = analyzed.sci$impl$types$IBox$getVal$arity$1(null);
-return (sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2(G__27520,G__27521) : sci.impl.interpreter.eval_form.call(null,G__27520,G__27521));
+var ret = (((analyzed instanceof sci.impl.types.EvalForm))?(function (){var G__27525 = ctx;
+var G__27526 = analyzed.sci$impl$types$IBox$getVal$arity$1(null);
+return (sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2 ? sci.impl.interpreter.eval_form.cljs$core$IFn$_invoke$arity$2(G__27525,G__27526) : sci.impl.interpreter.eval_form.call(null,G__27525,G__27526));
 })():sci.impl.evaluator.eval(ctx,analyzed));
 return ret;
 } else {
@@ -120,8 +120,8 @@ sci.impl.interpreter.print_stats();
 return ret;
 } else {
 var ret__$1 = sci.impl.interpreter.eval_form(ctx__$1,expr);
-var G__27524 = ret__$1;
-ret = G__27524;
+var G__27529 = ret__$1;
+ret = G__27529;
 continue;
 }
 break;
@@ -146,8 +146,8 @@ if(cljs.core.truth_((sci.impl.utils.kw_identical_QMARK_.cljs$core$IFn$_invoke$ar
 return ret;
 } else {
 var ret__$1 = sci.impl.interpreter.eval_form(ctx__$1,expr);
-var G__27525 = ret__$1;
-ret = G__27525;
+var G__27530 = ret__$1;
+ret = G__27530;
 continue;
 }
 break;
@@ -156,8 +156,8 @@ break;
 }});
 cljs.core.vreset_BANG_(sci.impl.utils.eval_string_STAR_,sci.impl.interpreter.eval_string_STAR_);
 sci.impl.interpreter.eval_string = (function sci$impl$interpreter$eval_string(var_args){
-var G__27527 = arguments.length;
-switch (G__27527) {
+var G__27532 = arguments.length;
+switch (G__27532) {
 case 1:
 return sci.impl.interpreter.eval_string.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
