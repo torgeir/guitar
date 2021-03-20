@@ -341,7 +341,7 @@ body {
 .column {
   display: grid;
   gap: 0.25rem;
-  margin-top: 1rem;
+  margin: 1rem 0;
   grid-template-columns:
     minmax(1rem, 1rem)
     1fr

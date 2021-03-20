@@ -24,9 +24,10 @@
 
 
 (def state
-  (as-> (scale-key) k
-    {:scales [k]
-     k       default-state}))
+  (as-> (scale-key) key
+    {:scales      [key]
+     key          default-state
+     :joined-neck true}))
 
 
 (defn update-scales [state f]
@@ -126,44 +127,16 @@
   (remove #(>= (dec %) (count in-scale)) highlight))
 
 
-(rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state]
-  (let [{:keys [root scale start-fret highlight mode]}
-        (rum/react state)
-        in-scale        (scale-notes root scale mode)
-        scale-highlight (set (remove-overshooting-highlights in-scale highlight))
-        scale-modes     (take (count in-scale) modes)]
-    [:div.column
-     [:div.column-col (fret-button state dec start-fret "❮")]
-     [:div
-      [:div.buttons (button {:class    "button--square"
-                             :on-click #(on-sub-click key)} "-")]
-      (rum/with-key (mode-buttons state scale-modes mode) "modes")
-      (rum/with-key
-        (note-buttons state root #(find-closest-fret-index
-                                    (last strings-notes)
-                                    (set (scale-notes % scale mode))
-                                    start-fret
-                                    %))
-        "notes")
-      (rum/with-key (scale-buttons state scales scale) "scales")
-      (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
-      [:div.buttons (button {:on-click #(swap! state assoc :color (rand-int 8))} "Colorize")]
-      [:div.buttons (button {:class    "button--square"
-                             :on-click #(on-add-click key)} "+")]]
-     [:div.column-col
-      (rum/with-key (fret-button state inc start-fret "❯") "fret")]]))
-
-
-(defn active-scales [state]
-  (map #(% state) (:scales state)))
-
-
 (defn notes-of-scale [[start-fret color notes in-scale highlight]]
   (notes
     in-scale
     start-fret
     #(assoc % :hl
             (hl-notes (:note %) (set highlight) (vec in-scale) color))))
+
+
+(defn active-scales [state]
+  (map #(% state) (:scales state)))
 
 
 (defn combined-in-scale [current-scales]
@@ -216,36 +189,76 @@
           new-key (before-key @state))))
 
 
+(rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state joined-neck]
+  (let [{:keys [root scale start-fret highlight mode color]}
+        (rum/react state)
+        in-scale        (scale-notes root scale mode)
+        scale-highlight (set (remove-overshooting-highlights in-scale highlight))
+        scale-modes     (take (count in-scale) modes)]
+    (rum/fragment
+      [:div]
+      (when-not joined-neck
+        (guitar {:class "guitar--faded"}
+                #(swap! state assoc :start-fret (:fret %))
+                (combined-notes
+                  (list [start-fret
+                         color
+                         (partial (scale-pattern scale) strings-notes)
+                         (set in-scale)
+                         scale-highlight]))))
+      [:div.column
+       [:div.column-col (fret-button state dec start-fret "❮")]
+       [:div
+        [:div.buttons (button {:class    "button--square"
+                               :on-click #(on-sub-click key)} "-")]
+        (rum/with-key (mode-buttons state scale-modes mode) "modes")
+        (rum/with-key
+          (note-buttons state root #(find-closest-fret-index
+                                      (last strings-notes)
+                                      (set (scale-notes % scale mode))
+                                      start-fret
+                                      %))
+          "notes")
+        (rum/with-key (scale-buttons state scales scale) "scales")
+        (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
+        [:div.buttons (button {:on-click #(swap! state assoc :color (rand-int 8))} "Colorize")]
+        [:div.buttons (button {:class    "button--square"
+                               :on-click #(on-add-click key)} "+")]]
+       [:div.column-col
+        (rum/with-key (fret-button state inc start-fret "❯") "fret")]])))
+
+
 (rum/defc visualize-scales < rum/reactive [strings-notes state]
-  (rum/fragment
-    [:div]
-    (let [current-scales (active-scales @state)
-          in-scales      (combined-in-scale current-scales)
-          highlights     (combined-highlights current-scales in-scales)
-          scale-data     (combined-scale-data current-scales in-scales strings-notes highlights)
-          notes          (combined-notes scale-data)]
-      (guitar {:class "guitar--faded"}
-              (fn [note]
-                (reset! state
-                        (update-scales
-                          @state
-                          #(assoc % :start-fret (:fret note)))))
-              notes))
-    (->> (:scales (rum/react state))
-      (map (juxt identity (partial rum/cursor state)))
-      (map (fn [[key cursor]]
-             (visualize-scale
-               key
-               (fn [_]
-                 (swap! state dissoc key)
-                 (swap! state update
-                        :scales (fn [s]
-                                  (vec (filter #(not= key %) s)))))
-               (fn [before-key]
-                 (add-scale state (scale-key) before-key) "+")
-               strings-notes
-               cursor)))
-      (map-indexed #(rum/with-key %2 %1)))
-    (when (empty? (:scales (rum/react state)))
+  (let [{:keys [joined-neck]} @state]
+    (rum/fragment
+      [:div]
+      (when joined-neck
+        (let [current-scales (active-scales @state)
+              in-scales      (combined-in-scale current-scales)
+              highlights     (combined-highlights current-scales in-scales)
+              scale-data     (combined-scale-data current-scales in-scales strings-notes highlights)
+              notes          (combined-notes scale-data)]
+          (guitar {:class "guitar--faded"}
+                  (fn [note]
+                    (reset! state (update-scales @state #(assoc % :start-fret (:fret note)))))
+                  notes)))
+      (->> (:scales (rum/react state))
+        (map (juxt identity (partial rum/cursor state)))
+        (map (fn [[key cursor]]
+               (visualize-scale
+                 key
+                 (fn [_]
+                   (swap! state dissoc key)
+                   (swap! state update :scales (fn [s] (vec (filter #(not= key %) s)))))
+                 (fn [before-key]
+                   (add-scale state (scale-key) before-key) "+")
+                 strings-notes
+                 cursor
+                 joined-neck)))
+        (map-indexed #(rum/with-key %2 %1)))
+      (when (empty? (:scales (rum/react state)))
+        [:.buttons
+         (button {:on-click #(add-scale state (scale-key))} "+")])
       [:.buttons
-       (button {:on-click #(add-scale state (scale-key))} "+")])))
+       (button {:on-click #(swap! state assoc :joined-neck true)} "Single neck")
+       (button {:on-click #(swap! state assoc :joined-neck false)} "Exploded neck")])))
