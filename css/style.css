@@ -74,6 +74,7 @@ body {
   color: var(--font);
   background-color: var(--page-bg);
   counter-reset: scale;
+  font-size: 0.875em;
 }
 
 .center-text {
@@ -87,6 +88,7 @@ body {
 .guitar-container {
   width: 100%;
   overflow-x: auto;
+  margin: 0.2rem 0;
 }
 
 .guitar {
@@ -287,16 +289,24 @@ body {
   margin: 0.25rem 0;
   user-select: none;
 }
+.buttons:first-child {
+  margin-top: 0;
+}
+.buttons:last-child {
+  margin-bottom: 0;
+}
 
 .button {
   background: transparent;
   background-color: var(--button-bg);
   outline: none;
-  border-radius: 0.3rem;
+  border-radius: 3px;
   border: 1px transparent solid;
   color: var(--font-faded);
   cursor: pointer;
   font-size: 0.8rem;
+  text-align: center;
+  font-family: Arial;
   line-height: 1.5rem;
   min-width: 1rem;
   padding: 0.1rem 0;
@@ -310,7 +320,6 @@ body {
 }
 .button--square {
   border-radius: 0;
-  line-height: 0.8rem;
 }
 .button--huge {
   margin: 1rem;
@@ -318,8 +327,6 @@ body {
   line-height: 2rem;
 }
 
-.guitar-buttons-opener:hover,
-.guitar-buttons-opener:focus,
 .button:hover,
 .button:focus {
   box-shadow: 0px 0px 5px var(--hover);
@@ -357,11 +364,8 @@ body {
 .column {
   display: grid;
   gap: 0.25rem;
-  margin: 0.5rem 0;
-  grid-template-columns:
-    minmax(1rem, 1rem)
-    1fr
-    minmax(1rem, 1rem);
+  margin: 0.05rem 0;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
 }
 .column-col {
   display: grid;
@@ -369,34 +373,23 @@ body {
   padding: 0.25rem 0;
 }
 
-.condensed .column {
-  margin: 0.1rem 0;
-}
 .condensed .guitar-buttons {
   display: none;
 }
 .guitar-buttons-wrapper {
   display: grid;
   counter-increment: scale;
+  justify-content: stretch;
 }
 .guitar-buttons-wrapper .guitar-buttons-opener {
   display: none;
 }
 .condensed .guitar-buttons-wrapper .guitar-buttons-opener {
   display: block;
-  border-radius: 0;
   align-self: stretch;
-  margin: 0.25rem 0;
-  background-color: var(--button-bg);
-  color: var(--font-faded);
-  cursor: pointer;
-  font-family: Arial;
-  font-size: 0.8rem;
-  text-align: center;
-  line-height: 1.5rem;
 }
 .condensed .guitar-buttons-wrapper .guitar-buttons-opener:after {
-  content: "Settings for scale " counter(scale);
+  content: "Scale " counter(scale);
 }
 .condensed .guitar-buttons-wrapper:focus-within .guitar-buttons-opener {
   opacity: 0;

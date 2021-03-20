@@ -10,7 +10,11 @@ var first__38425 = cljs.core.first(seq__38424);
 var seq__38424__$1 = cljs.core.next(seq__38424);
 var fst = first__38425;
 var rst = seq__38424__$1;
+if(cljs.core.truth_(fst)){
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$3(cljs.core.str,fst.toUpperCase(),rst);
+} else {
+return "";
+}
 });
 guitar.buttons.button = rum.core.lazy_build(rum.core.build_defc,(function (props,value){
 return daiquiri.core.create_element("button",{'onClick':(function (){

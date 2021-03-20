@@ -371,6 +371,7 @@ cljs.core.cst$sym$sci$impl$namespaces_SLASH_with_DASH_open = new cljs.core.Symbo
 cljs.core.cst$sym$s_DASH_pos = new cljs.core.Symbol(null,"s-pos","s-pos",-540562492,null);
 cljs.core.cst$sym$char_QMARK_ = new cljs.core.Symbol(null,"char?","char?",-1072221244,null);
 cljs.core.cst$sym$cljs$core_SLASH_dec = new cljs.core.Symbol("cljs.core","dec","cljs.core/dec",-443230268,null);
+cljs.core.cst$kw$tabIndex = new cljs.core.Keyword(null,"tabIndex","tabIndex",-169286716);
 cljs.core.cst$sym$make_DASH_hierarchy = new cljs.core.Symbol(null,"make-hierarchy","make-hierarchy",-241558556,null);
 cljs.core.cst$kw$opt_DASH_keys = new cljs.core.Keyword(null,"opt-keys","opt-keys",1262688261);
 cljs.core.cst$sym$oldval = new cljs.core.Symbol(null,"oldval","oldval",-221475803,null);
