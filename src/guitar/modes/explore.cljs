@@ -27,7 +27,8 @@
   (as-> (scale-key) key
     {:scales      [key]
      key          default-state
-     :joined-neck true}))
+     :joined-neck true
+     :condensed false}))
 
 
 (defn update-scales [state f]
@@ -206,7 +207,7 @@
                          (partial (scale-pattern tuning scale) strings-notes)
                          (set in-scale)
                          scale-highlight]))))
-      [:div.column
+      [:div.column.guitar-buttons
        [:div.column-col (fret-button state dec start-fret "❮")]
        [:div
         [:div.buttons (button {:class    "button--square"
@@ -229,9 +230,8 @@
 
 
 (rum/defc visualize-scales < rum/reactive [tuning strings-notes state]
-  (let [{:keys [joined-neck]} @state]
-    (rum/fragment
-      [:div]
+  (let [{:keys [joined-neck condensed]} @state]
+    [:div {:class (when condensed "condensed")}
       (when joined-neck
         (let [current-scales (active-scales @state)
               in-scales      (combined-in-scale current-scales)
@@ -262,4 +262,7 @@
          (button {:on-click #(add-scale state (scale-key))} "+")])
       [:.buttons
        (button {:on-click #(swap! state assoc :joined-neck true)} "Single neck")
-       (button {:on-click #(swap! state assoc :joined-neck false)} "Exploded neck")])))
+       (button {:on-click #(swap! state assoc :joined-neck false)} "Exploded neck")]
+      [:.buttons
+       (button {:on-click #(swap! state assoc :condensed true)} "Condensed")
+       (button {:on-click #(swap! state assoc :condensed false)} "Expanded")]]))
