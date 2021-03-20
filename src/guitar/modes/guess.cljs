@@ -9,18 +9,18 @@
 
 (defn rand-note
   "Returns a map with a random note on a random string."
-  []
-  (let [string (rand-int (count tuning))
+  [tuning]
+  (let [string          (rand-int (count tuning))
         notes-of-string (string-notes notes (inc scale-length) (nth (reverse tuning) string))
-        note (rand-nth notes)
-        frets (keep-indexed #(when (= note %2) %1) notes-of-string)]
+        note            (rand-nth notes)
+        frets           (keep-indexed #(when (= note %2) %1) notes-of-string)]
     {:string string :note note :frets (set frets)}))
 
 
 (def state
   {:show-notes false
-   :locate     (rand-note)
-   :attempt nil})
+   :locate     (rand-note tuning)
+   :attempt    nil})
 
 
 (defn conceal-note [note]
@@ -37,8 +37,8 @@
 
 (rum/defc guess-fretboard-notes < rum/reactive
   "A mode to guess where a note is located on a given string."
-  [_ strings-notes state]
-  (let [reset-state #(reset! state {:locate (rand-note) :attempt nil})
+  [tuning strings-notes state]
+  (let [reset-state #(reset! state {:locate (rand-note tuning) :attempt nil})
         attempt     (:attempt (rum/react state))
         locate      (:locate (rum/react state))]
     [:div
