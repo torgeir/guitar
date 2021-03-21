@@ -227,6 +227,14 @@
          (drop (inc fret) last-strings-notes)))))
 
 
+(defn guitar-classes [highlights]
+  (str
+    "guitar--faded"
+    " "
+    (when-not (empty? highlights)
+      "guitar--with-highlight")))
+
+
 (rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state tuning joined-neck]
   (let [{:keys [root scale start-fret highlight mode color]}
         (rum/react state)
@@ -236,7 +244,7 @@
     (rum/fragment
       [:div]
       (when-not joined-neck
-        (guitar {:class "guitar--faded"}
+        (guitar {:class (guitar-classes highlight)}
                 #(swap! state assoc :start-fret (:fret %))
                 (combined-notes
                   (list [start-fret
@@ -277,7 +285,7 @@
              highlights     (combined-highlights current-scales in-scales)
              scale-data     (combined-scale-data current-scales in-scales tuning strings-notes highlights)
              notes          (combined-notes scale-data)]
-         (guitar {:class "guitar--faded"}
+         (guitar {:class (guitar-classes (flatten highlights))}
                  (fn [note]
                    (reset! state (update-scales @state #(assoc % :start-fret (:fret note)))))
                  notes)))
