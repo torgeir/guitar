@@ -1778,6 +1778,7 @@ cljs.core.cst$sym$bit_DASH_flip = new cljs.core.Symbol(null,"bit-flip","bit-flip
 cljs.core.cst$kw$edamame_SLASH_expected_DASH_delimiter = new cljs.core.Keyword("edamame","expected-delimiter","edamame/expected-delimiter",93379254);
 cljs.core.cst$kw$perf_DASH_vs_DASH_format = new cljs.core.Keyword(null,"perf-vs-format","perf-vs-format",-1892061514);
 cljs.core.cst$sym$long_DASH_array = new cljs.core.Symbol(null,"long-array","long-array",217579190,null);
+cljs.core.cst$kw$emp = new cljs.core.Keyword(null,"emp","emp",-930707754);
 cljs.core.cst$sym$retspec = new cljs.core.Symbol(null,"retspec","retspec",-920025354,null);
 cljs.core.cst$kw$opt_DASH_specs = new cljs.core.Keyword(null,"opt-specs","opt-specs",-384905450);
 cljs.core.cst$sym$seed = new cljs.core.Symbol(null,"seed","seed",1709144854,null);

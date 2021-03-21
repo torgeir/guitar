@@ -12,7 +12,8 @@ var map__24166 = p__24165;
 var map__24166__$1 = (((((!((map__24166 == null))))?(((((map__24166.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__24166.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__24166):map__24166);
 var note = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24166__$1,cljs.core.cst$kw$note);
 var hl = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24166__$1,cljs.core.cst$kw$hl);
-return daiquiri.core.create_element("div",{'data-note':clojure.string.trim(note),'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["scale-note",(cljs.core.truth_(hl)?["scale-note--hl scale-note--hl-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(hl)].join(''):null)], null))},[daiquiri.interpreter.interpret(note)]);
+var emp = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24166__$1,cljs.core.cst$kw$emp);
+return daiquiri.core.create_element("div",{'data-note':clojure.string.trim(note),'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["scale-note",(cljs.core.truth_(hl)?[" scale-note--hl"," scale-note--hl-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(hl),(cljs.core.truth_(emp)?" scale-note--hl-emp":null)].join(''):null)], null))},[daiquiri.interpreter.interpret(note)]);
 }),null,"guitar.guitar/scale-note");
 /**
  * A clickable guitar nut or fret.
