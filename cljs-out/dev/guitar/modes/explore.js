@@ -295,6 +295,9 @@ return (fexpr__38684.cljs$core$IFn$_invoke$arity$1 ? fexpr__38684.cljs$core$IFn$
 })());
 }),cljs.core.drop.cljs$core$IFn$_invoke$arity$2((fret + (1)),last_strings_notes))));
 });
+guitar.modes.explore.guitar_classes = (function guitar$modes$explore$guitar_classes(highlights){
+return ["guitar--faded"," ",((cljs.core.empty_QMARK_(highlights))?null:"guitar--with-highlight")].join('');
+});
 guitar.modes.explore.visualize_scale = rum.core.lazy_build(rum.core.build_defc,(function (key,on_sub_click,on_add_click,strings_notes,state,tuning,joined_neck){
 var map__38688 = rum.core.react(state);
 var map__38688__$1 = (((((!((map__38688 == null))))?(((((map__38688.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__38688.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__38688):map__38688);
@@ -307,7 +310,7 @@ var color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__38688__$1,cljs.core
 var in_scale = guitar.notes.scale_notes.cljs$core$IFn$_invoke$arity$3(root,scale,mode);
 var scale_highlight = cljs.core.set(guitar.modes.explore.remove_overshooting_highlights(in_scale,highlight));
 var scale_modes = cljs.core.take.cljs$core$IFn$_invoke$arity$2(cljs.core.count(in_scale),guitar.notes.modes);
-return React.createElement(React.Fragment,null,daiquiri.core.create_element("div",null,null),(cljs.core.truth_(joined_neck)?null:daiquiri.interpreter.interpret((function (){var G__38729 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,"guitar--faded"], null);
+return React.createElement(React.Fragment,null,daiquiri.core.create_element("div",null,null),(cljs.core.truth_(joined_neck)?null:daiquiri.interpreter.interpret((function (){var G__38729 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,guitar.modes.explore.guitar_classes(highlight)], null);
 var G__38730 = (function (p1__38686_SHARP_){
 return cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(state,cljs.core.assoc,cljs.core.cst$kw$start_DASH_fret,cljs.core.cst$kw$fret.cljs$core$IFn$_invoke$arity$1(p1__38686_SHARP_));
 });
@@ -353,7 +356,7 @@ var in_scales = guitar.modes.explore.combined_in_scale(current_scales);
 var highlights = guitar.modes.explore.combined_highlights(current_scales,in_scales);
 var scale_data = guitar.modes.explore.combined_scale_data(current_scales,in_scales,tuning,strings_notes,highlights);
 var notes = guitar.modes.explore.combined_notes(scale_data);
-return daiquiri.interpreter.interpret((function (){var G__38772 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,["guitar--faded",((cljs.core.empty_QMARK_(cljs.core.flatten(highlights)))?null:" guitar--with-highlight")].join('')], null);
+return daiquiri.interpreter.interpret((function (){var G__38772 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,guitar.modes.explore.guitar_classes(cljs.core.flatten(highlights))], null);
 var G__38773 = (function (note){
 return cljs.core.reset_BANG_(state,guitar.modes.explore.update_scales(cljs.core.deref(state),(function (p1__38758_SHARP_){
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__38758_SHARP_,cljs.core.cst$kw$start_DASH_fret,cljs.core.cst$kw$fret.cljs$core$IFn$_invoke$arity$1(note));
