@@ -277,7 +277,10 @@
              highlights     (combined-highlights current-scales in-scales)
              scale-data     (combined-scale-data current-scales in-scales tuning strings-notes highlights)
              notes          (combined-notes scale-data)]
-         (guitar {:class "guitar--faded"}
+         (guitar {:class (str
+                           "guitar--faded"
+                           (when-not (empty? (flatten highlights))
+                             " guitar--with-highlight"))}
                  (fn [note]
                    (reset! state (update-scales @state #(assoc % :start-fret (:fret note)))))
                  notes)))
