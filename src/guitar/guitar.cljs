@@ -6,11 +6,14 @@
 
 (rum/defc scale-note
   "A visible note on a fret."
-  [{:keys [note hl]}]
+  [{:keys [note hl emp]}]
   [:div.scale-note
    {:data-note (trim note)
     :class     (when hl
-                 (str "scale-note--hl scale-note--hl-" hl))}
+                 (str " scale-note--hl"
+                      " scale-note--hl-" hl
+                      (when emp
+                        " scale-note--hl-emp")))}
    note])
 
 

@@ -56,7 +56,7 @@
 (defn hl-notes [note notes-to-highlight scale-notes default]
   (let [keys        (map (partial nth scale-notes) (map dec notes-to-highlight))
         note-colors (select-keys (indexed-map scale-notes) (set keys))]
-    (note-colors note default)))
+    (note-colors note (* -1 default))))
 
 
 (defn find-closest-fret-index [last-strings-notes scale-notes fret note]
@@ -138,8 +138,10 @@
   (notes
     in-scale
     start-fret
-    #(assoc % :hl
-            (hl-notes (:note %) (set highlight) (vec in-scale) color))))
+    #(let [hl (hl-notes (:note %) (set highlight) (vec in-scale) color)]
+       (assoc %
+              :hl (Math/abs hl)
+              :emp (pos? hl)))))
 
 
 (defn active-scales [state]

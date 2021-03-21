@@ -175,7 +175,7 @@ body {
 
 /* hide non-frontmost note names */
 .scale-note:not(:last-child):after {
-  visibility: hidden;
+  content: " ";
 }
 
 .scale-note {
@@ -208,11 +208,13 @@ body {
 .guitar-fret:hover .scale-note:after {
   content: " ";
   position: absolute;
-  top: calc(50% - 0.78rem);
+  display: block;
+  top: calc(50% - 0.7rem - 1px);
   right: calc(50% - 0.7rem - 1px /* .scale-note border */);
+  border: 1px solid transparent;
   border-radius: 20rem;
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .guitar-fret:active .scale-note:before,
@@ -228,36 +230,40 @@ body {
 .guitar-fret:hover .scale-note:after,
 .scale-note--hl:after {
   content: attr(data-note);
-  top: auto;
-  right: calc(50% - 0.7rem);
+  line-height: 2;
+  right: calc(50% - 0.7rem - 1px);
   color: var(--font-hl);
 }
 
-.scale-note--hl-0:before {
+.scale-note--hl-emp:after {
+  box-shadow: 0px 0px 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.scale-note--hl-0:after {
   background-color: var(--note-hl-0);
 }
-.scale-note--hl-1:before {
+.scale-note--hl-1:after {
   background-color: var(--note-hl-1);
 }
-.scale-note--hl-2:before {
+.scale-note--hl-2:after {
   background-color: var(--note-hl-2);
 }
-.scale-note--hl-3:before {
+.scale-note--hl-3:after {
   background-color: var(--note-hl-3);
 }
-.scale-note--hl-4:before {
+.scale-note--hl-4:after {
   background-color: var(--note-hl-4);
 }
-.scale-note--hl-5:before {
+.scale-note--hl-5:after {
   background-color: var(--note-hl-5);
 }
-.scale-note--hl-6:before {
+.scale-note--hl-6:after {
   background-color: var(--note-hl-6);
 }
-.scale-note--hl-7:before {
-  background-color: var(--note-hl-7);
+.scale-note--hl-7:after {
+  background-color: var(--note-hl-8);
 }
-.scale-note--hl-8:before {
+.scale-note--hl-8:after {
   background-color: var(--note-hl-8);
 }
 
