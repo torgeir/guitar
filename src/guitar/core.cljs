@@ -6,36 +6,51 @@
    [guitar.notes :refer [notes string-notes]]
    [guitar.setup :refer [scale-length tuning]]
    [guitar.buttons :refer [button]]
-   [rum.core :as rum]))
+   [rum.core :as rum]
+   [cognitect.transit :as t]))
 
 
-(def notes-of-string
-  "Finds notes of a string, starting from the provided note."
-  (partial string-notes notes (inc scale-length)))
+(def state-writer (t/writer :json))
+
+
+(def state-reader (t/reader :json))
+
+
+(defn state-str [state]
+  (->> state
+    (t/write state-writer)
+    (js/encodeURIComponent)))
+
+
+(defn read-state-str [state-str]
+  (->> state-str
+    (js/decodeURIComponent)
+    (t/read state-reader)))
+
+
+(defn nil-if-empty [s]
+  (if (empty? s) nil s))
 
 
 (defn location-hash
-  ([] (->> js/location .-hash (drop 1) (apply str)))
+  ([] (->> js/location .-hash (drop 1) (apply str) (nil-if-empty)))
   ([hash] (set! (.-hash js/location) hash)))
 
 
 (defonce state
   (atom
-   {:tuning tuning
-    :theme :dark
-    :mode (condp = (location-hash)
-            "guess" :guess
-            "explore" :explore
-            :explore)
-    :guess  guess/state
-    :explore explore/state}))
+   (if-let [hash (location-hash)]
+     (read-state-str hash)
+     {:tuning tuning
+      :theme :dark
+      :mode :explore
+      :guess  guess/state
+      :explore explore/state})))
 
 
-(add-watch
-  state
-  :mode
-  (fn [_ _ _ {:keys [mode]}]
-    (location-hash (name mode))))
+(add-watch state :mode (fn [_ _ _ state]
+                         (js/setTimeout
+                           #(location-hash (state-str state)))))
 
 
 (defn cycle-theme [v]
@@ -43,6 +58,11 @@
     :light :dark
     :dark  :light
     :dark))
+
+
+(def notes-of-string
+  "Finds notes of a string, starting from the provided note."
+  (partial string-notes notes (inc scale-length)))
 
 
 (rum/defc app < rum/reactive
