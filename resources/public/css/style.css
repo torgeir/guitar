@@ -296,7 +296,10 @@ body {
   margin-bottom: 0;
 }
 
-.button {
+.button,
+.button:hover,
+.button:active,
+.button:focus {
   background: transparent;
   background-color: var(--button-bg);
   outline: none;
