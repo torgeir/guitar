@@ -11,8 +11,8 @@ goog.require('sci.impl.vars');
  * Added for compatibility. Does not support all of the options from the original yet.
  */
 sci.impl.read.read = (function sci$impl$read$read(var_args){
-var G__17460 = arguments.length;
-switch (G__17460) {
+var G__15752 = arguments.length;
+switch (G__15752) {
 case 1:
 return sci.impl.read.read.cljs$core$IFn$_invoke$arity$1((arguments[(0)]));
 
@@ -71,8 +71,8 @@ var reader = cljs.tools.reader.reader_types.indexing_push_back_reader.cljs$core$
 return sci.impl.parser.parse_next.cljs$core$IFn$_invoke$arity$2(sci_ctx,reader);
 });
 sci.impl.read.eval = (function sci$impl$read$eval(sci_ctx,form){
-var fexpr__17462 = cljs.core.deref(sci.impl.utils.eval_form_state);
-return (fexpr__17462.cljs$core$IFn$_invoke$arity$2 ? fexpr__17462.cljs$core$IFn$_invoke$arity$2(sci_ctx,form) : fexpr__17462.call(null,sci_ctx,form));
+var fexpr__15754 = cljs.core.deref(sci.impl.utils.eval_form_state);
+return (fexpr__15754.cljs$core$IFn$_invoke$arity$2 ? fexpr__15754.cljs$core$IFn$_invoke$arity$2(sci_ctx,form) : fexpr__15754.call(null,sci_ctx,form));
 });
 sci.impl.read.load_string = (function sci$impl$read$load_string(sci_ctx,s){
 sci.impl.vars.push_thread_bindings(cljs.core.PersistentArrayMap.createAsIfByAssoc([sci.impl.vars.current_ns,cljs.core.deref(sci.impl.vars.current_ns)]));
@@ -84,8 +84,8 @@ var x = sci.impl.parser.parse_next.cljs$core$IFn$_invoke$arity$2(sci_ctx,reader)
 if(cljs.core.truth_((sci.impl.utils.kw_identical_QMARK_.cljs$core$IFn$_invoke$arity$2 ? sci.impl.utils.kw_identical_QMARK_.cljs$core$IFn$_invoke$arity$2(cljs.core.cst$kw$sci$impl$parser$edamame_SLASH_eof,x) : sci.impl.utils.kw_identical_QMARK_.call(null,cljs.core.cst$kw$sci$impl$parser$edamame_SLASH_eof,x)))){
 return ret;
 } else {
-var G__17463 = sci.impl.read.eval(sci_ctx,x);
-ret = G__17463;
+var G__15755 = sci.impl.read.eval(sci_ctx,x);
+ret = G__15755;
 continue;
 }
 break;

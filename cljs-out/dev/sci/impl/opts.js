@@ -21,14 +21,14 @@ return cljs.core.assoc.cljs$core$IFn$_invoke$arity$variadic(env__$1,cljs.core.cs
 });
 sci.impl.opts.process_permissions = (function sci$impl$opts$process_permissions(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___23345 = arguments.length;
-var i__4737__auto___23346 = (0);
+var len__4736__auto___21713 = arguments.length;
+var i__4737__auto___21714 = (0);
 while(true){
-if((i__4737__auto___23346 < len__4736__auto___23345)){
-args__4742__auto__.push((arguments[i__4737__auto___23346]));
+if((i__4737__auto___21714 < len__4736__auto___21713)){
+args__4742__auto__.push((arguments[i__4737__auto___21714]));
 
-var G__23347 = (i__4737__auto___23346 + (1));
-i__4737__auto___23346 = G__23347;
+var G__21715 = (i__4737__auto___21714 + (1));
+i__4737__auto___21714 = G__21715;
 continue;
 } else {
 }
@@ -46,42 +46,42 @@ return cljs.core.not_empty(cljs.core.into.cljs$core$IFn$_invoke$arity$3(cljs.cor
 (sci.impl.opts.process_permissions.cljs$lang$maxFixedArity = (0));
 
 /** @this {Function} */
-(sci.impl.opts.process_permissions.cljs$lang$applyTo = (function (seq23344){
+(sci.impl.opts.process_permissions.cljs$lang$applyTo = (function (seq21712){
 var self__4724__auto__ = this;
-return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq23344));
+return self__4724__auto__.cljs$core$IFn$_invoke$arity$variadic(cljs.core.seq(seq21712));
 }));
 
 sci.impl.opts.default_classes = new cljs.core.PersistentArrayMap(null, 3, [cljs.core.cst$sym$Error,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,Error,cljs.core.cst$kw$constructor,(function() {
-var G__23350 = null;
-var G__23350__1 = (function (msg){
+var G__21718 = null;
+var G__21718__1 = (function (msg){
 return (new Error(msg));
 });
-var G__23350__2 = (function (msg,filename){
+var G__21718__2 = (function (msg,filename){
 return (new Error(msg,filename));
 });
-var G__23350__3 = (function (msg,filename,line){
+var G__21718__3 = (function (msg,filename,line){
 return (new Error(msg,filename,line));
 });
-G__23350 = function(msg,filename,line){
+G__21718 = function(msg,filename,line){
 switch(arguments.length){
 case 1:
-return G__23350__1.call(this,msg);
+return G__21718__1.call(this,msg);
 case 2:
-return G__23350__2.call(this,msg,filename);
+return G__21718__2.call(this,msg,filename);
 case 3:
-return G__23350__3.call(this,msg,filename,line);
+return G__21718__3.call(this,msg,filename,line);
 }
 throw(new Error('Invalid arity: ' + arguments.length));
 };
-G__23350.cljs$core$IFn$_invoke$arity$1 = G__23350__1;
-G__23350.cljs$core$IFn$_invoke$arity$2 = G__23350__2;
-G__23350.cljs$core$IFn$_invoke$arity$3 = G__23350__3;
-return G__23350;
+G__21718.cljs$core$IFn$_invoke$arity$1 = G__21718__1;
+G__21718.cljs$core$IFn$_invoke$arity$2 = G__21718__2;
+G__21718.cljs$core$IFn$_invoke$arity$3 = G__21718__3;
+return G__21718;
 })()
-], null),cljs.core.cst$sym$cljs$core$Delay,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,cljs.core.Delay,cljs.core.cst$kw$constructor,(function (p1__23348_SHARP_){
-return (new cljs.core.Delay(p1__23348_SHARP_,null));
-})], null),cljs.core.cst$sym$goog$string$StringBuffer,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,goog.string.StringBuffer,cljs.core.cst$kw$constructor,(function (p1__23349_SHARP_){
-return (new goog.string.StringBuffer(p1__23349_SHARP_));
+], null),cljs.core.cst$sym$cljs$core$Delay,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,cljs.core.Delay,cljs.core.cst$kw$constructor,(function (p1__21716_SHARP_){
+return (new cljs.core.Delay(p1__21716_SHARP_,null));
+})], null),cljs.core.cst$sym$goog$string$StringBuffer,new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$class,goog.string.StringBuffer,cljs.core.cst$kw$constructor,(function (p1__21717_SHARP_){
+return (new goog.string.StringBuffer(p1__21717_SHARP_));
 })], null)], null);
 sci.impl.opts.default_imports = cljs.core.PersistentArrayMap.EMPTY;
 sci.impl.opts.normalize_classes = (function sci$impl$opts$normalize_classes(classes){
@@ -90,13 +90,13 @@ var kvs = classes;
 while(true){
 var temp__5718__auto__ = cljs.core.first(kvs);
 if(cljs.core.truth_(temp__5718__auto__)){
-var vec__23351 = temp__5718__auto__;
-var sym = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__23351,(0),null);
-var class_opts = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__23351,(1),null);
-var G__23354 = cljs.core.assoc_BANG_.cljs$core$IFn$_invoke$arity$3(class__GT_opts,sym,((cljs.core.map_QMARK_(class_opts))?class_opts:new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,class_opts], null)));
-var G__23355 = cljs.core.rest(kvs);
-class__GT_opts = G__23354;
-kvs = G__23355;
+var vec__21719 = temp__5718__auto__;
+var sym = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21719,(0),null);
+var class_opts = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__21719,(1),null);
+var G__21722 = cljs.core.assoc_BANG_.cljs$core$IFn$_invoke$arity$3(class__GT_opts,sym,((cljs.core.map_QMARK_(class_opts))?class_opts:new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,class_opts], null)));
+var G__21723 = cljs.core.rest(kvs);
+class__GT_opts = G__21722;
+kvs = G__21723;
 continue;
 } else {
 return new cljs.core.PersistentArrayMap(null, 2, [cljs.core.cst$kw$public_DASH_class,cljs.core.cst$kw$public_DASH_class.cljs$core$IFn$_invoke$arity$1(classes),cljs.core.cst$kw$class_DASH__GT_opts,cljs.core.persistent_BANG_(class__GT_opts)], null);
@@ -111,23 +111,23 @@ return new cljs.core.PersistentArrayMap(null, 4, [cljs.core.cst$kw$bindings,bind
 /**
  * Initializes options
  */
-sci.impl.opts.init = (function sci$impl$opts$init(p__23356){
-var map__23357 = p__23356;
-var map__23357__$1 = (((((!((map__23357 == null))))?(((((map__23357.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__23357.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__23357):map__23357);
-var features = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$features);
-var namespaces = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$namespaces);
-var bindings = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$bindings);
-var readers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$readers);
-var reify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$reify);
-var env = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$env);
-var disable_arity_checks = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$disable_DASH_arity_DASH_checks);
-var imports = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$imports);
-var allow = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$allow);
-var load_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$load_DASH_fn);
-var uberscript = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$uberscript);
-var aliases = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$aliases);
-var deny = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$deny);
-var classes = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__23357__$1,cljs.core.cst$kw$classes);
+sci.impl.opts.init = (function sci$impl$opts$init(p__21724){
+var map__21725 = p__21724;
+var map__21725__$1 = (((((!((map__21725 == null))))?(((((map__21725.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__21725.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__21725):map__21725);
+var features = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$features);
+var namespaces = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$namespaces);
+var bindings = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$bindings);
+var readers = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$readers);
+var reify = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$reify);
+var env = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$env);
+var disable_arity_checks = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$disable_DASH_arity_DASH_checks);
+var imports = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$imports);
+var allow = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$allow);
+var load_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$load_DASH_fn);
+var uberscript = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$uberscript);
+var aliases = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$aliases);
+var deny = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$deny);
+var classes = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__21725__$1,cljs.core.cst$kw$classes);
 var env__$1 = (function (){var or__4126__auto__ = env;
 if(cljs.core.truth_(or__4126__auto__)){
 return or__4126__auto__;

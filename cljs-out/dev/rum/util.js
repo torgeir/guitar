@@ -16,14 +16,14 @@ return cljs.core.get.cljs$core$IFn$_invoke$arity$2(m,k);
 });
 rum.util.call_all = (function rum$util$call_all(var_args){
 var args__4742__auto__ = [];
-var len__4736__auto___24606 = arguments.length;
-var i__4737__auto___24607 = (0);
+var len__4736__auto___22974 = arguments.length;
+var i__4737__auto___22975 = (0);
 while(true){
-if((i__4737__auto___24607 < len__4736__auto___24606)){
-args__4742__auto__.push((arguments[i__4737__auto___24607]));
+if((i__4737__auto___22975 < len__4736__auto___22974)){
+args__4742__auto__.push((arguments[i__4737__auto___22975]));
 
-var G__24608 = (i__4737__auto___24607 + (1));
-i__4737__auto___24607 = G__24608;
+var G__22976 = (i__4737__auto___22975 + (1));
+i__4737__auto___22975 = G__22976;
 continue;
 } else {
 }
@@ -43,12 +43,12 @@ return cljs.core.apply.cljs$core$IFn$_invoke$arity$3(fn,state__$1,args);
 (rum.util.call_all.cljs$lang$maxFixedArity = (2));
 
 /** @this {Function} */
-(rum.util.call_all.cljs$lang$applyTo = (function (seq24603){
-var G__24604 = cljs.core.first(seq24603);
-var seq24603__$1 = cljs.core.next(seq24603);
-var G__24605 = cljs.core.first(seq24603__$1);
-var seq24603__$2 = cljs.core.next(seq24603__$1);
+(rum.util.call_all.cljs$lang$applyTo = (function (seq22971){
+var G__22972 = cljs.core.first(seq22971);
+var seq22971__$1 = cljs.core.next(seq22971);
+var G__22973 = cljs.core.first(seq22971__$1);
+var seq22971__$2 = cljs.core.next(seq22971__$1);
 var self__4723__auto__ = this;
-return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__24604,G__24605,seq24603__$2);
+return self__4723__auto__.cljs$core$IFn$_invoke$arity$variadic(G__22972,G__22973,seq22971__$2);
 }));
 
