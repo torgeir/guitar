@@ -196,6 +196,26 @@
           new-key (before-key @state))))
 
 
+(defn dec-to-prev-note [last-strings-notes in-scale fret]
+  (- fret
+     1
+     (count
+       (take-while
+         #(not ((set in-scale) (:note %)))
+         (drop
+           (- (count last-strings-notes) fret)
+           (reverse last-strings-notes))))))
+
+
+(defn inc-to-next-note [last-strings-notes in-scale fret]
+  (+ fret
+     1
+     (count
+       (take-while
+         #(not ((set in-scale) (:note %)))
+         (drop (inc fret) last-strings-notes)))))
+
+
 (rum/defc visualize-scale < rum/reactive [key on-sub-click on-add-click strings-notes state tuning joined-neck]
   (let [{:keys [root scale start-fret highlight mode color]}
         (rum/react state)
@@ -214,7 +234,7 @@
                          (set in-scale)
                          scale-highlight]))))
       [:div.column
-       [:div.column-col (fret-button state dec start-fret "❮")]
+       [:div.column-col (fret-button state (partial dec-to-prev-note (last strings-notes) in-scale) start-fret "❮")]
        [:div.column-col.guitar-buttons-wrapper {:tabIndex 0}
         (button {:tabIndex 0 :class "guitar-buttons-opener"} "")
         [:div.guitar-buttons
@@ -234,7 +254,7 @@
          [:div.buttons (button {:class    "button--square"
                                 :on-click #(on-add-click key)} "+")]]]
        [:div.column-col
-        (rum/with-key (fret-button state inc start-fret "❯") "fret")]])))
+        (rum/with-key (fret-button state (partial inc-to-next-note (last strings-notes) in-scale) start-fret "❯") "fret")]])))
 
 
 (rum/defc visualize-scales < rum/reactive [tuning strings-notes state]
