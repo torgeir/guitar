@@ -17,6 +17,16 @@
    ])
 
 
+(defn scale-steps [scale]
+  (->> scales
+    (flatten)
+    (drop-while (partial not= scale))
+    (drop 1)
+    (first)
+    (seq)
+    (map js/parseInt)))
+
+
 (def notes
   "Named notes of the western c major scale."
   ["c" "c#" "d" "d#" "e" "f" "f#" "g" "g#" "a" "a#" "b"])

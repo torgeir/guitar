@@ -1,6 +1,6 @@
 (ns guitar.modes.explore
   (:require
-   [guitar.notes :refer [scales scale-notes index-of notes modes ordinal-suffixed-number]]
+   [guitar.notes :refer [scales scale-notes index-of notes modes ordinal-suffixed-number scale-steps]]
    [guitar.patterns :refer [scale-pattern]]
    [guitar.buttons :refer [button buttons buttons-multi toggle-button]]
    [guitar.guitar :refer [guitar]]
@@ -23,18 +23,24 @@
    :highlight  #{1}})
 
 
+(defn initial-state [& states]
+  (let [keys (map scale-key states)]
+    (reduce
+      (fn [acc [key state]] (assoc acc key state))
+      {:joined-neck true
+       :condensed   true
+       :scales      (vec keys)}
+      (map vector keys states))))
+
+
 (def state
-  (let [key   (scale-key)
-        key-2 (scale-key)]
-    {:scales      [key key-2]
-     key          default-state
-     key-2        (assoc default-state
-                         :root "a"
-                         :scale :minor-pentatonic
-                         :start-fret 10
-                         :color 3)
-     :joined-neck true
-     :condensed   true}))
+  (initial-state
+    default-state
+    (assoc default-state
+           :root "a"
+           :scale :minor-pentatonic
+           :start-fret 10
+           :color 3)))
 
 
 (defn update-scales [state f]
@@ -313,3 +319,50 @@
      (toggle-button
        {:value (:condensed @state) :on-click (partial swap! state assoc :condensed)}
        "Condensed settings" "Expanded settings")]))
+
+
+(defn scale-from [scale fret color root highlights]
+  (->> (reductions + (scale-steps scale))
+    (map (partial + fret))
+    (map (partial assoc default-state :start-fret))
+    (map #(assoc % :root root))
+    (map #(assoc % :highlight highlights))
+    (map #(assoc % :scale scale))
+    (map #(assoc % :color color))))
+
+
+(def example-states
+  [{:text  "Modes of C Major"
+    :state (assoc (apply initial-state (scale-from :major 6 0 "c" #{})) :joined-neck false)}
+   {:text  "Modes of C Major, highlighting the root"
+    :state (assoc (apply initial-state (scale-from :major 6 0 "c" #{1})) :joined-neck false)}
+   {:text  "Modes of G Melodic Minor"
+    :state (assoc (apply initial-state (scale-from :melodic-minor 1 3 "g" #{})) :joined-neck false)}
+   {:text  "Modes of G Melodic Minor, highlighting the root, 3rd and 5th"
+    :state (assoc (apply initial-state (scale-from :melodic-minor 1 3 "g" #{1 3 5})) :joined-neck false)}
+   {:text  "Compare C dorian major and A minor pentatonic, in root and 3rd position respectively"
+    :state (assoc (initial-state (assoc default-state :mode :dorian)
+                                 (assoc default-state
+                                        :root "a"
+                                        :start-fret 9
+                                        :color 5
+                                        :highlight #{3}
+                                        :scale :minor-pentatonic))
+                  :joined-neck false)}
+   {:text  "Compare C dorian major and A minor pentatonic, joined, in root and 3rd position respectively"
+    :state (assoc (initial-state (assoc default-state :mode :dorian)
+                                 (assoc default-state
+                                        :root "a"
+                                        :start-fret 9
+                                        :color 5
+                                        :highlight #{3}
+                                        :scale :minor-pentatonic))
+                  :joined-neck true)}
+   {:text  "Compare C dorian major and A minor pentatonic, joined, across all positions, highlighting the C dorian's 3rd and 7th"
+    :state (assoc (initial-state (assoc default-state :mode :dorian :start-fret 5  :highlight #{3 7})
+                                 (assoc default-state :mode :dorian :start-fret 9  :highlight #{3 7})
+                                 (assoc default-state :mode :dorian :start-fret 14 :highlight #{3 7})
+                                 (assoc default-state :root "a" :start-fret 5  :color 1 :highlight #{} :scale :minor-pentatonic)
+                                 (assoc default-state :root "a" :start-fret 10 :color 1 :highlight #{} :scale :minor-pentatonic)
+                                 (assoc default-state :root "a" :start-fret 13 :color 1 :highlight #{} :scale :minor-pentatonic))
+                  :joined-neck true)}])

@@ -37,15 +37,19 @@
   ([hash] (set! (.-hash js/location) hash)))
 
 
+(def default-state
+  {:tuning  tuning
+   :theme   :dark
+   :mode    :explore
+   :guess   guess/state
+   :explore explore/state})
+
+
 (defonce state
   (atom
-   (if-let [hash (location-hash)]
-     (read-state-str hash)
-     {:tuning tuning
-      :theme :dark
-      :mode :explore
-      :guess  guess/state
-      :explore explore/state})))
+    (if-let [hash (location-hash)]
+      (read-state-str hash)
+      default-state)))
 
 
 (add-watch state :mode (fn [_ _ _ state]
@@ -65,6 +69,10 @@
   (partial string-notes notes (inc scale-length)))
 
 
+(defn state-link [[s text]]
+  [:a.explore-example {:href "#" :on-click #(reset! state (assoc default-state :explore s))} text])
+
+
 (rum/defc app < rum/reactive
   "Main component. Dispatches to other components based on the :mode of the state."
   [state]
@@ -72,10 +80,10 @@
         theme         (:theme (rum/react state))
         mode-state    (rum/cursor state mode)
         strings-notes (->> @state
-                           :tuning
-                           (map notes-of-string)
-                           (map (partial map #(conj {} [:note %])))
-                           (reverse))]
+                        :tuning
+                        (map notes-of-string)
+                        (map (partial map #(conj {} [:note %])))
+                        (reverse))]
     [:div
      {:class (str "theme--" (name theme))}
      [:div.buttons
@@ -90,12 +98,14 @@
       strings-notes
       mode-state)
      [:.buttons
-      (button {:value (when (= (:tuning @state) tuning) "6-string")
+      (button {:value    (when (= (:tuning @state) tuning) "6-string")
                :on-click #(swap! state assoc :tuning tuning)} "6-string")
-      (button {:value (when (= (:tuning @state) (vec (concat "b" tuning))) "7-string")
+      (button {:value    (when (= (:tuning @state) (vec (concat "b" tuning))) "7-string")
                :on-click #(swap! state assoc :tuning (vec (concat "b" tuning)))} "7-string")
-      (button {:value (when (= (:tuning @state) (vec (concat "g" "b" tuning))) "8-string")
+      (button {:value    (when (= (:tuning @state) (vec (concat "g" "b" tuning))) "8-string")
                :on-click #(swap! state assoc :tuning (vec (concat "g" "b" tuning)))} "8-string")]
+     [:h3 "Examples"]
+     (map (comp (fn [link] [:p link]) state-link (juxt :state :text)) explore/example-states)
      (comment [:button
                {:on-click #(swap! state update :theme cycle-theme)}
                (str (name theme) " theme")])]))

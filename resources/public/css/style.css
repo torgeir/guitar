@@ -1,6 +1,6 @@
 :root {
   --color-light-aqua: #3af;
-  --color-light-bittersweet: #f50;
+  --color-light-bittersweet: #f60;
   --color-light-bluejeans: #48f;
   --color-light-grass: #7b0;
   --color-light-mint: #0ed;
@@ -13,9 +13,9 @@
   --color-light-dark: #656d78;
 
   --color-dark-aqua: #3af;
-  --color-dark-bittersweet: #f50;
+  --color-dark-bittersweet: #f60;
   --color-dark-bluejeans: #48f;
-  --color-dark-grass: #7b0;
+  --color-dark-grass: #7c0;
   --color-dark-mint: #0ed;
   --color-dark-pink: #e06;
   --color-dark-pinkrose: #c4f;
@@ -414,4 +414,16 @@ body {
 .condensed .guitar-buttons-wrapper:focus-within .guitar-buttons {
   display: block;
   height: auto;
+}
+
+.explore-example {
+  text-decoration: none;
+  color: var(--color-dark-bluejeans);
+}
+
+.explore-example:focus,
+.explore-example:active {
+  text-decoration: none;
+  color: var(--color-dark-bluejeans);
+  filter: brightness(70%);
 }
