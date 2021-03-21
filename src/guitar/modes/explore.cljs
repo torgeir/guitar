@@ -221,11 +221,11 @@
        (guitar {:class "guitar--faded"}
                #(swap! state assoc :start-fret (:fret %))
                (combined-notes
-                (list [start-fret
-                       color
-                       (partial (scale-pattern tuning scale) strings-notes)
-                       (set in-scale)
-                       scale-highlight]))))
+                 (list [start-fret
+                        color
+                        (partial (scale-pattern tuning scale) strings-notes)
+                        (set in-scale)
+                        scale-highlight]))))
      [:div.column
       [:div.column-col
        (fret-button state (partial dec-to-prev-note (last strings-notes) in-scale) start-fret "❮")]
@@ -237,10 +237,10 @@
         (rum/with-key (mode-buttons state scale-modes mode) "modes")
         (rum/with-key
           (note-buttons state root #(find-closest-fret-index
-                                     (last strings-notes)
-                                     (set (scale-notes % scale mode))
-                                     start-fret
-                                     %))
+                                      (last strings-notes)
+                                      (set (scale-notes % scale mode))
+                                      start-fret
+                                      %))
           "notes")
         (rum/with-key (scale-buttons state scales scale) "scales")
         (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
@@ -266,26 +266,26 @@
                    (reset! state (update-scales @state #(assoc % :start-fret (:fret note)))))
                  notes)))
      (->> (:scales (rum/react state))
-          (map (juxt identity (partial rum/cursor state)))
-          (map (fn [[key cursor]]
-                 (visualize-scale
-                  key
-                  (fn [_]
-                    (swap! state dissoc key)
-                    (swap! state update :scales (fn [s] (vec (filter #(not= key %) s)))))
-                  (fn [before-key]
-                    (add-scale state (scale-key) before-key) "+")
-                  strings-notes
-                  cursor
-                  tuning
-                  joined-neck)))
-          (map-indexed #(rum/with-key %2 %1)))
+       (map (juxt identity (partial rum/cursor state)))
+       (map (fn [[key cursor]]
+              (visualize-scale
+                key
+                (fn [_]
+                  (swap! state dissoc key)
+                  (swap! state update :scales (fn [s] (vec (filter #(not= key %) s)))))
+                (fn [before-key]
+                  (add-scale state (scale-key) before-key) "+")
+                strings-notes
+                cursor
+                tuning
+                joined-neck)))
+       (map-indexed #(rum/with-key %2 %1)))
      (when (empty? (:scales (rum/react state)))
        [:.buttons
         (button {:on-click #(add-scale state (scale-key))} "+")])
      (toggle-button
-      {:value (:joined-neck @state) :on-click (partial swap! state assoc :joined-neck)}
-      "Single neck" "Exploded neck")
+       {:value (:joined-neck @state) :on-click (partial swap! state assoc :joined-neck)}
+       "Single neck" "Exploded neck")
      (toggle-button
-      {:value (:condensed @state) :on-click (partial swap! state assoc :condensed)}
-      "Condensed settings" "Expanded settings")]))
+       {:value (:condensed @state) :on-click (partial swap! state assoc :condensed)}
+       "Condensed settings" "Expanded settings")]))
