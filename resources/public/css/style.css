@@ -26,7 +26,7 @@
   --color-gray-dark: #333;
 
   --page-bg: #010409;
-  --hover: rgba(100, 100, 100, 70%);
+  --hover: rgba(100, 100, 100, 100%);
   --font: #999;
   --font-hl: #fefefe;
   --font-faded: #444;
@@ -52,7 +52,7 @@
   --guitar-string-width-l: 3px;
   --guitar-string-width-xl: 4px;
   --guitar-string-width-xxl: 5px;
-  --button-bg: rgba(255, 255, 255, 3%);
+  --button-bg: rgba(255, 255, 255, 4%);
   --button-fg: rgba(255, 255, 255, 5%);
   --button-border: rgba(255, 255, 255, 15%);
 }
@@ -191,12 +191,12 @@ body {
 }
 .scale-note:first-child:before,
 .scale-note ~ .scale-note:before {
-  border: 1px solid rgba(0, 0, 0, 100%);
+  border: 1px solid rgba(0, 0, 0, 60%);
   box-shadow: -1px 0px 5px 2px rgba(0, 0, 0, 50%);
 }
 
 .guitar-fret:hover .scale-note:before {
-  box-shadow: 0px 0px 3px var(--hover);
+  box-shadow: 0px 0px 5px var(--hover);
 }
 .guitar-fret:hover .scale-note:not(.scale-note--hl):before {
   background-color: var(--hover);
@@ -297,7 +297,6 @@ body {
 }
 
 .button,
-.button:hover,
 .button:active,
 .button:focus {
   background: transparent;
@@ -315,11 +314,14 @@ body {
   padding: 0.1rem 0;
   user-select: none;
   box-shadow: none;
-  transition: all 0.1s;
+  transition: all 0.05s;
 }
-.button--selected {
+.button--selected,
+.button--selected:active,
+.button--selected:focus {
   background-color: var(--button-fg);
   border-color: var(--button-border);
+  color: var(--font);
 }
 .button--square {
   border-radius: 0;
