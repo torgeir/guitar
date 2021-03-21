@@ -6,6 +6,9 @@ goog.require('cljs.core.constants');
  * Supported scales represented as semitone increments.
  */
 guitar.notes.scales = new cljs.core.PersistentVector(null, 9, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$major,"2212221"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$minor,"2122122"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$harmonic_DASH_minor,"2122131"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$harmonic_DASH_major,"2212131"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$melodic_DASH_minor,"2122221"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$minor_DASH_pentatonic,"32232"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$major_DASH_pentatonic,"22323"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$diminished_DASH_whole_DASH_half,"21212121"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$diminished_DASH_half_DASH_whole,"12121212"], null)], null);
+guitar.notes.scale_steps = (function guitar$notes$scale_steps(scale){
+return cljs.core.map.cljs$core$IFn$_invoke$arity$2(parseInt,cljs.core.seq(cljs.core.first(cljs.core.drop.cljs$core$IFn$_invoke$arity$2((1),cljs.core.drop_while.cljs$core$IFn$_invoke$arity$2(cljs.core.partial.cljs$core$IFn$_invoke$arity$2(cljs.core.not_EQ_,scale),cljs.core.flatten(guitar.notes.scales))))));
+});
 /**
  * Named notes of the western c major scale.
  */
