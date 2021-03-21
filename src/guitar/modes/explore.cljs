@@ -182,6 +182,13 @@
     (vec (concat l [n] r))))
 
 
+(defn rand-color [& existing-colors]
+  (println (set existing-colors))
+  (->> (range 0 8)
+      (remove (set existing-colors))
+      (rand-nth)))
+
+
 (defn add-scale
   ([state new-key]
    (swap! state assoc
@@ -191,9 +198,11 @@
    (swap! state assoc
           :scales (insert-at
                     (:scales @state)
-                    (index-of (:scales @state) before-key)
+                    (inc (index-of (:scales @state) before-key))
                     new-key)
-          new-key (before-key @state))))
+          new-key (assoc (before-key @state)
+                         :color
+                         (apply rand-color (map :color (active-scales @state)))))))
 
 
 (defn dec-to-prev-note [last-strings-notes in-scale fret]
@@ -250,7 +259,7 @@
            "notes")
          (rum/with-key (scale-buttons state scales scale) "scales")
          (rum/with-key (highlight-buttons state in-scale scale-highlight) "highlights")
-         [:div.buttons (button {:on-click #(swap! state assoc :color (rand-int 8))} "Colorize")]
+         [:div.buttons (button {:on-click #(swap! state assoc :color (rand-color (:color @state)))} "Colorize")]
          [:div.buttons (button {:class    "button--square"
                                 :on-click #(on-add-click key)} "+")]]]
        [:div.column-col
