@@ -353,7 +353,7 @@ var in_scales = guitar.modes.explore.combined_in_scale(current_scales);
 var highlights = guitar.modes.explore.combined_highlights(current_scales,in_scales);
 var scale_data = guitar.modes.explore.combined_scale_data(current_scales,in_scales,tuning,strings_notes,highlights);
 var notes = guitar.modes.explore.combined_notes(scale_data);
-return daiquiri.interpreter.interpret((function (){var G__38772 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,"guitar--faded"], null);
+return daiquiri.interpreter.interpret((function (){var G__38772 = new cljs.core.PersistentArrayMap(null, 1, [cljs.core.cst$kw$class,["guitar--faded",((cljs.core.empty_QMARK_(cljs.core.flatten(highlights)))?null:" guitar--with-highlight")].join('')], null);
 var G__38773 = (function (note){
 return cljs.core.reset_BANG_(state,guitar.modes.explore.update_scales(cljs.core.deref(state),(function (p1__38758_SHARP_){
 return cljs.core.assoc.cljs$core$IFn$_invoke$arity$3(p1__38758_SHARP_,cljs.core.cst$kw$start_DASH_fret,cljs.core.cst$kw$fret.cljs$core$IFn$_invoke$arity$1(note));
