@@ -37,7 +37,8 @@
              (and (pos? skip) (in-scale? (:note note))) (recur (conj acc note) (dec skip) nps notes)
              (pos? skip)                                (recur (conj acc nil) (dec skip) nps notes)
              (and (zero? nps) (in-scale? (:note note))) (recur (conj acc note)
-                                                               (- scale-length (find-string-offset tuning (count acc)))
+                                                               (- scale-length
+                                                                  (find-string-offset tuning (count acc)))
                                                                notes-per-string notes)
              (in-scale? (:note note))                   (recur (conj acc (format note)) skip (dec nps) notes)
              :else                                      (recur (conj acc nil) skip nps notes))))
