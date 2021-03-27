@@ -13,7 +13,7 @@ return cljs.core.map.cljs$core$IFn$_invoke$arity$2(parseInt,cljs.core.seq(cljs.c
  * Named notes of the western c major scale.
  */
 guitar.notes.notes = new cljs.core.PersistentVector(null, 12, 5, cljs.core.PersistentVector.EMPTY_NODE, ["c","c#","d","d#","e","f","f#","g","g#","a","a#","b"], null);
-guitar.notes.modes = new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ionian,cljs.core.cst$kw$dorian,cljs.core.cst$kw$phrygian,cljs.core.cst$kw$lydian,cljs.core.cst$kw$aeolian,cljs.core.cst$kw$mixolydian,cljs.core.cst$kw$locrian], null);
+guitar.notes.modes = new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [cljs.core.cst$kw$ionian,cljs.core.cst$kw$dorian,cljs.core.cst$kw$phrygian,cljs.core.cst$kw$lydian,cljs.core.cst$kw$mixolydian,cljs.core.cst$kw$aeolian,cljs.core.cst$kw$locrian], null);
 guitar.notes.shift_n = (function guitar$notes$shift_n(at,coll){
 return cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.concat,cljs.core.reverse(cljs.core.split_at(at,coll)));
 });
