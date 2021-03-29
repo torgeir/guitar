@@ -1,12 +1,13 @@
 (ns guitar.modes.explore
   (:require
-   [guitar.notes :refer [scales scale-notes index-of notes modes mode-names ordinal-suffixed-number scale-steps]]
+   [guitar.notes :refer [scales scale-notes notes modes mode-names ordinal-suffixed-number scale-steps]]
    [guitar.patterns :refer [scale-pattern]]
    [guitar.buttons :refer [button buttons buttons-multi toggle-button]]
    [guitar.guitar :refer [guitar]]
    [guitar.math :refer [diff]]
    [guitar.sets :refer [toggle-in indexed-map]]
-   [guitar.maps :refer [map-keys]]
+   [guitar.seqs :refer [index-of]]
+   [guitar.maps :refer [map-keys update-maps]]
    [hashp.core]
    [rum.core :as rum]))
 
@@ -45,10 +46,7 @@
 
 
 (defn update-scales [state f]
-  (reduce
-    (fn [acc k] (update acc k f))
-    state
-    (:scales state)))
+  (update-maps state (:scales state) f))
 
 
 (defn hl-notes [note notes-to-highlight scale-notes default]

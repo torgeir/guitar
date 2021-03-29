@@ -1,4 +1,6 @@
-(ns guitar.notes)
+(ns guitar.notes
+  (:require
+   [guitar.seqs :refer [shift-n index-of]]))
 
 
 (def scales
@@ -58,20 +60,6 @@
                     :mixolydian "Aeolian dominant"
                     :aeolian    "Half diminished"
                     :locrian    "Altered"}})
-
-
-(defn shift-n [at coll]
-  (->> coll
-    (split-at at)
-    (reverse)
-    (apply concat)))
-
-
-(defn index-of [coll el]
-  (->> coll
-    (map-indexed vector)
-    (drop-while #(not= el (second %)))
-    (ffirst)))
 
 
 (defn scale-notes
