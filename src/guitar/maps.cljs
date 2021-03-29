@@ -10,4 +10,3 @@
     (fn [acc k] (update acc k f))
     init
     state))
-

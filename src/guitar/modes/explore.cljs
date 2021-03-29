@@ -95,8 +95,8 @@
 
 
 (defn distinct-non-highlighted [notes]
-  (if (->> notes (map keys) (flatten) (set) :hl)
-    (remove #(not (:hl %)) notes)
+  (if (->> notes (map keys) (flatten) (set) :color)
+    (remove #(not (:color %)) notes)
     (distinct notes)))
 
 
@@ -112,7 +112,7 @@
   (remove #(>= (dec %) (count in-scale)) highlight))
 
 
-(defn hl-notes [note notes-to-highlight scale-notes default]
+(defn color-notes [note notes-to-highlight scale-notes default]
   (let [keys        (map (partial nth scale-notes) (map dec notes-to-highlight))
         note-colors (select-keys (indexed-map scale-notes) (set keys))]
     (note-colors note (* -1 default))))
@@ -122,10 +122,10 @@
   (notes
     in-scale
     start-fret
-    #(let [hl (hl-notes (:note %) (set highlight) (vec in-scale) color)]
+    #(let [color (color-notes (:note %) (set highlight) (vec in-scale) color)]
        (assoc %
-              :hl (Math/abs hl)
-              :emp (pos? hl)))))
+              :color (Math/abs color)
+              :highlight (pos? color)))))
 
 
 (defn combined-in-scale [current-scales]

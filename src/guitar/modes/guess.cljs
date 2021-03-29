@@ -55,11 +55,11 @@
                             [(cond
                                (and ((:frets locate) (:fret attempt))
                                     (= (:note note) (:note locate))
-                                    (= string (:string attempt) (:string locate))) (assoc note :hl 5)
+                                    (= string (:string attempt) (:string locate))) (assoc note :color 5)
                                (and (= string (:string locate))
-                                    (= (:note note) (:note locate)))               (assoc note :hl 1)
+                                    (= (:note note) (:note locate)))               (assoc note :color 1)
                                (and (= fret (:fret attempt))
-                                    (= string (:string attempt)))                  (assoc note :hl 0)
+                                    (= string (:string attempt)))                  (assoc note :color 0)
                                :else                                               note)])
                           string-notes)))))
      [:h3.center-text
