@@ -28,7 +28,7 @@
   --page-bg: #010409;
   --hover: rgba(100, 100, 100, 100%);
   --font: #999;
-  --font-hl: #fefefe;
+  --font-color: #fefefe;
   --font-faded: #444;
   --guitar-bg: rgba(255, 255, 255, 6%);
   --guitar-nut: var(--hover);
@@ -37,15 +37,15 @@
   --guitar-shadow: #000;
   --guitar-fret: rgba(0, 0, 0, 15%);
   --guitar-fretboard-dot: rgba(255, 255, 255, 5%);
-  --note-hl-0: var(--color-dark-aqua);
-  --note-hl-1: var(--color-dark-pink);
-  --note-hl-2: var(--color-dark-bittersweet);
-  --note-hl-3: var(--color-dark-sunflower);
-  --note-hl-4: var(--color-dark-mint);
-  --note-hl-5: var(--color-dark-grass);
-  --note-hl-6: var(--color-dark-pinkrose);
-  --note-hl-7: var(--color-dark-lavander);
-  --note-hl-8: var(--color-gray-dark);
+  --note-color-0: var(--color-dark-aqua);
+  --note-color-1: var(--color-dark-pink);
+  --note-color-2: var(--color-dark-bittersweet);
+  --note-color-3: var(--color-dark-sunflower);
+  --note-color-4: var(--color-dark-mint);
+  --note-color-5: var(--color-dark-grass);
+  --note-color-6: var(--color-dark-pinkrose);
+  --note-color-7: var(--color-dark-lavander);
+  --note-color-8: var(--color-gray-dark);
   --guitar-string-width-xs: 1px;
   --guitar-string-width-s: 1.6px;
   --guitar-string-width-m: 1.9px;
@@ -59,15 +59,15 @@
 
 /* tuned https://i.pinimg.com/originals/2e/9f/63/2e9f6323123859937b6ef88834db2adb.jpg */
 .theme--light {
-  --note-hl-0: var(--color-light-aqua);
-  --note-hl-1: var(--color-light-pink);
-  --note-hl-2: var(--color-light-bittersweet);
-  --note-hl-3: var(--color-light-sunflower);
-  --note-hl-4: var(--color-light-mint);
-  --note-hl-5: var(--color-light-grass);
-  --note-hl-6: var(--color-light-pinkrose);
-  --note-hl-7: var(--color-light-lavander);
-  --note-hl-8: var(--color-gray-dark);
+  --note-color-0: var(--color-light-aqua);
+  --note-color-1: var(--color-light-pink);
+  --note-color-2: var(--color-light-bittersweet);
+  --note-color-3: var(--color-light-sunflower);
+  --note-color-4: var(--color-light-mint);
+  --note-color-5: var(--color-light-grass);
+  --note-color-6: var(--color-light-pinkrose);
+  --note-color-7: var(--color-light-lavander);
+  --note-color-8: var(--color-gray-dark);
 }
 
 body {
@@ -198,12 +198,12 @@ body {
 .guitar-fret:hover .scale-note:before {
   box-shadow: 0px 0px 5px var(--hover);
 }
-.guitar-fret:hover .scale-note:not(.scale-note--hl):before {
+.guitar-fret:hover .scale-note:not(.scale-note--color):before {
   background-color: var(--hover);
 }
 
-.scale-note--hl:before,
-.scale-note--hl:after,
+.scale-note--color:before,
+.scale-note--color:after,
 .guitar-fret:hover .scale-note:before,
 .guitar-fret:hover .scale-note:after {
   content: " ";
@@ -222,53 +222,53 @@ body {
   filter: brightness(75%);
 }
 
-.scale-note--hl:before {
+.scale-note--color:before {
   transition: all 0.1s;
   /* background-color from script */
 }
 
 .guitar-fret:hover .scale-note:after,
-.scale-note--hl:after {
+.scale-note--color:after {
   content: attr(data-note);
   line-height: 2;
   right: calc(50% - 0.7rem - 1px);
-  color: var(--font-hl);
+  color: var(--font-color);
 }
 
 .guitar--with-highlight .scale-note:after {
   filter: brightness(60%);
 }
 
-.guitar--with-highlight .scale-note--hl-emp:after {
+.guitar--with-highlight .scale-note--color-highlight:after {
   filter: brightness(100%);
 }
 
-.scale-note--hl-0:after {
-  background-color: var(--note-hl-0);
+.scale-note--color-0:after {
+  background-color: var(--note-color-0);
 }
-.scale-note--hl-1:after {
-  background-color: var(--note-hl-1);
+.scale-note--color-1:after {
+  background-color: var(--note-color-1);
 }
-.scale-note--hl-2:after {
-  background-color: var(--note-hl-2);
+.scale-note--color-2:after {
+  background-color: var(--note-color-2);
 }
-.scale-note--hl-3:after {
-  background-color: var(--note-hl-3);
+.scale-note--color-3:after {
+  background-color: var(--note-color-3);
 }
-.scale-note--hl-4:after {
-  background-color: var(--note-hl-4);
+.scale-note--color-4:after {
+  background-color: var(--note-color-4);
 }
-.scale-note--hl-5:after {
-  background-color: var(--note-hl-5);
+.scale-note--color-5:after {
+  background-color: var(--note-color-5);
 }
-.scale-note--hl-6:after {
-  background-color: var(--note-hl-6);
+.scale-note--color-6:after {
+  background-color: var(--note-color-6);
 }
-.scale-note--hl-7:after {
-  background-color: var(--note-hl-8);
+.scale-note--color-7:after {
+  background-color: var(--note-color-8);
 }
-.scale-note--hl-8:after {
-  background-color: var(--note-hl-8);
+.scale-note--color-8:after {
+  background-color: var(--note-color-8);
 }
 
 .guitar-string:nth-child(3) .guitar-fret:nth-of-type(2n + 4):after,

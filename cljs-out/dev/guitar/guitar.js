@@ -11,9 +11,9 @@ guitar.guitar.scale_note = rum.core.lazy_build(rum.core.build_defc,(function (p_
 var map__24175 = p__24174;
 var map__24175__$1 = (((((!((map__24175 == null))))?(((((map__24175.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__24175.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__24175):map__24175);
 var note = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24175__$1,cljs.core.cst$kw$note);
-var hl = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24175__$1,cljs.core.cst$kw$hl);
-var emp = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24175__$1,cljs.core.cst$kw$emp);
-return daiquiri.core.create_element("div",{'data-note':clojure.string.trim(note),'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["scale-note",(cljs.core.truth_(hl)?[" scale-note--hl"," scale-note--hl-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(hl),(cljs.core.truth_(emp)?" scale-note--hl-emp":null)].join(''):null)], null))},[daiquiri.interpreter.interpret(note)]);
+var color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24175__$1,cljs.core.cst$kw$color);
+var highlight = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__24175__$1,cljs.core.cst$kw$highlight);
+return daiquiri.core.create_element("div",{'data-note':clojure.string.trim(note),'className':daiquiri.util.join_classes(new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, ["scale-note",(cljs.core.truth_(color)?[" scale-note--color"," scale-note--color-",cljs.core.str.cljs$core$IFn$_invoke$arity$1(color),(cljs.core.truth_(highlight)?" scale-note--color-highlight":null)].join(''):null)], null))},[daiquiri.interpreter.interpret(note)]);
 }),null,"guitar.guitar/scale-note");
 /**
  * A clickable guitar nut or fret.
