@@ -5,8 +5,9 @@
    [guitar.buttons :refer [button buttons buttons-multi toggle-button]]
    [guitar.guitar :refer [guitar]]
    [guitar.math :refer [diff]]
+   [guitar.colors :refer [rand-color]]
    [guitar.sets :refer [toggle-in indexed-map]]
-   [guitar.seqs :refer [index-of]]
+   [guitar.seqs :refer [index-of insert-at zip]]
    [guitar.maps :refer [map-keys update-maps]]
    [hashp.core]
    [rum.core :as rum]))
@@ -49,22 +50,8 @@
   (update-maps state (:scales state) f))
 
 
-(defn hl-notes [note notes-to-highlight scale-notes default]
-  (let [keys        (map (partial nth scale-notes) (map dec notes-to-highlight))
-        note-colors (select-keys (indexed-map scale-notes) (set keys))]
-    (note-colors note (* -1 default))))
-
-
-(defn find-closest-fret-index [last-strings-notes scale-notes fret note]
-  (->> last-strings-notes
-    (map :note)
-    (map-indexed vector)
-    (filter #(scale-notes (second %)))
-    (map (fn [[index note]] [(diff fret index) note index]))
-    (sort-by first)
-    (filter #(= note (second %)))
-    (map last)
-    (first)))
+(defn active-scales [state]
+  (map #(% state) (:scales state)))
 
 
 (defn mode-buttons [state scale modes mode]
@@ -107,12 +94,6 @@
     ordinal-suffixed-number))
 
 
-(defn zip [& rest]
-  (if (zero? (count rest))
-    []
-    (apply map vector rest)))
-
-
 (defn distinct-non-highlighted [notes]
   (if (->> notes (map keys) (flatten) (set) :hl)
     (remove #(not (:hl %)) notes)
@@ -131,6 +112,12 @@
   (remove #(>= (dec %) (count in-scale)) highlight))
 
 
+(defn hl-notes [note notes-to-highlight scale-notes default]
+  (let [keys        (map (partial nth scale-notes) (map dec notes-to-highlight))
+        note-colors (select-keys (indexed-map scale-notes) (set keys))]
+    (note-colors note (* -1 default))))
+
+
 (defn notes-of-scale [[start-fret color notes in-scale highlight]]
   (notes
     in-scale
@@ -139,10 +126,6 @@
        (assoc %
               :hl (Math/abs hl)
               :emp (pos? hl)))))
-
-
-(defn active-scales [state]
-  (map #(% state) (:scales state)))
 
 
 (defn combined-in-scale [current-scales]
@@ -174,18 +157,6 @@
   (map
     (partial apply combine-scales)
     (apply zip (map notes-of-scale scale-data))))
-
-
-(defn insert-at [coll at n]
-  (let [[l r] (split-at at coll)]
-    (vec (concat l [n] r))))
-
-
-(defn rand-color [& existing-colors]
-  (println (set existing-colors))
-  (->> (range 0 8)
-      (remove (set existing-colors))
-      (rand-nth)))
 
 
 (defn add-scale
@@ -224,6 +195,17 @@
          (drop (inc fret) last-strings-notes)))))
 
 
+
+(defn find-closest-fret-index [last-strings-notes scale-notes fret note]
+  (->> last-strings-notes
+    (map :note)
+    (map-indexed vector)
+    (filter #(scale-notes (second %)))
+    (map (fn [[index note]] [(diff fret index) note index]))
+    (sort-by first)
+    (filter #(= note (second %)))
+    (map last)
+    (first)))
 (defn guitar-classes [highlights]
   (str
     "guitar--faded"
