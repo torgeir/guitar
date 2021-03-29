@@ -1,11 +1,12 @@
 (ns guitar.modes.explore
   (:require
-   [guitar.notes :refer [scales scale-notes index-of notes modes ordinal-suffixed-number scale-steps]]
+   [guitar.notes :refer [scales scale-notes index-of notes modes mode-names ordinal-suffixed-number scale-steps]]
    [guitar.patterns :refer [scale-pattern]]
    [guitar.buttons :refer [button buttons buttons-multi toggle-button]]
    [guitar.guitar :refer [guitar]]
    [guitar.math :refer [diff]]
-   [guitar.sets :refer [toggle-in]]
+   [guitar.sets :refer [toggle-in indexed-map]]
+   [guitar.maps :refer [map-keys]]
    [hashp.core]
    [rum.core :as rum]))
 
@@ -50,15 +51,6 @@
     (:scales state)))
 
 
-(defn indexed-map [set]
-  (->> set
-    (map-indexed vector)
-    (map (juxt (comp inc first) second))
-    (map reverse)
-    (map vec)
-    (into {})))
-
-
 (defn hl-notes [note notes-to-highlight scale-notes default]
   (let [keys        (map (partial nth scale-notes) (map dec notes-to-highlight))
         note-colors (select-keys (indexed-map scale-notes) (set keys))]
@@ -77,11 +69,12 @@
     (first)))
 
 
-(defn mode-buttons [state modes mode]
+(defn mode-buttons [state scale modes mode]
   (buttons
     {:value    (name mode)
      :on-click #(swap! state assoc :mode (keyword %))}
-    (map name modes)))
+    (map name modes)
+    (map-keys name (scale mode-names))))
 
 
 (defn scale-buttons [state scales scale]
@@ -265,7 +258,7 @@
         [:div.guitar-buttons
          [:div.buttons (button {:class    "button--square"
                                 :on-click #(on-sub-click key)} "-")]
-         (rum/with-key (mode-buttons state scale-modes mode) "modes")
+         (rum/with-key (mode-buttons state scale scale-modes mode) "modes")
          (rum/with-key
            (note-buttons state root #(find-closest-fret-index
                                        (last strings-notes)

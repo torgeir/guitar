@@ -36,18 +36,42 @@
   [:ionian :dorian :phrygian :lydian :mixolydian :aeolian :locrian])
 
 
+(def mode-names
+  {:harmonic-minor {:ionian     "Harmonic minor"
+                    :dorian     "Locrian #6"
+                    :phrygian   "Major #5"
+                    :lydian     "Dorian #4"
+                    :mixolydian "Phrygian major"
+                    :aeolian    "Lydian #2"
+                    :locrian    "Altered dominant bb7"}
+   :harmonic-major {:ionian     "Harmonic major"
+                    :dorian     "Dorian b5"
+                    :phrygian   "Phrygian b4"
+                    :lydian     "Lydian b3"
+                    :mixolydian "Mixolydian b2"
+                    :aeolian    "Lydian augmented #2"
+                    :locrian    "Locrian bb7"}
+   :melodic-minor  {:ionian     "Melodic minor"
+                    :dorian     "Dorian b2"
+                    :phrygian   "Lydian augmented"
+                    :lydian     "Lydian dominant"
+                    :mixolydian "Aeolian dominant"
+                    :aeolian    "Half diminished"
+                    :locrian    "Altered"}})
+
+
 (defn shift-n [at coll]
   (->> coll
-       (split-at at)
-       (reverse)
-       (apply concat)))
+    (split-at at)
+    (reverse)
+    (apply concat)))
 
 
 (defn index-of [coll el]
   (->> coll
-       (map-indexed vector)
-       (drop-while #(not= el (second %)))
-       (ffirst)))
+    (map-indexed vector)
+    (drop-while #(not= el (second %)))
+    (ffirst)))
 
 
 (defn scale-notes
@@ -55,15 +79,15 @@
   ([root scale] (scale-notes root scale :ionian))
   ([root scale mode]
    (->> scales
-        (into {})
-        (scale)
-        (shift-n (index-of modes mode))
-        (seq)
-        (map js/parseInt)
-        (concat [(.indexOf notes root)])
-        (reductions +)
-        (drop-last)
-        (map (partial nth (cycle notes))))))
+     (into {})
+     (scale)
+     (shift-n (index-of modes mode))
+     (seq)
+     (map js/parseInt)
+     (concat [(.indexOf notes root)])
+     (reductions +)
+     (drop-last)
+     (map (partial nth (cycle notes))))))
 
 
 (defn string-notes
@@ -71,9 +95,9 @@
   notes on a guitar string."
   [notes scale-length start-note]
   (->> notes
-       (cycle)
-       (drop-while (partial not= start-note))
-       (take scale-length)))
+    (cycle)
+    (drop-while (partial not= start-note))
+    (take scale-length)))
 
 
 (def note-vowel?
