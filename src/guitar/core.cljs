@@ -70,7 +70,10 @@
 
 
 (defn state-link [[s text]]
-  [:a.explore-example {:href "#" :on-click #(reset! state (assoc default-state :explore s))} text])
+  [:p {:key text}
+   [:a.explore-example
+    {:href "#" :on-click #(reset! state (assoc default-state :explore s))}
+    text]])
 
 
 (rum/defc app < rum/reactive
@@ -105,7 +108,7 @@
       (button {:value    (when (= (:tuning @state) (vec (concat "g" "b" tuning))) "8-string")
                :on-click #(swap! state assoc :tuning (vec (concat "g" "b" tuning)))} "8-string")]
      [:h3 "Examples"]
-     (map (comp (fn [link] [:p link]) state-link (juxt :state :text)) explore/example-states)
+     (map (comp state-link (juxt :state :text)) explore/example-states)
      (comment [:button
                {:on-click #(swap! state update :theme cycle-theme)}
                (str (name theme) " theme")])]))
